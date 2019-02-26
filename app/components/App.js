@@ -1,6 +1,8 @@
 var React = require("react");
 var axios = require("axios");
 var Form = require("./Form");
+var FeaturedStreams = require("./FeaturedStreams");
+var TopGames = require("./TopGames");
 
 var apiKey = "t8yaydrbaft3dpp950285vmtcal743";
 
@@ -10,7 +12,7 @@ class App extends React.Component {
 
     this.state = {
       streams: [],
-      featuredStreams: [],
+      featured: [],
       games: []
     };
 
@@ -20,12 +22,24 @@ class App extends React.Component {
 
   twitchData(featured, game) {
     axios.all([axios.get(featured), axios.get(game)]).then(res => {
-      var featuredStream = res[0].data;
-      var game = res[1].data;
+      var featured = res[0].data.featured;
+      var game = res[1].data.top;
 
       // console.log(streamers);
-      console.log(featuredStream);
+      console.log(featured);
       console.log(game);
+
+      this.setState({
+        function() {
+          return {
+            featured: featured
+          };
+        }
+      });
+
+      this.setState({
+        games: game
+      });
     });
   }
 
@@ -46,12 +60,18 @@ class App extends React.Component {
         `https://api.twitch.tv/kraken/search/channels?client_id=${apiKey}&query=${streamer}`
       )
       .then(res => {
-        console.log(res);
+        console.log(res.data.channels);
       });
   }
 
   render() {
-    return <Form fetchData={this.fetchData} />;
+    return (
+      <div>
+        <Form fetchData={this.fetchData} />
+        {/* <FeaturedStreams featured={this.state.featured} /> */}
+        <TopGames games={this.state.games} />
+      </div>
+    );
   }
 }
 
