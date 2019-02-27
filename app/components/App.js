@@ -30,11 +30,7 @@ class App extends React.Component {
       console.log(game);
 
       this.setState({
-        function() {
-          return {
-            featured: featured
-          };
-        }
+        featured: featured
       });
 
       this.setState({
@@ -44,9 +40,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // const streamer = e.target.elements.streamer.value;
     this.twitchData(
-      `https://api.twitch.tv/kraken/streams/featured?client_id=${apiKey}`,
+      `https://api.twitch.tv/kraken/streams/featured?client_id=${apiKey}&limit=5`,
       `https://api.twitch.tv/kraken/games/top?client_id=${apiKey}`
     );
   }
@@ -68,7 +63,7 @@ class App extends React.Component {
     return (
       <div>
         <Form fetchData={this.fetchData} />
-        {/* <FeaturedStreams featured={this.state.featured} /> */}
+        <FeaturedStreams featured={this.state.featured} />
         <TopGames games={this.state.games} />
       </div>
     );

@@ -18,10 +18,10 @@
   margin: 0 0.25em;
 }
 
-/* .logo {
-  display: inline-block;
-  text-align: center;
-  /* overflow: auto;
-  white-space: nowrap;
-  margin: auto; */
-/* } */
+/* .stream-template {
+  margin: 0 2em;
+} */
+
+.featured-streams {
+  margin: 3em 0;
+}
