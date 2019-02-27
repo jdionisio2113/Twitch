@@ -2,9 +2,9 @@
   box-sizing: border-box;
 }
 
-/* body {
-  background: blue;
-} */
+body {
+  background: darkgrey;
+}
 
 .scrollMenu {
   /* width: 85%;
