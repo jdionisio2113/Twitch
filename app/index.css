@@ -7,8 +7,6 @@ body {
 }
 
 .scrollMenu {
-  /* width: 85%;
-  margin: 0 auto; */
   display: flex;
   overflow: scroll;
 }
