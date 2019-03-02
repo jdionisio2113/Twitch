@@ -3,7 +3,7 @@
 }
 
 body {
-  background: darkgrey;
+  background: #33334d;
 }
 
 .scrollMenu {
@@ -13,7 +13,8 @@ body {
 
 .game_container {
   /* display: inline-block; */
-  margin: 0 0.25em;
+  /* margin: 0 0.25em; */
+  text-align: center;
 }
 
 /* .stream-template {
@@ -22,4 +23,40 @@ body {
 
 .featured-streams {
   margin: 3em 0;
+}
+
+.carousel-indicators {
+  /* margin-top: 100px 0; */
+  opacity: 0;
+  margin: 0;
+}
+
+.carousel-control-next-icon {
+  /* background: black; */
+  margin-left: 1.3em;
+}
+
+.carousel-control-prev-icon {
+  margin-right: 1.3em;
+}
+
+.featured-stream-description {
+  display: flex;
+  margin: 0 27px;
+  padding: 5px 5px;
+  background: #52527a;
+  color: white;
+}
+
+/* .featured-stream-container {
+  background: purple;
+} */
+
+.featured-stream-channel-caption {
+  color: lightgrey;
+  margin: 0;
+}
+
+.featured-stream-name {
+  margin: 0;
 }

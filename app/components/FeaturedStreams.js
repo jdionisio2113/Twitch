@@ -1,140 +1,57 @@
 var React = require("react");
 var Bootstrap = require("react-bootstrap");
 var Carousel = require("react-bootstrap/Carousel");
+// var Slider = require("react-slick");
 
 function Streams(props) {
   var { featured, currentFeaturedStream, onSelect } = props;
   // var mainStream = featured.slice(1);
   console.log(featured);
-  const foo = [1, 2, 3];
+
   return (
     <div className="featured-streams">
       <div className="game_container">
         <Carousel>
-          {/* <Carousel.Item> */}
           {featured.map(function(item) {
+            var caption = item.stream.channel.status;
+            var length = 40;
+            var trimmedCaption =
+              caption.length > length
+                ? caption.substring(0, length - 3) + "..."
+                : caption;
+
             return (
               <Carousel.Item>
-                <div>
-                  <img src={item.image} />
-                  {/* <Carousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>
-                      Nulla vitae elit libero, a pharetra augue mollis interdum.
-                    </p>
-                  </Carousel.Caption> */}
-                </div>
-                <div>
-                  {/* <Carousel.Caption> */}
-                  <h3>First slide label</h3>
-                  <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
-                  </p>
-                  {/* </Carousel.Caption> */}
+                <div className="featured-stream-container">
+                  <div>
+                    <img src={item.stream.preview.medium} />
+                  </div>
+
+                  <div className="featured-stream-description">
+                    <img
+                      width="60px"
+                      height="60px"
+                      className="featured-stream-logo"
+                      src={item.stream.channel.logo}
+                    />
+
+                    <div className="featured-stream-caption">
+                      <h3 className="featured-stream-name">
+                        {item.stream.channel.display_name}
+                      </h3>
+                      <p className="featured-stream-channel-caption">
+                        {trimmedCaption}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </Carousel.Item>
             );
           })}
-          {/* </Carousel.Item> */}
         </Carousel>
       </div>
     </div>
   );
-
-  // return (
-  //   <div className="featured-streams">
-  //     {/* <p>{featured.stream.channel.game}</p> */}
-  //     {/* <div>
-  //       <img src={currentFeaturedStream.image} />
-
-  //       <p>{currentFeaturedStream.text}</p>
-  //     </div> */}
-  //     {/* <div className="scrollMenu">
-  //       {featured.map(function(item, index) { */}
-  //     {/* // console.log(item.stream.channel.game); */}
-
-  //     <div className="game_container">
-  //       {/* <p>{item.stream.channel.game}</p> */}
-  //       {/* <a onClick={onSelect.bind(this, item)}>
-  //               <img className="logo" src={item.stream.preview.small} />
-
-  //             </a> */}
-  //       <Carousel>
-  //         <Carousel.Item>
-  //           <h1>{featured.image}</h1>
-  //         </Carousel.Item>
-  //         {/* <Carousel.Item>
-  //           <img
-  //             className="d-block w-100"
-  //             src={featured.image}
-  //             alt="First slide"
-  //           />
-  //           <Carousel.Caption>
-  //             <h3>First slide label</h3>
-  //             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-  //           </Carousel.Caption>
-  //         </Carousel.Item>
-
-  //         <Carousel.Item>
-  //           <img
-  //             className="d-block w-100"
-  //             src={featured.image}
-  //             alt="Second slide"
-  //           />
-  //           <Carousel.Caption>
-  //             <h3>Second slide label</h3>
-  //             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-  //           </Carousel.Caption>
-  //         </Carousel.Item>
-
-  //         <Carousel.Item>
-  //           <img
-  //             className="d-block w-100"
-  //             src={featured.image}
-  //             alt="Third slide"
-  //           />
-  //           <Carousel.Caption>
-  //             <h3>Third slide label</h3>
-  //             <p>
-  //               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-  //             </p>
-  //           </Carousel.Caption>
-  //         </Carousel.Item>
-
-  //         <Carousel.Item>
-  //           <img
-  //             className="d-block w-100"
-  //             src={featured.image}
-  //             alt="Fourth slide"
-  //           />
-  //           <Carousel.Caption>
-  //             <h3>Fourth slide label</h3>
-  //             <p>
-  //               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-  //             </p>
-  //           </Carousel.Caption>
-  //         </Carousel.Item>
-
-  //         <Carousel.Item>
-  //           <img
-  //             className="d-block w-100"
-  //             src={featured.image}
-  //             alt="Fifth slide"
-  //           />
-  //           <Carousel.Caption>
-  //             <h3>Fifth slide label</h3>
-  //             <p>
-  //               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-  //             </p>
-  //           </Carousel.Caption>
-  //         </Carousel.Item> */}
-  //       </Carousel>
-  //     </div>
-
-  //     {/* // })} */}
-  //     {/* // </div> */}
-  //   </div>
-  // );
 }
 
 class FeaturedStreams extends React.Component {
