@@ -55,8 +55,63 @@ body {
 .featured-stream-channel-caption {
   color: lightgrey;
   margin: 0;
+  padding: 0 10px;
 }
 
 .featured-stream-name {
   margin: 0;
+}
+
+.featured-stream-image {
+  position: relative;
+}
+
+.live {
+  position: absolute;
+  top: 7%;
+  left: 78%;
+  color: white;
+  background: #ff4d4d;
+  padding: 2px 12px;
+  border-radius: 17%;
+  font-size: 13px;
+}
+
+.search-input {
+  position: relative;
+  margin: 10px 0;
+  /* width: 30%; */
+  /* right: 10%; */
+}
+
+.fa {
+  position: absolute;
+  top: 20%;
+  right: 12%;
+  color: white;
+}
+
+.input {
+  position: absolute;
+  right: 10%;
+  background: #29293d;
+  color: darkgrey;
+  border: none;
+  border-radius: 5%;
+  padding: 5px;
+}
+
+.top-games {
+  /* margin-left: 10px; */
+  color: #e6e6e6;
+}
+
+.top-games-container {
+  margin: 0 20px;
+}
+
+.logo {
+  margin: 0 10px;
+  /* -webkit-box-shadow: 0px 5px 19px -2px #000000; */
+  box-shadow: 0px 5px 19px 0px #000000;
 }

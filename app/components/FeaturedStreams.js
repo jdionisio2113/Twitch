@@ -23,8 +23,12 @@ function Streams(props) {
             return (
               <Carousel.Item>
                 <div className="featured-stream-container">
-                  <div>
-                    <img src={item.stream.preview.medium} />
+                  <div className="featured-stream-image">
+                    <img
+                      // className="featured-stream-image"
+                      src={item.stream.preview.medium}
+                    />
+                    <p className="live">Live</p>
                   </div>
 
                   <div className="featured-stream-description">
