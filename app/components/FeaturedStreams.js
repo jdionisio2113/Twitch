@@ -25,10 +25,11 @@ function Streams(props) {
                 <div className="featured-stream-container">
                   <div className="featured-stream-image">
                     <img
-                      // className="featured-stream-image"
+                      className="featured-stream-image"
                       src={item.stream.preview.medium}
                     />
                     <p className="live">Live</p>
+                    {/* <p className="viewers">{item.stream.viewers}</p> */}
                   </div>
 
                   <div className="featured-stream-description">
