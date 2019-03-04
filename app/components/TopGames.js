@@ -1,4 +1,4 @@
-var React = require("react");
+import React from "react";
 
 function TopGames(props) {
   var { games } = props;
@@ -21,4 +21,4 @@ function TopGames(props) {
   );
 }
 
-module.exports = TopGames;
+export default TopGames;

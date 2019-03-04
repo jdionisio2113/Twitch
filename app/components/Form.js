@@ -1,4 +1,4 @@
-var React = require("react");
+import React from "react";
 
 const Form = props => (
   <form onSubmit={props.fetchData} className="form">
@@ -17,4 +17,4 @@ const Form = props => (
   </form>
 );
 
-module.exports = Form;
+export default Form;

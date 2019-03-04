@@ -1,6 +1,6 @@
-var React = require("react");
-var Bootstrap = require("react-bootstrap");
-var Carousel = require("react-bootstrap/Carousel");
+import React from "react";
+import Bootstrap from "react-bootstrap";
+import Carousel, { Item } from "react-bootstrap/Carousel";
 // var Slider = require("react-slick");
 
 function Streams(props) {
@@ -21,7 +21,7 @@ function Streams(props) {
                 : caption;
 
             return (
-              <Carousel.Item>
+              <Item>
                 <div className="featured-stream-container">
                   <div className="featured-stream-image">
                     <img
@@ -50,7 +50,7 @@ function Streams(props) {
                     </div>
                   </div>
                 </div>
-              </Carousel.Item>
+              </Item>
             );
           })}
         </Carousel>
@@ -91,4 +91,4 @@ class FeaturedStreams extends React.Component {
   }
 }
 
-module.exports = FeaturedStreams;
+export default FeaturedStreams;
