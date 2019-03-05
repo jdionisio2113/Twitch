@@ -63,7 +63,7 @@ body {
 }
 
 .featured-stream-image {
-  /* position: relative; */
+  position: relative;
   /* width: 300px;
   height: 200px; */
 }
@@ -71,12 +71,40 @@ body {
 .live {
   position: absolute;
   top: 7%;
-  left: 78%;
+  left: 76%;
   color: white;
   background: #ff4d4d;
   padding: 2px 12px;
   border-radius: 17%;
   font-size: 13px;
+}
+
+.viewers {
+  position: absolute;
+  top: 79%;
+  left: 10%;
+  color: white;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 7%;
+  font-size: 13px;
+}
+
+.channel-live {
+  position: absolute;
+  top: 7%;
+  left: 76%;
+  color: white;
+  background: #ff4d4d;
+  padding: 2px 12px;
+  border-radius: 17%;
+  font-size: 13px;
+}
+
+.play {
+  position: absolute;
+  top: 30%;
+  left: 50%;
 }
 
 .search-input {
@@ -109,9 +137,12 @@ body {
   color: #e6e6e6;
 }
 
-.top-games-container,
-.live-channels-container {
+.top-games-container {
   margin: 10px 20px;
+}
+
+.live-channels-container {
+  margin: 50px 20px;
 }
 
 .logo {
@@ -123,6 +154,40 @@ body {
 }
 
 .live-channel-banner {
-  /* width: 230px;
-  height: 120px; */
+  /* position: relative; */
+  /* margin-left: 9px; */
+  margin: 0 auto;
+  /* width: 160px; */
+}
+
+.slick-arrow {
+  opacity: 0.4;
+}
+
+.slick-next {
+  margin-right: 10px;
+}
+
+.slick-prev {
+  margin-left: 12px;
+}
+
+.slick-dots {
+  opacity: none;
+}
+
+.live-channel-image {
+  position: relative;
+}
+
+.channelViewers {
+  margin: 0;
+  position: absolute;
+  top: 79%;
+  left: 5%;
+  color: white;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 7%;
+  font-size: 13px;
 }

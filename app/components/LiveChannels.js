@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+// import "./LiveChannels.scss";
 
 // function LiveChannels(props) {
 //   var { channels } = props;
@@ -19,37 +20,38 @@ import Slider from "react-slick";
 //   );
 // }
 
-function LiveChannels() {
+function LiveChannels(props) {
+  var { channels } = props;
+
   const settings = {
-    className: "center",
-    centerMode: true,
+    dots: true,
     infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 3,
-    speed: 500
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
   };
+
   return (
-    <div>
-      <h2>Center Mode</h2>
+    <div className="live-channels-container">
+      <h6 className="live-channels">Popular Live Channels</h6>
       <Slider {...settings}>
-        <div>
-          <h3>1</h3>
-        </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
-        </div>
+        {channels.map(function(item) {
+          console.log(item);
+          var viewers = item.viewers;
+          var streamViewers = viewers.toLocaleString();
+          return (
+            <div className="live-channel-image">
+              <div>
+                <img
+                  className="live-channel-banner"
+                  src={item.preview.medium}
+                />
+                <p className="channel-live">Live</p>
+                <p className="channelViewers">{streamViewers} viewers</p>
+              </div>
+            </div>
+          );
+        })}
       </Slider>
     </div>
   );

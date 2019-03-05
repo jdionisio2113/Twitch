@@ -1,7 +1,7 @@
 import React from "react";
 import Bootstrap from "react-bootstrap";
 import Carousel, { Item } from "react-bootstrap/Carousel";
-// var Slider = require("react-slick");
+// import Play from "../img/play.png";
 
 function Streams(props) {
   var { featured, currentFeaturedStream, onSelect } = props;
@@ -20,6 +20,10 @@ function Streams(props) {
                 ? caption.substring(0, length - 3) + "..."
                 : caption;
 
+            var viewers = item.stream.viewers;
+
+            var streamViewers = viewers.toLocaleString();
+
             return (
               <Item>
                 <div className="featured-stream-container">
@@ -28,8 +32,11 @@ function Streams(props) {
                       className="featured-stream-image"
                       src={item.stream.preview.medium}
                     />
+                    {/* <img className="play" src={Play} /> */}
                     <p className="live">Live</p>
-                    {/* <p className="viewers">{item.stream.viewers}</p> */}
+                    <div className="viewersContainer">
+                      <p className="viewers">{streamViewers} viewers</p>
+                    </div>
                   </div>
 
                   <div className="featured-stream-description">
