@@ -11,7 +11,15 @@ module.exports = {
   module: {
     rules: [
       { test: /\.(js)$/, use: "babel-loader" },
-      { test: /\.css$/, use: ["style-loader", "css-loader"] }
+      { test: /\.css$/, use: ["style-loader", "css-loader"] },
+      {
+        test: /\.(pdf|jpg|png|gif|svg|ico)$/,
+        use: [
+          {
+            loader: "url-loader"
+          }
+        ]
+      }
     ]
   },
   mode: "development",
@@ -24,3 +32,5 @@ module.exports = {
     })
   ]
 };
+
+// { test: /\.(svg|jpg)$/, loader: 'url-loader?limit=8192' }

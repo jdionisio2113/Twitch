@@ -36,17 +36,17 @@ function LiveChannels(props) {
       <h6 className="live-channels">Popular Live Channels</h6>
       <Slider {...settings}>
         {channels.map(function(item) {
-          console.log(item);
           var viewers = item.viewers;
           var streamViewers = viewers.toLocaleString();
           return (
-            <div className="live-channel-image">
+            <div className="live-channel-image" key={item._id}>
               <div>
                 <img
                   className="live-channel-banner"
                   src={item.preview.medium}
                 />
                 <p className="channel-live">Live</p>
+                {/* <img className="" src={} /> */}
                 <p className="channelViewers">{streamViewers} viewers</p>
               </div>
             </div>

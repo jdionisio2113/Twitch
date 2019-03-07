@@ -15,11 +15,12 @@ class App extends React.Component {
       streams: [],
       featured: [],
       games: [],
-      channels: []
+      channels: [],
+      search: []
     };
 
     this.twitchData = this.twitchData.bind(this);
-    this.fetchData = this.fetchData.bind(this);
+    // this.fetchData = this.fetchData.bind(this);
   }
 
   twitchData(featured, game, channels) {
@@ -55,24 +56,24 @@ class App extends React.Component {
     );
   }
 
-  fetchData(e) {
-    e.preventDefault();
-    const streamer = e.target.elements.streamer.value;
+  // fetchData(e) {
+  //   e.preventDefault();
+  //   const streamer = e.target.elements.streamer.value;
 
-    get(
-      `https://api.twitch.tv/kraken/search/channels?client_id=${apiKey}&query=${streamer}`
-    ).then(res => {
-      console.log(res.data.channels);
-    });
-  }
-
+  //   get(
+  //     `https://api.twitch.tv/kraken/search/channels?client_id=${apiKey}&query=${streamer}`
+  //   ).then(res => {
+  //     console.log(res.data.channels);
+  //   });
+  // }
   render() {
     return (
       <div>
-        <Form fetchData={this.fetchData} />
+        <Form handleChange={this.state.search} />
         <FeaturedStreams featured={this.state.featured} />
         <TopGames games={this.state.games} />
         <LiveChannels channels={this.state.channels} />
+        {/* <SearchContainer /> */}
       </div>
     );
   }

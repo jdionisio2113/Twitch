@@ -4,6 +4,7 @@
 
 body {
   background: #33334d;
+  letter-spacing: 1px;
 }
 
 .scrollMenu {
@@ -190,4 +191,8 @@ body {
   background: rgba(0, 0, 0, 0.6);
   border-radius: 7%;
   font-size: 13px;
+}
+
+.featured-stream-caption {
+  text-align: center;
 }

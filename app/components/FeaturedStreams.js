@@ -1,10 +1,10 @@
 import React from "react";
 import Bootstrap from "react-bootstrap";
 import Carousel, { Item } from "react-bootstrap/Carousel";
-// import Play from "../img/play.png";
+// import app from "../img/play.png";
 
 function Streams(props) {
-  var { featured, currentFeaturedStream, onSelect } = props;
+  var { featured } = props;
   // var mainStream = featured.slice(1);
   console.log(featured);
 
@@ -25,14 +25,14 @@ function Streams(props) {
             var streamViewers = viewers.toLocaleString();
 
             return (
-              <Item>
+              <Item key={item.stream._id}>
                 <div className="featured-stream-container">
                   <div className="featured-stream-image">
                     <img
                       className="featured-stream-image"
                       src={item.stream.preview.medium}
                     />
-                    {/* <img className="play" src={Play} /> */}
+                    {/* <img className="play" src={app} /> */}
                     <p className="live">Live</p>
                     <div className="viewersContainer">
                       <p className="viewers">{streamViewers} viewers</p>
