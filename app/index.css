@@ -7,6 +7,14 @@ body {
   letter-spacing: 1px;
 }
 
+a {
+  color: white;
+}
+
+a:hover {
+  color: purple;
+}
+
 .scrollMenu {
   display: flex;
   overflow: scroll;
@@ -102,6 +110,37 @@ body {
   font-size: 13px;
 }
 
+.channel-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.channel-link {
+  position: absolute;
+  top: 0%;
+  left: 2%;
+  display: flex;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 8px;
+  width: 96%;
+}
+
+.channel-caption {
+  color: lightgrey;
+  margin: 0;
+  font-size: 13px;
+}
+
+.channel-name {
+  color: white;
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.channel-description {
+  margin-left: 10px;
+}
+
 .play {
   position: absolute;
   top: 30%;
@@ -158,6 +197,7 @@ body {
   /* position: relative; */
   /* margin-left: 9px; */
   margin: 0 auto;
+  box-shadow: inset 1px 24px 20px -2px rgba(0, 0, 0, 0.75);
   /* width: 160px; */
 }
 

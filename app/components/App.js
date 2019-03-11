@@ -69,7 +69,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Form handleChange={this.state.search} />
+        <Form search={this.state.search} />
         <FeaturedStreams featured={this.state.featured} />
         <TopGames games={this.state.games} />
         <LiveChannels channels={this.state.channels} />

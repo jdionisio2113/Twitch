@@ -48,12 +48,14 @@ function Streams(props) {
                     />
 
                     <div className="featured-stream-caption">
-                      <h3 className="featured-stream-name">
-                        {item.stream.channel.display_name}
-                      </h3>
-                      <p className="featured-stream-channel-caption">
-                        {trimmedCaption}
-                      </p>
+                      <a href={item.stream.channel.url} target="_blank">
+                        <h3 className="featured-stream-name">
+                          {item.stream.channel.display_name}
+                        </h3>
+                        <p className="featured-stream-channel-caption">
+                          {trimmedCaption}
+                        </p>
+                      </a>
                     </div>
                   </div>
                 </div>

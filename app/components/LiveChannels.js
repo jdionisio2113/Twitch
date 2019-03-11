@@ -36,6 +36,13 @@ function LiveChannels(props) {
       <h6 className="live-channels">Popular Live Channels</h6>
       <Slider {...settings}>
         {channels.map(function(item) {
+          var caption = item.channel.status;
+          var length = 33;
+          var trimmedChannelCaption =
+            caption.length > length
+              ? caption.substring(0, length - 3) + "..."
+              : caption;
+
           var viewers = item.viewers;
           var streamViewers = viewers.toLocaleString();
           return (
@@ -45,9 +52,18 @@ function LiveChannels(props) {
                   className="live-channel-banner"
                   src={item.preview.medium}
                 />
-                <p className="channel-live">Live</p>
+                {/* <p className="channel-live">Live</p> */}
                 {/* <img className="" src={} /> */}
                 <p className="channelViewers">{streamViewers} viewers</p>
+                <div className="channel-link">
+                  <img className="channel-logo" src={item.channel.logo} />
+                  <div className="channel-description">
+                    <h3 className="channel-name">
+                      {item.channel.display_name}
+                    </h3>
+                    <p className="channel-caption">{trimmedChannelCaption}</p>
+                  </div>
+                </div>
               </div>
             </div>
           );
