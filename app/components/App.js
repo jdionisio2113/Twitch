@@ -4,6 +4,9 @@ import Form from "./Form";
 import FeaturedStreams from "./FeaturedStreams";
 import TopGames from "./TopGames";
 import LiveChannels from "./LiveChannels";
+// import Categories from "./Categories";
+// var ReactRouter = require("react-router-dom");
+// import { Router, Route, Switch,Link } from "react-router";
 
 var apiKey = "t8yaydrbaft3dpp950285vmtcal743";
 
@@ -15,8 +18,7 @@ class App extends React.Component {
       streams: [],
       featured: [],
       games: [],
-      channels: [],
-      search: []
+      channels: []
     };
 
     this.twitchData = this.twitchData.bind(this);
@@ -56,20 +58,22 @@ class App extends React.Component {
     );
   }
 
-  // fetchData(e) {
-  //   e.preventDefault();
-  //   const streamer = e.target.elements.streamer.value;
-
-  //   get(
-  //     `https://api.twitch.tv/kraken/search/channels?client_id=${apiKey}&query=${streamer}`
-  //   ).then(res => {
-  //     console.log(res.data.channels);
-  //   });
-  // }
   render() {
     return (
       <div>
-        <Form search={this.state.search} />
+        {/* <Router>
+          <div className="container">
+            <Switch>
+              <Route path="/categories" component={Categories} />
+              <Route
+                render={function() {
+                  return <p>Not Found</p>;
+                }}
+              />
+            </Switch>
+          </div>
+        </Router> */}
+        <Form />
         <FeaturedStreams featured={this.state.featured} />
         <TopGames games={this.state.games} />
         <LiveChannels channels={this.state.channels} />

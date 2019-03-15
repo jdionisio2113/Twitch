@@ -236,3 +236,16 @@ a:hover {
 .featured-stream-caption {
   text-align: center;
 }
+
+.game-category {
+  display: flex;
+  justify-content: space-between;
+}
+
+.see-All_link {
+  color: lightgrey;
+}
+
+.streamer-name {
+  color: white;
+}

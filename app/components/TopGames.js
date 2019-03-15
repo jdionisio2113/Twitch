@@ -1,11 +1,18 @@
 import React from "react";
+// var Link = require("react-router-dom").Link;
 
 function TopGames(props) {
   var { games } = props;
 
   return (
     <div className="top-games-container">
-      <h6 className="top-games">Top Games</h6>
+      <div className="game-category">
+        <h6 className="top-games">Top Games</h6>
+        {/* <Link className="see-All_link" to="/categories">
+          See All
+        </Link> */}
+        <p className="see-All_link">See All</p>
+      </div>
       <div className="scrollMenu">
         {games.map(function(item, index) {
           // console.log(item.game.logo.large);

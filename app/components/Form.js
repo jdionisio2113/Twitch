@@ -1,20 +1,21 @@
 import React from "react";
 import { fetchStreamers } from "../config/endpoints";
 import axios from "axios";
-// import Suggestions from "./Suggestions";
+import Suggestions from "./Suggestions";
 
 class Form extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      input: []
+      input: "",
+      suggestedChannels: []
     };
 
-    this.timeout = 0;
+    // this.timeout = 0;
 
     this.handleChange = this.handleChange.bind(this);
-    // this.changeName = this.changeName.bind(this);
+    this.displaySuggestedResults = this.displaySuggestedResults.bind(this);
   }
 
   // 1) Detect when user is done typing
@@ -26,36 +27,34 @@ class Form extends React.Component {
   handleChange(e) {
     var value = e.target.value;
 
-    this.setState(function() {
-      return {
-        input: value
-      };
-    });
+    this.setState({ input: value });
 
-    // console.log(value);
+    // prevent ajax request from firing if value is empty
 
-    const endpoint = fetchStreamers(value);
+    clearTimeout(this.myTimeout);
 
-    if (this.timeout) clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => {
-      //search function
+    this.myTimeout = setTimeout(() => {
+      const endpoint = fetchStreamers(this.state.input);
       axios.get(endpoint).then(res => {
-        // console.log(res.data.channels);
-        // var value = res.data.channels.display_name;
-        {
-          res.data.channels.map(function(item) {
-            console.log(item.display_name);
-            // return (
-            //   <div>
-            //     <ul>
-            //       <li>{item.display_name}</li>
-            //     </ul>
-            //   </div>
-            // );
-          });
-        }
+        this.setState({ suggestedChannels: res.data.channels });
+        console.log(res.data.chnnels);
+        t;
       });
-    }, 600);
+    }, 1000);
+  }
+
+  displaySuggestedResults() {
+    if (this.state.suggestedChannels.length > 0) {
+      return (
+        <ul>
+          {this.state.suggestedChannels.map(function(item) {
+            return <li key={item._id}>{item.display_name}</li>;
+          })}
+        </ul>
+      );
+    } else {
+      return null;
+    }
   }
 
   render() {
@@ -74,7 +73,7 @@ class Form extends React.Component {
           <button type="submit">
             <i className="fa fa-search" aria-hidden="true" />
           </button>
-          {/* <Suggestions input={this.state.input} /> */}
+          {this.displaySuggestedResults()}
         </div>
       </form>
     );
