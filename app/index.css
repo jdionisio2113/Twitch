@@ -57,6 +57,11 @@ a:hover {
   color: white;
 }
 
+/* .stream-link:visited {
+  color: white;
+  text-decoration: none;
+} */
+
 /* .featured-stream-container {
   background: #52527a;
 } */
@@ -69,6 +74,7 @@ a:hover {
 
 .featured-stream-name {
   margin: 0;
+  font-size: 1.3em;
 }
 
 .featured-stream-image {
@@ -246,6 +252,32 @@ a:hover {
   color: lightgrey;
 }
 
-.streamer-name {
+.suggested-result {
   color: white;
+  list-style: none;
+  position: absolute;
+  top: 25%;
+  left: 22%;
+}
+
+.suggestions-menu {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0;
+  width: 100%;
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+.suggested-result-logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 1.5em;
+  margin-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.suggested-item-container {
+  display: flex;
+  position: relative;
+  /* border-bottom: 2px solid grey; */
 }

@@ -1,16 +1,26 @@
 import React from "react";
 // var Link = require("react-router-dom").Link;
+import Slider from "react-slick";
 
 function TopGames(props) {
   var { games } = props;
 
+  // const settings = {
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 3,
+  //   slidesToScroll: 3
+  // };
   return (
+    // <div>
+    //   <Slider {...settings}>
     <div className="top-games-container">
       <div className="game-category">
         <h6 className="top-games">Top Games</h6>
         {/* <Link className="see-All_link" to="/categories">
           See All
-        </Link> */}
+        </Link>{" "} */}
         <p className="see-All_link">See All</p>
       </div>
       <div className="scrollMenu">
@@ -25,6 +35,8 @@ function TopGames(props) {
         })}
       </div>
     </div>
+    //   </Slider>
+    // </div>
   );
 }
 
