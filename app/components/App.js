@@ -4,13 +4,18 @@ import Form from "./Form";
 import FeaturedStreams from "./FeaturedStreams";
 import TopGames from "./TopGames";
 import LiveChannels from "./LiveChannels";
-// import Categories from "./Categories";
+import Categories from "./Categories";
 // var ReactRouter = require("react-router-dom");
 // import { Router, Route, Switch,Link } from "react-router";
+// import { BrowserRouter as Router } from "react-router-dom";
+var ReactRouter = require("react-router-dom");
+var Router = ReactRouter.BrowserRouter;
+var Route = ReactRouter.Route;
+var Switch = ReactRouter.Switch;
 
 var apiKey = "t8yaydrbaft3dpp950285vmtcal743";
 
-class App extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
 
@@ -61,26 +66,50 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/* <Router>
-          <div className="container">
-            <Switch>
-              <Route path="/categories" component={Categories} />
-              <Route
-                render={function() {
-                  return <p>Not Found</p>;
-                }}
-              />
-            </Switch>
-          </div>
-        </Router> */}
-        <Form />
         <FeaturedStreams featured={this.state.featured} />
         <TopGames games={this.state.games} />
         <LiveChannels channels={this.state.channels} />
-        {/* <SearchContainer /> */}
       </div>
     );
   }
 }
 
+// place in /config/routes.js
+const routes = (
+  <Router>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route
+        exact
+        path="/new"
+        // component={Categories}
+        render={props => {
+          var { games } = props;
+          return (
+            <div className="categoryMenu">
+              {games.map(function(item, index) {
+                // console.log(item.game.logo.large);
+                return (
+                  <div key={index} className="game_container">
+                    <img className="logo" src={item.game.box.large} />
+                    {/* <h1>{item.game.name}</h1> */}
+                  </div>
+                );
+              })}
+            </div>
+          );
+        }}
+      />
+    </Switch>
+  </Router>
+);
+
+const App = () => {
+  return (
+    <div>
+      <Form />
+      {routes}
+    </div>
+  );
+};
 export default App;

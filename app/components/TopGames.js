@@ -1,6 +1,8 @@
 import React from "react";
 // var Link = require("react-router-dom").Link;
+// import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
 
 function TopGames(props) {
   var { games } = props;
@@ -18,10 +20,10 @@ function TopGames(props) {
     <div className="top-games-container">
       <div className="game-category">
         <h6 className="top-games">Top Games</h6>
-        {/* <Link className="see-All_link" to="/categories">
+        <Link className="see-All_link" to="/new">
           See All
-        </Link>{" "} */}
-        <p className="see-All_link">See All</p>
+        </Link>
+        {/* <p className="see-All_link">See All</p> */}
       </div>
       <div className="scrollMenu">
         {games.map(function(item, index) {
