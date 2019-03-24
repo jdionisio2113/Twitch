@@ -5,6 +5,8 @@ import FeaturedStreams from "./FeaturedStreams";
 import TopGames from "./TopGames";
 import LiveChannels from "./LiveChannels";
 import Categories from "./Categories";
+import apiKey from "../config/apiKey";
+// import routes from "../config/routes";
 // var ReactRouter = require("react-router-dom");
 // import { Router, Route, Switch,Link } from "react-router";
 // import { BrowserRouter as Router } from "react-router-dom";
@@ -13,7 +15,7 @@ var Router = ReactRouter.BrowserRouter;
 var Route = ReactRouter.Route;
 var Switch = ReactRouter.Switch;
 
-var apiKey = "t8yaydrbaft3dpp950285vmtcal743";
+// var apiKey = "t8yaydrbaft3dpp950285vmtcal743";
 
 class Home extends React.Component {
   constructor(props) {
@@ -69,6 +71,7 @@ class Home extends React.Component {
         <FeaturedStreams featured={this.state.featured} />
         <TopGames games={this.state.games} />
         <LiveChannels channels={this.state.channels} />
+        {/* <Categories games={this.state.games} /> */}
       </div>
     );
   }
@@ -79,27 +82,7 @@ const routes = (
   <Router>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route
-        exact
-        path="/new"
-        // component={Categories}
-        render={props => {
-          var { games } = props;
-          return (
-            <div className="categoryMenu">
-              {games.map(function(item, index) {
-                // console.log(item.game.logo.large);
-                return (
-                  <div key={index} className="game_container">
-                    <img className="logo" src={item.game.box.large} />
-                    {/* <h1>{item.game.name}</h1> */}
-                  </div>
-                );
-              })}
-            </div>
-          );
-        }}
-      />
+      <Route exact path="/new" component={Categories} />
     </Switch>
   </Router>
 );
@@ -112,4 +95,5 @@ const App = () => {
     </div>
   );
 };
+
 export default App;

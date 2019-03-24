@@ -281,3 +281,13 @@ a:hover {
   position: relative;
   /* border-bottom: 2px solid grey; */
 }
+
+.game_container2 {
+  display: flex;
+  margin: 1em 0;
+}
+
+.category_logo {
+  width: 5em;
+  height: 7em;
+}
