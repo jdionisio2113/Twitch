@@ -1,7 +1,7 @@
 import React from "react";
 import Bootstrap from "react-bootstrap";
 import Carousel, { Item } from "react-bootstrap/Carousel";
-// import app from "../img/play.png";
+// import img from "../img/play.png";
 
 function Streams(props) {
   var { featured } = props;
@@ -32,7 +32,7 @@ function Streams(props) {
                       className="featured-stream-image"
                       src={item.stream.preview.medium}
                     />
-                    {/* <img className="play" src={app} /> */}
+                    {/* <img className="play" src={img} /> */}
                     <p className="live">Live</p>
                     <div className="viewersContainer">
                       <p className="viewers">{streamViewers} viewers</p>

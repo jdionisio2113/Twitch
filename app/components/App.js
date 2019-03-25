@@ -82,7 +82,7 @@ const routes = (
   <Router>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="/new" component={Categories} />
+      <Route exact path="/categories" component={Categories} />
     </Switch>
   </Router>
 );

@@ -153,11 +153,23 @@ a:hover {
   left: 50%;
 }
 
-.search-input {
-  position: relative;
-  margin: 10px 0;
+.form {
+  /* background: #754fc1; */
+  z-index: 1;
+}
+
+.nav {
+  /* position: relative; */
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
   /* width: 30%; */
   /* right: 10%; */
+}
+
+.twitch-logo {
+  width: 2.3em;
+  height: 2.3em;
 }
 
 .fa {
@@ -168,8 +180,8 @@ a:hover {
 }
 
 .input {
-  position: absolute;
-  right: 10%;
+  /* position: absolute;
+  right: 10%; */
   background: #29293d;
   color: darkgrey;
   border: none;
@@ -284,10 +296,23 @@ a:hover {
 
 .game_container2 {
   display: flex;
-  margin: 1em 0;
+  padding: 1em 0;
+  border-bottom: 1px solid grey;
+}
+
+.game-description {
+}
+
+.game-viewers {
+  color: lightgrey;
 }
 
 .category_logo {
   width: 5em;
   height: 7em;
+  margin: 0 1em;
+}
+
+.game-title {
+  color: white;
 }

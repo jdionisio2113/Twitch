@@ -1,6 +1,8 @@
 import React from "react";
 import { fetchStreamers } from "../config/endpoints";
 import axios from "axios";
+import img from "../img/twitch-logo.png";
+import { Link } from "react-router-dom";
 
 class Form extends React.Component {
   constructor(props) {
@@ -56,8 +58,10 @@ class Form extends React.Component {
           {this.state.suggestedChannels.map(function(item) {
             return (
               <div key={item._id} className="suggested-item-container">
-                <img className="suggested-result-logo" src={item.logo} />
-                <li className="suggested-result">{item.display_name}</li>
+                <a href={item.url} target="_blank">
+                  <img className="suggested-result-logo" src={item.logo} />
+                  <li className="suggested-result">{item.display_name}</li>
+                </a>
               </div>
             );
           })}
@@ -71,7 +75,10 @@ class Form extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleChange} className="form">
-        <div className="search-input">
+        <div className="nav">
+          <a href="/">
+            <img className="twitch-logo" src={img} />
+          </a>
           <input
             type="text"
             name="streamer"
@@ -87,9 +94,9 @@ class Form extends React.Component {
             value="cancel"
             onClick={this.handleReset}
           /> */}
-          <button type="submit">
-            {/* <i className="fa fa-search" aria-hidden="true" /> */}
-          </button>
+          {/* <button type="submit"> */}
+          {/* <i className="fa fa-search" aria-hidden="true" /> */}
+          {/* </button> */}
           {this.displaySuggestedResults()}
         </div>
       </form>

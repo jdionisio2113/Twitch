@@ -3,24 +3,6 @@ import Home from "./App";
 import axios from "axios";
 import apiKey from "../config/apiKey";
 
-// function Categories(props) {
-//   var { games } = props;
-
-//   return (
-//     <div className="categoryMenu">
-//       {games.map(function(item, index) {
-//         // console.log(item.game.logo.large);
-//         return (
-//           <div key={index} className="game_container">
-//             <img className="logo" src={item.game.box.large} />
-//             {/* <h1>{item.game.name}</h1> */}
-//           </div>
-//         );
-//       })}
-//     </div>
-//   );
-// }
-
 class Categories extends React.Component {
   constructor(props) {
     super(props);
@@ -51,12 +33,17 @@ class Categories extends React.Component {
     console.log({ games });
     return (
       <div>
-        {games.map(function(item, index) {
+        {games.map(function(item) {
+          var viewers = item.viewers;
+
+          var gameViewers = viewers.toLocaleString();
           return (
-            <div key={index} className="game_container2">
+            <div key={item.game._id} className="game_container2">
               <img className="category_logo" src={item.game.box.medium} />
-              <p>{item.game.name}</p>
-              {/* <h1>{item.game.name}</h1> */}
+              <div className="game-description">
+                <h6 className="game-title">{item.game.name}</h6>
+                <p className="game-viewers">{gameViewers} viewers</p>
+              </div>
             </div>
           );
         })}
@@ -64,15 +51,5 @@ class Categories extends React.Component {
     );
   }
 }
-
-// const Categories = props => {
-//   var { games } = props;
-
-//   return (
-//     <div>
-//       <p>New World</p>
-//     </div>
-//   );
-// };
 
 export default Categories;

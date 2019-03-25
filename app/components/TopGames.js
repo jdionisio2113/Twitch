@@ -20,7 +20,7 @@ function TopGames(props) {
     <div className="top-games-container">
       <div className="game-category">
         <h6 className="top-games">Top Games</h6>
-        <Link className="see-All_link" to="/new">
+        <Link className="see-All_link" to="/categories">
           See All
         </Link>
         {/* <p className="see-All_link">See All</p> */}
