@@ -155,7 +155,8 @@ a:hover {
 
 .form {
   /* background: #754fc1; */
-  z-index: 1;
+  /* position: fixed;
+  z-index: 1; */
 }
 
 .nav {

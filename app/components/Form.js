@@ -17,7 +17,7 @@ class Form extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.displaySuggestedResults = this.displaySuggestedResults.bind(this);
-    // this.handleReset = this.handleReset.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   // 1) Detect when user is done typing
@@ -44,12 +44,12 @@ class Form extends React.Component {
     }, 600);
   }
 
-  // handleReset() {
-  //   this.setState({
-  //     input: "",
-  //     suggestedChannels: []
-  //   });
-  // }
+  handleReset() {
+    this.setState({
+      input: "",
+      suggestedChannels: []
+    });
+  }
 
   displaySuggestedResults() {
     if (this.state.suggestedChannels.length > 0) {
@@ -79,6 +79,7 @@ class Form extends React.Component {
           <a href="/">
             <img className="twitch-logo" src={img} />
           </a>
+
           <input
             type="text"
             name="streamer"
@@ -88,15 +89,18 @@ class Form extends React.Component {
             value={this.state.input}
             onChange={this.handleChange}
           />
-          {/* <input
+          <input
             type="button"
             name="cancelCourse"
-            value="cancel"
+            value="Cancel"
             onClick={this.handleReset}
-          /> */}
-          {/* <button type="submit"> */}
-          {/* <i className="fa fa-search" aria-hidden="true" /> */}
-          {/* </button> */}
+          />
+          {/* <button onClick={this.handleReset}>
+            <i class="fa fa-window-close" aria-hidden="true" />
+          </button> */}
+          {/* <button type="submit">
+            <i className="fa fa-search" aria-hidden="true" />
+          </button> */}
           {this.displaySuggestedResults()}
         </div>
       </form>
