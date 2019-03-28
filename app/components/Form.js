@@ -11,20 +11,13 @@ class Form extends React.Component {
     this.state = {
       input: "",
       suggestedChannels: []
+      // reset: false
     };
-
-    // this.timeout = 0;
 
     this.handleChange = this.handleChange.bind(this);
     this.displaySuggestedResults = this.displaySuggestedResults.bind(this);
     this.handleReset = this.handleReset.bind(this);
   }
-
-  // 1) Detect when user is done typing
-
-  // 2) When user is done typing, contact API with user input
-
-  // 3) After we receive the JSON response, display the results to the user
 
   handleChange(e) {
     var value = e.target.value;
@@ -52,6 +45,8 @@ class Form extends React.Component {
   }
 
   displaySuggestedResults() {
+    // this.setState({ reset: true });
+
     if (this.state.suggestedChannels.length > 0) {
       return (
         <ul className="suggestions-menu">
@@ -73,13 +68,22 @@ class Form extends React.Component {
   }
 
   render() {
-    return (
-      <form onSubmit={this.handleChange} className="form">
-        <div className="nav">
-          <a href="/">
-            <img className="twitch-logo" src={img} />
-          </a>
+    // var handleReset = this.state.reset;
 
+    // if (handleReset === true) {
+    //   return <Reset />;
+    // }
+    return (
+      // <form
+      //   onSubmit={this.handleChange}
+      //   // reset={this.state.reset}
+      //   className="form"
+      // >
+      <div className="nav form">
+        <a href="/">
+          <img className="twitch-logo" src={img} />
+        </a>
+        <div className="input-container">
           <input
             type="text"
             name="streamer"
@@ -88,22 +92,16 @@ class Form extends React.Component {
             className="input"
             value={this.state.input}
             onChange={this.handleChange}
+            // reset={this.state.reset}
           />
-          <input
-            type="button"
-            name="cancelCourse"
-            value="Cancel"
-            onClick={this.handleReset}
-          />
-          {/* <button onClick={this.handleReset}>
-            <i class="fa fa-window-close" aria-hidden="true" />
-          </button> */}
-          {/* <button type="submit">
-            <i className="fa fa-search" aria-hidden="true" />
-          </button> */}
-          {this.displaySuggestedResults()}
+
+          <button onClick={this.handleReset} className="reset-button">
+            <i class="fa fa-times-circle" aria-hidden="true" />
+          </button>
         </div>
-      </form>
+        {this.displaySuggestedResults()}
+      </div>
+      // </form>
     );
   }
 }

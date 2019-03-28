@@ -173,12 +173,22 @@ a:hover {
   height: 2.3em;
 }
 
-.fa {
+.reset-button {
+  position: absolute;
+  right: 4.3%;
+  top: 2.4%;
+}
+
+/* .input-container {
+  position: relative;
+} */
+
+/* .fa {
   position: absolute;
   top: 20%;
   right: 12%;
   color: white;
-}
+} */
 
 .input {
   /* position: absolute;
