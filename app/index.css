@@ -153,15 +153,15 @@ a:hover {
   left: 50%;
 }
 
-.form {
-  /* background: #754fc1; */
-  /* position: fixed;
-  z-index: 1; */
-}
+/* .form {
+  margin: 5em;
+} */
 
 .nav {
   /* position: relative; */
   display: flex;
+
+  /* flex-wrap: wrap; */
   justify-content: space-between;
   padding: 1em;
   /* width: 30%; */
@@ -177,18 +177,20 @@ a:hover {
   position: absolute;
   right: 4.3%;
   top: 2.4%;
+  background: none;
+  border: none;
+  padding: none;
 }
 
-/* .input-container {
-  position: relative;
-} */
+.fa-times-circle {
+  color: #1a1a1a;
+}
 
-/* .fa {
-  position: absolute;
-  top: 20%;
-  right: 12%;
+.fas {
+  /* position: absolute;
+  right: 10%; */
   color: white;
-} */
+}
 
 .input {
   /* position: absolute;
@@ -309,9 +311,6 @@ a:hover {
   display: flex;
   padding: 1em 0;
   border-bottom: 1px solid grey;
-}
-
-.game-description {
 }
 
 .game-viewers {

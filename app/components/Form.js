@@ -3,6 +3,10 @@ import { fetchStreamers } from "../config/endpoints";
 import axios from "axios";
 import img from "../img/twitch-logo.png";
 import { Link } from "react-router-dom";
+import App from "./App";
+// import Menu from "./Example";
+// import img from "../img/menu.svg";
+// import { slide as Menu } from "react-burger-menu";
 
 class Form extends React.Component {
   constructor(props) {
@@ -10,14 +14,30 @@ class Form extends React.Component {
 
     this.state = {
       input: "",
-      suggestedChannels: []
-      // reset: false
+      suggestedChannels: [],
+      open: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.displaySuggestedResults = this.displaySuggestedResults.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.openMenu = this.openMenu.bind(this);
+    // this.closeMenu = this.closeMenu.bind(this);
   }
+
+  openMenu() {
+    this.setState({ open: true });
+
+    // this.setState({ open: true }, () => {
+    //   document.addEventListener("click", this.closeMenu);
+    // });
+  }
+
+  // closeMenu() {
+  //   this.setState({ open: false }, () => {
+  //     document.removeEventListener("click", this.closeMenu);
+  //   });
+  // }
 
   handleChange(e) {
     var value = e.target.value;
@@ -68,41 +88,45 @@ class Form extends React.Component {
   }
 
   render() {
-    // var handleReset = this.state.reset;
-
-    // if (handleReset === true) {
-    //   return <Reset />;
-    // }
     return (
       // <form
       //   onSubmit={this.handleChange}
       //   // reset={this.state.reset}
       //   className="form"
       // >
-      <div className="nav form">
+      <div className="nav">
         <a href="/">
           <img className="twitch-logo" src={img} />
         </a>
-        <div className="input-container">
-          <input
-            type="text"
-            name="streamer"
-            placeholder="Search streamer"
-            autoComplete="off"
-            className="input"
-            value={this.state.input}
-            onChange={this.handleChange}
-            // reset={this.state.reset}
-          />
-
-          <button onClick={this.handleReset} className="reset-button">
-            <i class="fa fa-times-circle" aria-hidden="true" />
+        <div className="menu-container">
+          <button onClick={() => this.onClick()}>
+            <i className="fas fa-bars fa-2x" />
           </button>
+          {this.state.open ? (
+            <div className="input-container">
+              <input
+                type="text"
+                name="streamer"
+                placeholder="Search streamer"
+                autoComplete="off"
+                className="input"
+                value={this.state.input}
+                onChange={this.handleChange}
+              />
+
+              <button onClick={this.handleReset} className="reset-button">
+                <i className="fa fa-times-circle" aria-hidden="true" />
+              </button>
+            </div>
+          ) : null}
         </div>
         {this.displaySuggestedResults()}
       </div>
       // </form>
     );
+  }
+  onClick() {
+    this.setState({ open: !this.state.open });
   }
 }
 

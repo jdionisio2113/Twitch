@@ -1,6 +1,7 @@
 import React from "react";
 import { all, get } from "axios";
 import Form from "./Form";
+// import Example from "./Example";
 import FeaturedStreams from "./FeaturedStreams";
 import TopGames from "./TopGames";
 import LiveChannels from "./LiveChannels";
