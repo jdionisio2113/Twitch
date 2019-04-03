@@ -26,11 +26,7 @@ class Form extends React.Component {
   }
 
   openMenu() {
-    this.setState({ open: true });
-
-    // this.setState({ open: true }, () => {
-    //   document.addEventListener("click", this.closeMenu);
-    // });
+    this.setState({ open: !this.state.open });
   }
 
   // closeMenu() {
@@ -65,8 +61,6 @@ class Form extends React.Component {
   }
 
   displaySuggestedResults() {
-    // this.setState({ reset: true });
-
     if (this.state.suggestedChannels.length > 0) {
       return (
         <ul className="suggestions-menu">
@@ -99,34 +93,46 @@ class Form extends React.Component {
           <img className="twitch-logo" src={img} />
         </a>
         <div className="menu-container">
-          <button onClick={() => this.onClick()}>
+          <button className="menu-button" onClick={() => this.openMenu()}>
             <i className="fas fa-bars fa-2x" />
           </button>
-          {this.state.open ? (
-            <div className="input-container">
-              <input
-                type="text"
-                name="streamer"
-                placeholder="Search streamer"
-                autoComplete="off"
-                className="input"
-                value={this.state.input}
-                onChange={this.handleChange}
-              />
 
-              <button onClick={this.handleReset} className="reset-button">
-                <i className="fa fa-times-circle" aria-hidden="true" />
-              </button>
+          {this.state.open ? (
+            <div className="menu">
+              <ul>
+                <li className="menu-link">
+                  <a href="/">Home</a>
+                </li>
+                <li className="menu-link">
+                  <a href="/categories">Categories</a>
+                </li>
+                {/* </ul> */}
+                <li>
+                  <div className="input-container">
+                    <input
+                      type="text"
+                      name="streamer"
+                      placeholder="Search"
+                      autoComplete="off"
+                      className="input"
+                      value={this.state.input}
+                      onChange={this.handleChange}
+                      // reset={this.state.reset}
+                    />
+                    <button onClick={this.handleReset} className="reset-button">
+                      <i className="far fa-times-circle fa-1x" />
+                    </button>
+                  </div>
+                </li>
+              </ul>
+              {this.displaySuggestedResults()}
             </div>
           ) : null}
         </div>
-        {this.displaySuggestedResults()}
+        {/* {this.displaySuggestedResults()} */}
       </div>
       // </form>
     );
-  }
-  onClick() {
-    this.setState({ open: !this.state.open });
   }
 }
 

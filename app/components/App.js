@@ -68,7 +68,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="main-container">
         <FeaturedStreams featured={this.state.featured} />
         <TopGames games={this.state.games} />
         <LiveChannels channels={this.state.channels} />

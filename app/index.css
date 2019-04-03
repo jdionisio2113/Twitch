@@ -11,8 +11,16 @@ a {
   color: white;
 }
 
-a:hover {
-  color: purple;
+li {
+  list-style: none;
+}
+
+ul {
+  padding: 0 10px;
+}
+
+.main-container {
+  margin-top: 5em;
 }
 
 .scrollMenu {
@@ -160,11 +168,14 @@ a:hover {
 .nav {
   /* position: relative; */
   display: flex;
-
-  /* flex-wrap: wrap; */
   justify-content: space-between;
   padding: 1em;
-  /* width: 30%; */
+  /* width: 0; */
+  text-align: right;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 100%;
   /* right: 10%; */
 }
 
@@ -175,15 +186,15 @@ a:hover {
 
 .reset-button {
   position: absolute;
-  right: 4.3%;
-  top: 2.4%;
+  right: 0.5%;
+  top: 15%;
   background: none;
   border: none;
   padding: none;
 }
 
 .fa-times-circle {
-  color: #1a1a1a;
+  color: white;
 }
 
 .fas {
@@ -193,13 +204,17 @@ a:hover {
 }
 
 .input {
-  /* position: absolute;
-  right: 10%; */
   background: #29293d;
-  color: darkgrey;
+  color: white;
   border: none;
   border-radius: 5%;
-  padding: 5px;
+  padding-top: 5px;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.input-container {
+  position: relative;
 }
 
 .top-games,
@@ -283,13 +298,12 @@ a:hover {
   position: absolute;
   top: 25%;
   left: 22%;
+  margin: 0 1em;
 }
 
 .suggestions-menu {
-  background: rgba(0, 0, 0, 0.4);
   padding: 0;
   width: 100%;
-  margin-top: 2em;
   padding-top: 1em;
 }
 
@@ -323,6 +337,44 @@ a:hover {
   margin: 0 1em;
 }
 
+.category-container {
+  margin-top: 5em;
+}
+
 .game-title {
   color: white;
+}
+
+.menu {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 1em 0;
+  text-align: left;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  /* transition: 0.7s; */
+}
+
+.menu li {
+  padding: 10px 0;
+}
+
+.menu-link {
+  border-bottom: 2px solid grey;
+}
+
+/* .menu a:hover {
+  color: #f1f1f1;
+} */
+
+.menu-button {
+  background: none;
+  border: none;
+}
+
+.nav-buttons {
+  background: #6e4db5;
 }

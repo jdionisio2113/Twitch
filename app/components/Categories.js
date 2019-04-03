@@ -32,7 +32,7 @@ class Categories extends React.Component {
     const { games } = this.state;
     console.log({ games });
     return (
-      <div>
+      <div className="category-container">
         {games.map(function(item) {
           var viewers = item.viewers;
 
