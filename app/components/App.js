@@ -7,6 +7,7 @@ import TopGames from "./TopGames";
 import LiveChannels from "./LiveChannels";
 import Categories from "./Categories";
 import apiKey from "../config/apiKey";
+// import Footer from "./Footer";
 // import routes from "../config/routes";
 // var ReactRouter = require("react-router-dom");
 // import { Router, Route, Switch,Link } from "react-router";
@@ -78,7 +79,6 @@ class Home extends React.Component {
   }
 }
 
-// place in /config/routes.js
 const routes = (
   <Router>
     <Switch>
@@ -93,6 +93,7 @@ const App = () => {
     <div>
       <Form />
       {routes}
+      {/* <Footer /> */}
     </div>
   );
 };
