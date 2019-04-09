@@ -35,16 +35,22 @@ class Categories extends React.Component {
       <div className="category-container">
         {games.map(function(item) {
           var viewers = item.viewers;
+          var gameName = item.game.name;
 
           var gameViewers = viewers.toLocaleString();
           return (
-            <div key={item.game._id} className="game_container2">
+            <a
+              key={item.game._id}
+              className="game_container2"
+              href="https://www.twitch.tv/directory/game/"
+              target="_blank"
+            >
               <img className="category_logo" src={item.game.box.medium} />
               <div className="game-description">
                 <h6 className="game-title">{item.game.name}</h6>
                 <p className="game-viewers">{gameViewers} viewers</p>
               </div>
-            </div>
+            </a>
           );
         })}
       </div>

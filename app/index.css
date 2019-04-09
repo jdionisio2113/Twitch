@@ -87,8 +87,9 @@ ul {
 
 .featured-stream-image {
   position: relative;
-  /* width: 300px;
-  height: 200px; */
+  width: 320px;
+  height: 200px;
+  left: 4%;
 }
 
 .live {
@@ -369,6 +370,7 @@ ul {
   position: fixed;
   width: 100%;
   margin-top: 4.3em;
+  transition: 0.5s;
 }
 
 .menu a {
@@ -397,4 +399,78 @@ ul {
 
 .nav-buttons {
   background: #6e4db5;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  z-index: 0;
+}
+
+@media screen and (min-width: 600px) {
+  .featured-stream-image {
+    width: 100%;
+    height: 30%;
+    left: 0;
+    margin: 0;
+  }
+
+  .featured-streams {
+    text-align: center;
+    width: 50%;
+    margin-left: 23%;
+  }
+
+  .featured-stream-image {
+    height: 70%;
+  }
+
+  .viewers {
+    position: absolute;
+    top: 79%;
+    left: 30%;
+  }
+
+  .live {
+    position: absolute;
+    top: 7%;
+    left: 83%;
+  }
+
+  /* .featured-stream-description {
+    display: flex;
+    justify-content: center;
+    margin: 0 26em;
+  } */
+  .slick-next:before,
+  .slick-prev:before {
+    font-size: 20px;
+  }
+
+  .slick-slide img {
+    display: inline-block;
+  }
+
+  .top-games {
+    font-size: 2em;
+  }
+
+  .logo {
+    width: 130px;
+    height: 180px;
+  }
+
+  .live-channels {
+    font-size: 2em;
+  }
+
+  .featured-stream-description {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .featured-stream-caption {
+    text-align: center;
+    flex-grow: 1;
+  }
 }

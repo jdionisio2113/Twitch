@@ -15,9 +15,7 @@ class Form extends React.Component {
     this.state = {
       input: "",
       suggestedChannels: [],
-      open: false,
-      search: false,
-      black: true
+      open: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,19 +23,10 @@ class Form extends React.Component {
     this.handleReset = this.handleReset.bind(this);
     this.openMenu = this.openMenu.bind(this);
     // this.closeMenu = this.closeMenu.bind(this);
-    this.changeColor = this.changeColor.bind(this);
-  }
-
-  changeColor() {
-    this.setState({ black: !this.state.black });
   }
 
   openMenu() {
     this.setState({ open: !this.state.open });
-  }
-
-  searchMenu() {
-    this.setState({ search: !this.state.search });
   }
 
   // // closeMenu() {
@@ -142,39 +131,6 @@ class Form extends React.Component {
             {this.displaySuggestedResults()}
           </div>
         ) : null}
-        {/* </div>
-        </div> */}
-        {/* <div className="nav2-container">
-          {this.state.search ? (
-            <div className="input-container">
-              <div className="search-container">
-                <input
-                  type="text"
-                  name="streamer"
-                  placeholder="Search"
-                  autoComplete="off"
-                  className="input"
-                  value={this.state.input}
-                  onChange={this.handleChange}
-                />
-                <button onClick={this.handleReset} className="reset-button">
-                  <i className="far fa-times-circle fa-2x" />
-                </button>
-                {this.displaySuggestedResults()}
-              </div>
-              
-            </div>
-          ) : null}
-          <div className="nav2">
-            <a href="/">
-              <i className="fas fa-home fa-2x" />
-            </a>
-
-            <button className="nav2-search" onClick={() => this.searchMenu()}>
-              <i className="fas fa-search fa-2x" />
-            </button>
-          </div>
-        </div> */}
       </div>
     );
   }
