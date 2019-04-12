@@ -11,13 +11,12 @@ function TopGames(props) {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 6,
     slidesToScroll: 2
   };
 
   return (
-    <div>
-      {/* <Slider {...settings}> */}
+    <div className="top-games-box">
       <div className="top-games-container">
         <div className="game-category">
           <h6 className="top-games">Top Games</h6>
@@ -40,7 +39,6 @@ function TopGames(props) {
         </Slider>
         {/* </div> */}
       </div>
-      {/* </Slider> */}
     </div>
   );
 }

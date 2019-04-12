@@ -42,7 +42,7 @@ class Categories extends React.Component {
             <a
               key={item.game._id}
               className="game_container2"
-              href="https://www.twitch.tv/directory/game/"
+              href={`https://www.twitch.tv/directory/game/${gameName}`}
               target="_blank"
             >
               <img className="category_logo" src={item.game.box.medium} />

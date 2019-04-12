@@ -2,6 +2,7 @@ import React from "react";
 import { fetchStreamers } from "../config/endpoints";
 import axios from "axios";
 import img from "../img/twitch-logo.png";
+import img2 from "../img/twitch-logo2.png";
 import { Link } from "react-router-dom";
 import App from "./App";
 // import Menu from "./Example";
@@ -90,8 +91,9 @@ class Form extends React.Component {
       // >
       <div>
         <div className="nav">
-          <a href="/">
+          <a className="home_link" href="/">
             <img className="twitch-logo" src={img} />
+            <img className="twitch-logo2" src={img2} />
           </a>
           <div className="menu-container">
             <button className="menu-button" onClick={() => this.openMenu()}>
@@ -128,7 +130,7 @@ class Form extends React.Component {
                 </div>
               </li>
             </ul>
-            {this.displaySuggestedResults()}
+            {/* {this.displaySuggestedResults()} */}
           </div>
         ) : null}
       </div>
