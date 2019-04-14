@@ -24,12 +24,11 @@ function LiveChannels(props) {
   var { channels } = props;
 
   const settings = {
-    className: "center",
-    centerMode: true,
+    dots: true,
     infinite: true,
-    centerPadding: "60px",
+    speed: 500,
     slidesToShow: 3,
-    speed: 500
+    slidesToScroll: 3
   };
 
   return (
