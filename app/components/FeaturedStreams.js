@@ -2,6 +2,7 @@ import React from "react";
 import Bootstrap from "react-bootstrap";
 import Carousel, { Item } from "react-bootstrap/Carousel";
 import Slider from "react-slick";
+import PropTypes from "prop-types";
 // import img from "../img/play.png";
 
 function Streams(props) {
@@ -82,6 +83,10 @@ function Streams(props) {
     </div>
   );
 }
+
+Streams.propTypes = {
+  featured: PropTypes.array.isRequired
+};
 
 class FeaturedStreams extends React.Component {
   constructor(props) {

@@ -3,6 +3,7 @@ import React from "react";
 // import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function TopGames(props) {
   var { games } = props;
@@ -42,5 +43,9 @@ function TopGames(props) {
     </div>
   );
 }
+
+TopGames.propTypes = {
+  games: PropTypes.array.isRequired
+};
 
 export default TopGames;

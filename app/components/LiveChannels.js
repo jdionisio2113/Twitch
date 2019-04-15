@@ -1,24 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
-// import "./LiveChannels.scss";
-
-// function LiveChannels(props) {
-//   var { channels } = props;
-
-//   return (
-//     <div className="live-channels-container">
-//       <h6 className="live-channels">Popular Live Channels</h6>
-//       {channels.map(function(item) {
-//         console.log(item);
-//         return (
-//           <div>
-//             <img className="live-channel-banner" src={item.preview.medium} />;
-//           </div>
-//         );
-//       })}
-//     </div>
-//   );
-// }
+import PropTypes from "prop-types";
 
 function LiveChannels(props) {
   var { channels } = props;
@@ -74,5 +56,9 @@ function LiveChannels(props) {
     </div>
   );
 }
+
+LiveChannels.propTypes = {
+  channels: PropTypes.array.isRequired
+};
 
 export default LiveChannels;
