@@ -423,6 +423,12 @@ ul {
   z-index: 0;
 }
 
+.play {
+  height: 3em;
+  width: 3em;
+  top: 40%;
+}
+
 @media screen and (min-width: 600px) {
   /* .featured-stream-container {
     margin-left: 0.7em;
@@ -568,5 +574,12 @@ ul {
 
   .home_link {
     margin-left: 2em;
+  }
+
+  .play {
+    height: 5em;
+    width: 5em;
+    top: 48%;
+    left: 48%;
   }
 }

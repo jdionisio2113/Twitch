@@ -3,7 +3,7 @@ import Bootstrap from "react-bootstrap";
 import Carousel, { Item } from "react-bootstrap/Carousel";
 import Slider from "react-slick";
 import PropTypes from "prop-types";
-// import img from "../img/play.png";
+import img from "../img/play.png";
 
 function Streams(props) {
   var { featured } = props;
@@ -43,7 +43,7 @@ function Streams(props) {
                     className="featured-stream-image"
                     src={item.stream.preview.large}
                   />
-                  {/* <img className="play" src={img} /> */}
+                  <img className="play" src={img} />
                   <p className="live">Live</p>
                   <div className="viewersContainer">
                     <p className="viewers">{streamViewers} viewers</p>

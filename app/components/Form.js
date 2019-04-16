@@ -5,9 +5,6 @@ import img from "../img/twitch-logo.png";
 import img2 from "../img/twitch-logo2.png";
 import { Link } from "react-router-dom";
 import App from "./App";
-// import Menu from "./Example";
-// import img from "../img/menu.svg";
-// import { slide as Menu } from "react-burger-menu";
 
 class Form extends React.Component {
   constructor(props) {
