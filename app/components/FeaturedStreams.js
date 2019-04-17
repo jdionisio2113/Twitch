@@ -20,7 +20,7 @@ function Streams(props) {
 
   return (
     <div className="featured-streams">
-      <div className="game_container">
+      <div className="game-container">
         {/* <Carousel> */}
         <Slider {...settings}>
           {featured.map(function(item) {

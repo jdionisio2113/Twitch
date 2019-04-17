@@ -35,10 +35,11 @@ ul {
   overflow: scroll;
 }
 
-.game_container {
+.game-container {
   /* display: inline-block; */
   /* margin: 0 0.25em; */
   text-align: center;
+  box-shadow: 0px 0px 35px 13px rgba(0, 0, 0, 0.8);
 }
 
 /* .stream-template {
