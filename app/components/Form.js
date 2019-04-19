@@ -97,7 +97,23 @@ class Form extends React.Component {
               <i className="fas fa-bars fa-2x" />
             </button>
           </div>
+          <div className="search-box input-container">
+            <input
+              type="text"
+              name="streamer"
+              placeholder="Search"
+              autoComplete="off"
+              className="input"
+              value={this.state.input}
+              onChange={this.handleChange}
+              // reset={this.state.reset}
+            />
+            <button onClick={this.handleReset} className="reset-button">
+              <i className="far fa-times-circle fa-2x" />
+            </button>
+          </div>
         </div>
+        {this.displaySuggestedResults()}
 
         {this.state.open ? (
           <div className="menu">
@@ -127,7 +143,7 @@ class Form extends React.Component {
                 </div>
               </li>
             </ul>
-            {/* {this.displaySuggestedResults()} */}
+            {this.displaySuggestedResults()}
           </div>
         ) : null}
       </div>

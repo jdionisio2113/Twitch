@@ -42,6 +42,9 @@ ul {
   box-shadow: 0px 0px 35px 13px rgba(0, 0, 0, 0.8);
 }
 
+.game_container {
+  text-align: center;
+}
 /* .stream-template {
   margin: 0 2em;
 } */
@@ -430,10 +433,18 @@ ul {
   top: 40%;
 }
 
+.search-box {
+  display: none;
+}
+
 @media screen and (min-width: 600px) {
   /* .featured-stream-container {
     margin-left: 0.7em;
   } */
+
+  .search-box {
+    display: block;
+  }
 
   .featured-stream-image {
     width: 100%;
@@ -535,7 +546,7 @@ ul {
   }
 
   .menu-button {
-    /* display: none; */
+    display: none;
   }
 
   .live-channel-image {
