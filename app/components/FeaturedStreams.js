@@ -23,7 +23,7 @@ function Streams(props) {
       <div className="game-container">
         {/* <Carousel> */}
         <Slider {...settings}>
-          {featured.map(function(item) {
+          {featured.map(function(item, index) {
             var caption = item.stream.channel.status;
             var length = 40;
             var trimmedCaption =
@@ -37,7 +37,7 @@ function Streams(props) {
 
             return (
               // <Item key={item.stream._id}>
-              <div className="featured-stream-container">
+              <div key={index} className="featured-stream-container">
                 <div className="featured-stream-image">
                   <img
                     className="featured-stream-image"
