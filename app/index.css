@@ -444,6 +444,16 @@ ul {
 
   .search-box {
     display: block;
+    margin-right: 5%;
+  }
+
+  .input {
+    width: 100%;
+    padding: 0 0 0 5px;
+  }
+
+  .reset-button {
+    display: none;
   }
 
   .featured-stream-image {
@@ -585,7 +595,7 @@ ul {
   }
 
   .home_link {
-    margin-left: 2em;
+    margin-left: 5%;
   }
 
   .play {
