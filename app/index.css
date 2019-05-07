@@ -442,6 +442,28 @@ ul {
     margin-left: 0.7em;
   } */
 
+  .suggested-item-container {
+    padding-left: 1em;
+    border-bottom: 1px solid grey;
+  }
+
+  .suggested-item-container:hover {
+    background-color: #9932cc;
+  }
+
+  .suggested-result {
+    left: 25%;
+  }
+
+  .suggestions-menu {
+    position: fixed;
+    margin-top: 4em;
+    width: 20%;
+    margin-left: 77%;
+    z-index: 1;
+    background: black;
+  }
+
   .search-box {
     display: block;
     margin-right: 5%;
