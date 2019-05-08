@@ -27,11 +27,11 @@ class Form extends React.Component {
     this.setState({ open: !this.state.open });
   }
 
-  // // closeMenu() {
-  // //   this.setState({ open: false }, () => {
-  // //     document.removeEventListener("click", this.closeMenu);
-  // //   });
-  // // }
+  // closeMenu() {
+  //   this.setState({ open: false }, () => {
+  //     document.removeEventListener("click", this.closeMenu);
+  //   });
+  // }
 
   handleChange(e) {
     var value = e.target.value;
@@ -62,14 +62,14 @@ class Form extends React.Component {
     if (this.state.suggestedChannels.length > 0) {
       return (
         <ul className="suggestions-menu">
-          {this.state.suggestedChannels.map(function(item) {
+          {this.state.suggestedChannels.map(function(item, index) {
             return (
-              <div key={item._id} className="suggested-item-container">
-                <a href={item.url} target="_blank">
+              <a href={item.url} target="_blank" key={index}>
+                <div className="suggested-item-container">
                   <img className="suggested-result-logo" src={item.logo} />
                   <li className="suggested-result">{item.display_name}</li>
-                </a>
-              </div>
+                </div>
+              </a>
             );
           })}
         </ul>
