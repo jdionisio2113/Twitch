@@ -442,6 +442,26 @@ ul {
     margin-left: 0.7em;
   } */
 
+  .category_logo {
+    width: 45%;
+    height: 70%;
+  }
+
+  .category-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .game_container2 {
+    display: flex;
+    padding: 1em 0;
+    border: none;
+    flex-direction: column;
+    width: 20%;
+    align-items: center;
+    text-align: center;
+  }
+
   .suggested-item-container {
     padding-left: 1em;
     border-bottom: 1px solid grey;
