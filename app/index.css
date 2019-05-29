@@ -442,9 +442,26 @@ ul {
     margin-left: 0.7em;
   } */
 
+  .game-title {
+    font-size: 93%;
+    margin: 0;
+  }
+
+  .game-viewers {
+    margin: 5px 0;
+    font-size: 80%;
+  }
+
+  .game-description {
+    text-align: left;
+    width: 48%;
+  }
+
   .category_logo {
     width: 45%;
-    height: 70%;
+    height: 80%;
+    box-shadow: 0px 5px 19px 0px #000000;
+    margin-bottom: 0.5em;
   }
 
   .category-container {
@@ -460,6 +477,11 @@ ul {
     width: 20%;
     align-items: center;
     text-align: center;
+  }
+
+  .game_container2:hover {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.2);
   }
 
   .suggested-item-container {
