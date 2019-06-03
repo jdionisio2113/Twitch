@@ -12,8 +12,6 @@ var Router = ReactRouter.BrowserRouter;
 var Route = ReactRouter.Route;
 var Switch = ReactRouter.Switch;
 
-// var apiKey = "t8yaydrbaft3dpp950285vmtcal743";
-
 class Home extends React.Component {
   constructor(props) {
     super(props);

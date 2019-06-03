@@ -11,9 +11,18 @@ function TopGames(props) {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 300,
     slidesToShow: 6,
-    slidesToScroll: 2
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   return (
