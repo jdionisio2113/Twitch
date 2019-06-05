@@ -6,6 +6,7 @@ import FeaturedStreams from "./FeaturedStreams";
 import TopGames from "./TopGames";
 import LiveChannels from "./LiveChannels";
 import Categories from "./Categories";
+import Stream from "./Stream";
 import apiKey from "../config/apiKey";
 var ReactRouter = require("react-router-dom");
 var Router = ReactRouter.BrowserRouter;

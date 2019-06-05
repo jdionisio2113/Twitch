@@ -286,6 +286,10 @@ ul {
   opacity: none;
 }
 
+.slick-list {
+  margin: 0 0.5em;
+}
+
 .live-channel-image {
   position: relative;
   width: 100%;

@@ -4,11 +4,21 @@ import Carousel, { Item } from "react-bootstrap/Carousel";
 import Slider from "react-slick";
 import PropTypes from "prop-types";
 import img from "../img/play.png";
+import Stream from "./Stream";
+const EMBED_URL = "https://embed.twitch.tv/embed/v1.js";
 
 function Streams(props) {
-  var { featured } = props;
+  var { featured, channel, targetID, width, height } = props;
   // var mainStream = featured.slice(1);
-  console.log(featured);
+  // console.log(featured);
+  // Streams.defaultProps = {
+  //   targetID: "twitch-embed",
+  //   width: "940",
+  //   height: "480",
+  //   channel: `${channelname}`
+  // };
+
+  // var channelname = featured.stream.channel.display_name;
 
   const settings = {
     dots: true,
@@ -31,24 +41,21 @@ function Streams(props) {
                 ? caption.substring(0, length - 3) + "..."
                 : caption;
 
-            var viewers = item.stream.viewers;
+            // var viewers = item.stream.viewers;
+            var channelname = item.stream.channel.display_name;
+            // var streamViewers = viewers.toLocaleString();
 
-            var streamViewers = viewers.toLocaleString();
-
+            var streamer = `https://player.twitch.tv/?channel=${channelname}`;
             return (
-              // <Item key={item.stream._id}>
               <div key={index} className="featured-stream-container">
-                <div className="featured-stream-image">
-                  <img
-                    className="featured-stream-image"
-                    src={item.stream.preview.large}
-                  />
-                  <img className="play" src={img} />
-                  <p className="live">Live</p>
-                  <div className="viewersContainer">
-                    <p className="viewers">{streamViewers} viewers</p>
-                  </div>
-                </div>
+                <iframe
+                  src={streamer}
+                  frameBorder="0"
+                  allowFullScreen={true}
+                  scrolling="no"
+                  height="378"
+                  width="620"
+                />
 
                 <div className="featured-stream-description">
                   <img
@@ -74,10 +81,8 @@ function Streams(props) {
                   </div>
                 </div>
               </div>
-              // </Item>
             );
           })}
-          {/* </Carousel> */}
         </Slider>
       </div>
     </div>
@@ -111,11 +116,14 @@ class FeaturedStreams extends React.Component {
 
   render() {
     return (
-      <Streams
-        featured={this.props.featured}
-        onSelect={this.updateCurrentFeaturedStream}
-        currentFeaturedStream={this.state.currentFeaturedStream}
-      />
+      <div>
+        {/* <Stream featured={this.props.featured} /> */}
+        <Streams
+          featured={this.props.featured}
+          onSelect={this.updateCurrentFeaturedStream}
+          currentFeaturedStream={this.state.currentFeaturedStream}
+        />
+      </div>
     );
   }
 }

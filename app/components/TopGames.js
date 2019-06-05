@@ -18,7 +18,7 @@ function TopGames(props) {
       {
         breakpoint: 500,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
           slidesToScroll: 1
         }
       }
