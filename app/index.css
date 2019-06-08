@@ -662,4 +662,15 @@ ul {
     top: 48%;
     left: 48%;
   }
+
+  .channel-box {
+    position: absolute;
+    top: 20%;
+    right: 17%;
+  }
+
+  .channel-name {
+    color: white;
+    font-size: 7em;
+  }
 }

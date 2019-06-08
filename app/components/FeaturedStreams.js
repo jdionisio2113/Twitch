@@ -4,22 +4,9 @@ import Carousel, { Item } from "react-bootstrap/Carousel";
 import Slider from "react-slick";
 import PropTypes from "prop-types";
 import img from "../img/play.png";
-import Stream from "./Stream";
-const EMBED_URL = "https://embed.twitch.tv/embed/v1.js";
 
 function Streams(props) {
-  var { featured, channel, targetID, width, height } = props;
-  // var mainStream = featured.slice(1);
-  // console.log(featured);
-  // Streams.defaultProps = {
-  //   targetID: "twitch-embed",
-  //   width: "940",
-  //   height: "480",
-  //   channel: `${channelname}`
-  // };
-
-  // var channelname = featured.stream.channel.display_name;
-
+  var { featured } = props;
   const settings = {
     dots: true,
     infinite: true,
@@ -48,14 +35,15 @@ function Streams(props) {
             var streamer = `https://player.twitch.tv/?channel=${channelname}`;
             return (
               <div key={index} className="featured-stream-container">
-                <iframe
+                {/* <iframe
                   src={streamer}
                   frameBorder="0"
                   allowFullScreen={true}
                   scrolling="no"
                   height="378"
                   width="620"
-                />
+                  autoPlay={false}
+                /> */}
 
                 <div className="featured-stream-description">
                   <img

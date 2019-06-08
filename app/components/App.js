@@ -6,7 +6,7 @@ import FeaturedStreams from "./FeaturedStreams";
 import TopGames from "./TopGames";
 import LiveChannels from "./LiveChannels";
 import Categories from "./Categories";
-import Stream from "./Stream";
+import ChannelPage from "./ChannelPage";
 import apiKey from "../config/apiKey";
 var ReactRouter = require("react-router-dom");
 var Router = ReactRouter.BrowserRouter;
@@ -18,7 +18,6 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
-      streams: [],
       featured: [],
       games: [],
       channels: []
@@ -35,9 +34,9 @@ class Home extends React.Component {
       var channels = res[2].data.streams;
 
       // console.log(streamers);
-      console.log(channels);
-      console.log(featured);
-      console.log(game);
+      // console.log(channels);
+      // console.log(featured);
+      // console.log(game);
 
       this.setState({
         featured: featured
@@ -73,21 +72,48 @@ class Home extends React.Component {
   }
 }
 
-const routes = (
-  <Router>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/categories" component={Categories} />
-    </Switch>
-  </Router>
-);
+// class App extends React.Component {
+//   render() {
+//     return (
+//       <Router>
+
+//         <Switch>
+//           <Route exact path="/" component={Home} />
+//           <Route exact path="/categories" component={Categories} />
+//           <Route exact path="/channelpage" component={ChannelPage} />
+//         </Switch>
+//       </Router>
+//     );
+//   }
+// }
+
+// const routes = (
+//   <Router>
+//     <Form />
+//     <Switch>
+//       <Route exact path="/" component={Home} />
+//       <Route exact path="/categories" component={Categories} />
+//       <Route exact path="/channelpage" component={ChannelPage} />
+//     </Switch>
+//   </Router>
+// );
 
 const App = () => {
   return (
     <div>
-      <Form />
-      {routes}
+      {/* <Form /> */}
+      {/* {routes} */}
       {/* <Footer /> */}
+      <Router>
+        <div>
+          <Form />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/categories" component={Categories} />
+            <Route exact path="/channelpage" component={ChannelPage} />
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 };

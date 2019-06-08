@@ -5,6 +5,7 @@ import img from "../img/twitch-logo.png";
 import img2 from "../img/twitch-logo2.png";
 import { Link } from "react-router-dom";
 import App from "./App";
+import ChannelPage from "./ChannelPage";
 
 class Form extends React.Component {
   constructor(props) {
@@ -45,8 +46,10 @@ class Form extends React.Component {
     this.myTimeout = setTimeout(() => {
       const endpoint = fetchStreamers(this.state.input);
       axios.get(endpoint).then(res => {
-        this.setState({ suggestedChannels: res.data.channels });
-        console.log(res.data.channels);
+        this.setState({
+          suggestedChannels: res.data.channels
+          // channels: res.data.channels.display_name
+        });
       });
     }, 600);
   }
@@ -63,13 +66,26 @@ class Form extends React.Component {
       return (
         <ul className="suggestions-menu">
           {this.state.suggestedChannels.map(function(item, index) {
+            // console.log(item.display_name);
             return (
-              <a href={item.url} target="_blank" key={index}>
+              <Link
+                // to="./channelpage"
+                to={{
+                  pathname: "/channelpage",
+                  channel: "timthetatman",
+                  state: {
+                    suggestedChannels: item.display_name
+                  }
+                }}
+                key={index}
+              >
+                {/* <a href={item.url}> */}
                 <div className="suggested-item-container">
                   <img className="suggested-result-logo" src={item.logo} />
                   <li className="suggested-result">{item.display_name}</li>
                 </div>
-              </a>
+                {/* </a> */}
+              </Link>
             );
           })}
         </ul>
@@ -81,11 +97,6 @@ class Form extends React.Component {
 
   render() {
     return (
-      // <form
-      //   onSubmit={this.handleChange}
-      //   // reset={this.state.reset}
-      //   className="form"
-      // >
       <div>
         <div className="nav">
           <a className="home_link" href="/">
@@ -124,7 +135,7 @@ class Form extends React.Component {
               <li className="menu-link">
                 <a href="/categories">Categories</a>
               </li>
-              {/* </ul> */}
+
               <li>
                 <div className="input-container">
                   <input
@@ -143,7 +154,6 @@ class Form extends React.Component {
                 </div>
               </li>
             </ul>
-            {this.displaySuggestedResults()}
           </div>
         ) : null}
       </div>
