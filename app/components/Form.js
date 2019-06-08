@@ -72,7 +72,6 @@ class Form extends React.Component {
                 // to="./channelpage"
                 to={{
                   pathname: "/channelpage",
-                  channel: "timthetatman",
                   state: {
                     suggestedChannels: item.display_name
                   }
