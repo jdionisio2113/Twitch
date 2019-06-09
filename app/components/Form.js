@@ -153,6 +153,7 @@ class Form extends React.Component {
                 </div>
               </li>
             </ul>
+            {/* {this.displaySuggestedResults()} */}
           </div>
         ) : null}
       </div>

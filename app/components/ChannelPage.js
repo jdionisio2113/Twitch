@@ -17,6 +17,8 @@ class ChannelPage extends React.Component {
     var { suggestedChannels } = location.state;
 
     var channelName = suggestedChannels.display_name;
+    var banner = suggestedChannels.profile_banner;
+    console.log(banner);
 
     // remove previous twitch-stream script
 
@@ -25,14 +27,14 @@ class ChannelPage extends React.Component {
     script.setAttribute("src", EMBED_URL);
     script.addEventListener("load", () => {
       embed = new window.Twitch.Embed(this.state.targetID, {
-        width: "940",
+        width: "100%",
         height: "480",
+        // width: "940",
+        // height: "480",
         theme: "dark",
         channel: `${channelName}`
       });
     });
-
-    // script.id = "twitch-stream";
 
     var stream_container = document.getElementById("stream-container");
     stream_container.appendChild(script);
@@ -49,16 +51,29 @@ class ChannelPage extends React.Component {
 
   render() {
     var suggestedChannels = this.props.location.state.suggestedChannels;
-
+    var banner = this.props.location.state.suggestedChannels;
     return (
-      <div className="channel-box">
-        {/* <h1 className="channel-display_name">
-          {suggestedChannels.display_name}
-        </h1> */}
-        {/* <p>{suggestedChannels.followers}</p> */}
-
-        <div id="stream-container">
-          <div id={this.state.targetID} />
+      <div>
+        <div className="channelContainer">
+          <div
+            className="channel-info"
+            style={{
+              backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),url(${
+                banner.profile_banner
+              })`
+            }}
+          >
+            <img className="channel-logo2" src={suggestedChannels.logo} />
+            <h1 className="channel-display_name">
+              {suggestedChannels.display_name}
+            </h1>
+          </div>
+          <div className="channel-box">
+            {/* <p>{suggestedChannels.followers}</p> */}
+            <div id="stream-container">
+              <div className="stream" id={this.state.targetID} />
+            </div>
+          </div>
         </div>
       </div>
     );
