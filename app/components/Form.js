@@ -73,10 +73,10 @@ class Form extends React.Component {
                 to={{
                   pathname: "/channelpage",
                   state: {
-                    suggestedChannels: item.display_name
+                    suggestedChannels: item
                   }
                 }}
-                key={index}
+                key={item._id}
               >
                 {/* <a href={item.url}> */}
                 <div className="suggested-item-container">

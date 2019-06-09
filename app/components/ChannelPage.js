@@ -16,6 +16,8 @@ class ChannelPage extends React.Component {
     var { match, location } = this.props;
     var { suggestedChannels } = location.state;
 
+    var channelName = suggestedChannels.display_name;
+
     // remove previous twitch-stream script
 
     let embed;
@@ -26,7 +28,7 @@ class ChannelPage extends React.Component {
         width: "940",
         height: "480",
         theme: "dark",
-        channel: `${suggestedChannels}`
+        channel: `${channelName}`
       });
     });
 
@@ -50,7 +52,10 @@ class ChannelPage extends React.Component {
 
     return (
       <div className="channel-box">
-        <h1 className="channel-display_name">{suggestedChannels}</h1>
+        {/* <h1 className="channel-display_name">
+          {suggestedChannels.display_name}
+        </h1> */}
+        {/* <p>{suggestedChannels.followers}</p> */}
 
         <div id="stream-container">
           <div id={this.state.targetID} />
