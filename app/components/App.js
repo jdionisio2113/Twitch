@@ -72,38 +72,9 @@ class Home extends React.Component {
   }
 }
 
-// class App extends React.Component {
-//   render() {
-//     return (
-//       <Router>
-
-//         <Switch>
-//           <Route exact path="/" component={Home} />
-//           <Route exact path="/categories" component={Categories} />
-//           <Route exact path="/channelpage" component={ChannelPage} />
-//         </Switch>
-//       </Router>
-//     );
-//   }
-// }
-
-// const routes = (
-//   <Router>
-//     <Form />
-//     <Switch>
-//       <Route exact path="/" component={Home} />
-//       <Route exact path="/categories" component={Categories} />
-//       <Route exact path="/channelpage" component={ChannelPage} />
-//     </Switch>
-//   </Router>
-// );
-
 const App = () => {
   return (
     <div>
-      {/* <Form /> */}
-      {/* {routes} */}
-      {/* <Footer /> */}
       <Router>
         <div>
           <Form />

@@ -3,30 +3,61 @@ import Form from "./Form";
 
 const EMBED_URL = "https://embed.twitch.tv/embed/v1.js";
 
-function ChannelPage(props) {
-  var { suggestedChannels, channelpage, match, location, targetID } = props;
-  var { channelpage } = match.params;
-  var { suggestedChannels } = location.state;
-  console.log(suggestedChannels);
+class ChannelPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      targetID: "twitch-embed"
+    };
+    this.updateTwitchStream = this.updateTwitchStream.bind(this);
+  }
 
-  var targetID = "twitch-embed";
-  let embed;
-  const script = document.createElement("script");
-  script.setAttribute("src", EMBED_URL);
-  script.addEventListener("load", () => {
-    embed = new window.Twitch.Embed(targetID, {
-      width: "940",
-      height: "480",
-      channel: `${suggestedChannels}`
+  updateTwitchStream() {
+    var { match, location } = this.props;
+    var { suggestedChannels } = location.state;
+
+    // remove previous twitch-stream script
+
+    let embed;
+    const script = document.createElement("script");
+    script.setAttribute("src", EMBED_URL);
+    script.addEventListener("load", () => {
+      embed = new window.Twitch.Embed(this.state.targetID, {
+        width: "940",
+        height: "480",
+        theme: "dark",
+        channel: `${suggestedChannels}`
+      });
     });
-  });
-  document.body.appendChild(script);
 
-  return (
-    <div className="channel-box">
-      <div id={targetID} />
-    </div>
-  );
+    // script.id = "twitch-stream";
+
+    var stream_container = document.getElementById("stream-container");
+    stream_container.appendChild(script);
+  }
+
+  componentDidUpdate() {
+    document.getElementById("twitch-embed").innerHTML = "";
+    this.updateTwitchStream();
+  }
+
+  componentDidMount() {
+    this.updateTwitchStream();
+  }
+
+  render() {
+    var suggestedChannels = this.props.location.state.suggestedChannels;
+
+    return (
+      <div className="channel-box">
+        <h1 className="channel-display_name">{suggestedChannels}</h1>
+
+        <div id="stream-container">
+          <div id={this.state.targetID} />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default ChannelPage;

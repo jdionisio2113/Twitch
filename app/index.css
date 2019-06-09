@@ -669,8 +669,9 @@ ul {
     right: 17%;
   }
 
-  .channel-name {
+  .channel-display_name {
     color: white;
     font-size: 7em;
+    text-align: center;
   }
 }
