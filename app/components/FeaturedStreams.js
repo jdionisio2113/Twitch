@@ -3,7 +3,6 @@ import Bootstrap from "react-bootstrap";
 import Carousel, { Item } from "react-bootstrap/Carousel";
 import Slider from "react-slick";
 import PropTypes from "prop-types";
-import img from "../img/play.png";
 
 function Streams(props) {
   var { featured } = props;
@@ -44,30 +43,6 @@ function Streams(props) {
                   width="620"
                   autoPlay={false}
                 /> */}
-
-                <div className="featured-stream-description">
-                  <img
-                    width="60px"
-                    height="60px"
-                    className="featured-stream-logo"
-                    src={item.stream.channel.logo}
-                  />
-
-                  <div className="featured-stream-caption">
-                    <a
-                      className="stream-link"
-                      href={item.stream.channel.url}
-                      target="_blank"
-                    >
-                      <h3 className="featured-stream-name">
-                        {item.stream.channel.display_name}
-                      </h3>
-                      <p className="featured-stream-channel-caption">
-                        {trimmedCaption}
-                      </p>
-                    </a>
-                  </div>
-                </div>
               </div>
             );
           })}

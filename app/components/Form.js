@@ -64,12 +64,10 @@ class Form extends React.Component {
   displaySuggestedResults() {
     if (this.state.suggestedChannels.length > 0) {
       return (
-        <ul className="suggestions-menu">
+        <ul onClick={this.handleReset} className="suggestions-menu">
           {this.state.suggestedChannels.map(function(item, index) {
-            // console.log(item.display_name);
             return (
               <Link
-                // to="./channelpage"
                 to={{
                   pathname: "/channelpage",
                   state: {
@@ -78,12 +76,10 @@ class Form extends React.Component {
                 }}
                 key={item._id}
               >
-                {/* <a href={item.url}> */}
                 <div className="suggested-item-container">
                   <img className="suggested-result-logo" src={item.logo} />
                   <li className="suggested-result">{item.display_name}</li>
                 </div>
-                {/* </a> */}
               </Link>
             );
           })}
@@ -116,7 +112,6 @@ class Form extends React.Component {
               className="input"
               value={this.state.input}
               onChange={this.handleChange}
-              // reset={this.state.reset}
             />
             <button onClick={this.handleReset} className="reset-button">
               <i className="far fa-times-circle fa-2x" />
@@ -147,13 +142,10 @@ class Form extends React.Component {
                     onChange={this.handleChange}
                     // reset={this.state.reset}
                   />
-                  <button onClick={this.handleReset} className="reset-button">
-                    <i className="far fa-times-circle fa-2x" />
-                  </button>
+                  <i className="far fa-times-circle fa-2x" />
                 </div>
               </li>
             </ul>
-            {/* {this.displaySuggestedResults()} */}
           </div>
         ) : null}
       </div>
