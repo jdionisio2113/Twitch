@@ -17,6 +17,8 @@ class Form extends React.Component {
       input: "",
       suggestedChannels: [],
       liveChannels: [],
+      itemsToShow: 3,
+      expanded: false,
       open: false
     };
 
@@ -27,8 +29,36 @@ class Form extends React.Component {
     this.displaySuggestedResults = this.displaySuggestedResults.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.openMenu = this.openMenu.bind(this);
+    // this.showMoreLiveChannels = this.showMoreLiveChannels.bind(this);
+    // this.showMoreChannels = this.showMoreChannels.bind(this);
     // this.closeMenu = this.closeMenu.bind(this);
   }
+
+  // showMoreChannels() {
+  //   this.state.itemsToShow === 3
+  //     ? this.setState({
+  //         itemsToShow: this.state.suggestedChannels.length,
+  //         expanded: true
+  //         // suggestedChannels: []
+  //       })
+  //     : this.setState({
+  //         itemsToShow: 3,
+  //         expanded: false
+  //       });
+  // }
+
+  // showMoreLiveChannels() {
+  //   this.state.itemsToShow === 3
+  //     ? this.setState({
+  //         itemsToShow: this.state.liveChannels.length,
+  //         expanded: true,
+  //         // suggestedChannels: []
+  //       })
+  //     : this.setState({
+  //         itemsToShow: 3,
+  //         expanded: false
+  //       });
+  // }
 
   openMenu() {
     this.setState({ open: !this.state.open });
@@ -78,10 +108,11 @@ class Form extends React.Component {
   displaySuggestedLiveResults() {
     if (this.state.liveChannels.length > 0) {
       return (
-        <ul onClick={this.handleReset} className="suggested-live-results">
+        <ul className="suggested-live-results">
           <div className="channel_live">
             <button className="live-button">
               <h4 className="live_list">LIVE</h4>
+              {/* {this.state.expanded ? <h4 className="live_list">LIVE</h4> : null} */}
               <div className="line" />
             </button>
             <img className="live_circle" src={liveCircle} />
@@ -122,9 +153,13 @@ class Form extends React.Component {
           <div className="channel_title">
             <button className="channels-button">
               <h4 className="channels_list">CHANNELS</h4>
+              {/* {this.state.expanded ? (
+                <h4 className="channels_list">CHANNELS</h4>
+              ) : null} */}
               <div className="line" />
             </button>
           </div>
+
           {this.state.suggestedChannels.map(function(item, index) {
             return (
               <Link

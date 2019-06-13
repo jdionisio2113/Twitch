@@ -318,9 +318,7 @@ ul {
 .suggested-result {
   color: white;
   list-style: none;
-  position: absolute;
-  top: 30%;
-  left: 5%;
+
   margin: 0 1em;
   font-size: 1.3em;
 }
@@ -328,7 +326,8 @@ ul {
 .suggestions-menu {
   padding: 0;
   width: 100%;
-  margin: 0 1em;
+  /* margin: 0 1em; */
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
 }
 
 .channel_live,
@@ -341,15 +340,17 @@ ul {
 .suggested-result-logo {
   width: 60px;
   height: 60px;
-  margin: 1em 0;
+  margin: 1em 0 0 1em;
   /* margin-right: 1.5em;
   margin-left: 1.5em;
   margin-bottom: 1em; */
 }
 
 .suggested-item-container {
-  /* display: flex; */
+  display: flex;
+  align-items: center;
   position: relative;
+  /* margin: 0 1em; */
   /* border-bottom: 2px solid grey; */
 }
 
@@ -464,14 +465,32 @@ ul {
   z-index: 3;
   width: 100%;
   /* margin-top: 4em; */
-  top: 7.8%;
+  top: 26.3%;
 }
 
 .channelContainer {
   margin-top: 4em;
 }
 
+.suggested-live-results {
+  /* position: fixed; */
+  /* margin-top: 4em; */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  /* width: 20%; */
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+}
+
 @media screen and (min-width: 600px) {
+  .menu {
+    display: none;
+  }
+
+  .channel_menu {
+    top: 7.8%;
+  }
+
   .game-title {
     font-size: 13px;
     margin: 0;
@@ -515,7 +534,6 @@ ul {
   }
 
   .suggested-item-container {
-    padding-left: 1em;
     border-bottom: 1px solid grey;
   }
 
@@ -533,7 +551,7 @@ ul {
     width: 20%;
     margin-left: 77%;
     z-index: 1;
-    background: black;
+    /* background: black; */
   }
 
   .suggested-live-results {
@@ -542,8 +560,9 @@ ul {
     margin-bottom: 0;
     width: 20%;
     margin-left: 77%;
+    bottom: 0;
     z-index: 1;
-    background: black;
+    /* background: black; */
     padding: 0;
   }
 
