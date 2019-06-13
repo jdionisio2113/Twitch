@@ -1,11 +1,13 @@
 import React from "react";
 import { fetchStreamers } from "../config/endpoints";
+import { liveStreamers } from "../config/endpoints";
 import axios from "axios";
 import img from "../img/twitch-logo.png";
 import img2 from "../img/twitch-logo2.png";
 import { Link } from "react-router-dom";
 import App from "./App";
 import ChannelPage from "./ChannelPage";
+import liveCircle from "../img/red-circle.png";
 
 class Form extends React.Component {
   constructor(props) {
@@ -14,10 +16,14 @@ class Form extends React.Component {
     this.state = {
       input: "",
       suggestedChannels: [],
+      liveChannels: [],
       open: false
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.displaySuggestedLiveResults = this.displaySuggestedLiveResults.bind(
+      this
+    );
     this.displaySuggestedResults = this.displaySuggestedResults.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.openMenu = this.openMenu.bind(this);
@@ -37,7 +43,7 @@ class Form extends React.Component {
   handleChange(e) {
     var value = e.target.value;
 
-    this.setState({ input: value, suggestedChannels: [] });
+    this.setState({ input: value, suggestedChannels: [], liveChannels: [] });
 
     // prevent ajax request from firing if value is empty
 
@@ -45,10 +51,17 @@ class Form extends React.Component {
 
     this.myTimeout = setTimeout(() => {
       const endpoint = fetchStreamers(this.state.input);
+      const endpoint2 = liveStreamers(this.state.input);
       axios.get(endpoint).then(res => {
         this.setState({
           suggestedChannels: res.data.channels
           // channels: res.data.channels.display_name
+        });
+      });
+
+      axios.get(endpoint2).then(res => {
+        this.setState({
+          liveChannels: res.data.streams
         });
       });
     }, 600);
@@ -61,10 +74,46 @@ class Form extends React.Component {
     });
   }
 
+  displaySuggestedLiveResults() {
+    if (this.state.liveChannels.length > 0) {
+      return (
+        <ul className="suggested-live-results">
+          <div className="channel_live">
+            <button className="live-button">
+              <h4 className="live_list">LIVE</h4>
+              <div className="line" />
+            </button>
+            <img className="live_circle" src={liveCircle} />
+          </div>
+          {this.state.liveChannels.map(function(item, index) {
+            console.log(item.channel.display_name);
+            return (
+              <div className="suggested-item-container">
+                <img
+                  className="suggested-result-logo"
+                  src={item.channel.logo}
+                />
+                <li className="suggested-result">
+                  {item.channel.display_name}
+                </li>
+              </div>
+            );
+          })}
+        </ul>
+      );
+    }
+  }
+
   displaySuggestedResults() {
     if (this.state.suggestedChannels.length > 0) {
       return (
         <ul onClick={this.handleReset} className="suggestions-menu">
+          <div className="channel_title">
+            <button className="channels-button">
+              <h4 className="channels_list">CHANNELS</h4>
+              <div className="line" />
+            </button>
+          </div>
           {this.state.suggestedChannels.map(function(item, index) {
             return (
               <Link
@@ -118,7 +167,10 @@ class Form extends React.Component {
             </button>
           </div>
         </div>
-        {this.displaySuggestedResults()}
+        <div className="channel_menu">
+          {this.displaySuggestedLiveResults()}
+          {this.displaySuggestedResults()}
+        </div>
 
         {this.state.open ? (
           <div className="menu">

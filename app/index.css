@@ -331,6 +331,13 @@ ul {
   margin: 0 1em;
 }
 
+.channel_live,
+.channel_title {
+  display: flex;
+  align-items: center;
+  padding: 0 1em;
+}
+
 .suggested-result-logo {
   width: 60px;
   height: 60px;
@@ -428,9 +435,34 @@ ul {
   display: none;
 }
 
-.reset-button {
-  /* display: none; */
+.live-button,
+.channels-button {
+  background: none;
+  border: none;
+  padding: 0;
 }
+
+.live_list,
+.channels_list {
+  color: #8a2be2;
+  margin: 0;
+  padding-bottom: 2px;
+}
+
+.line {
+  border: 1px solid #8a2be2;
+}
+
+.live_circle {
+  width: 1.1em;
+  height: 1.1em;
+  margin: 0 10px;
+}
+
+/* .channel_menu {
+  position: fixed;
+  z-index: 1;
+} */
 
 @media screen and (min-width: 600px) {
   .game-title {
@@ -489,8 +521,18 @@ ul {
   }
 
   .suggestions-menu {
-    position: fixed;
+    /* position: fixed; */
     /* margin-top: 4em; */
+    width: 20%;
+    margin-left: 77%;
+    z-index: 1;
+    background: black;
+  }
+
+  .suggested-live-results {
+    /* position: fixed; */
+    /* margin-top: 4em; */
+    margin-bottom: 0;
     width: 20%;
     margin-left: 77%;
     z-index: 1;
