@@ -182,7 +182,7 @@ ul {
   padding: 1em;
   /* width: 0; */
   text-align: right;
-  /* position: fixed; */
+  position: fixed;
   z-index: 1;
   top: 0;
   width: 100%;
@@ -370,7 +370,7 @@ ul {
 }
 
 .category-container {
-  margin-top: 5em;
+  margin-top: 4em;
 }
 
 .game-title {
@@ -459,10 +459,17 @@ ul {
   margin: 0 10px;
 }
 
-/* .channel_menu {
+.channel_menu {
   position: fixed;
-  z-index: 1;
-} */
+  z-index: 3;
+  width: 100%;
+  /* margin-top: 4em; */
+  top: 7.8%;
+}
+
+.channelContainer {
+  margin-top: 4em;
+}
 
 @media screen and (min-width: 600px) {
   .game-title {
@@ -537,6 +544,7 @@ ul {
     margin-left: 77%;
     z-index: 1;
     background: black;
+    padding: 0;
   }
 
   .search-box {

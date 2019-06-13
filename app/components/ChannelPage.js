@@ -14,10 +14,10 @@ class ChannelPage extends React.Component {
 
   updateTwitchStream() {
     var { match, location } = this.props;
-    var { suggestedChannels } = location.state;
+    var { suggestedResult } = location.state;
 
-    var channelName = suggestedChannels.display_name;
-    var banner = suggestedChannels.profile_banner;
+    var channelName = suggestedResult.display_name;
+    var banner = suggestedResult.profile_banner;
     console.log(banner);
 
     // remove previous twitch-stream script
@@ -50,8 +50,8 @@ class ChannelPage extends React.Component {
   }
 
   render() {
-    var suggestedChannels = this.props.location.state.suggestedChannels;
-    var banner = this.props.location.state.suggestedChannels;
+    var suggestedResult = this.props.location.state.suggestedResult;
+    var banner = this.props.location.state.suggestedResult;
     return (
       <div>
         <div className="channelContainer">
@@ -63,9 +63,9 @@ class ChannelPage extends React.Component {
               })`
             }}
           >
-            <img className="channel-logo2" src={suggestedChannels.logo} />
+            <img className="channel-logo2" src={suggestedResult.logo} />
             <h1 className="channel-display_name">
-              {suggestedChannels.display_name}
+              {suggestedResult.display_name}
             </h1>
           </div>
           <div className="channel-box">

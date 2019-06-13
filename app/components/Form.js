@@ -70,14 +70,15 @@ class Form extends React.Component {
   handleReset() {
     this.setState({
       input: "",
-      suggestedChannels: []
+      suggestedChannels: [],
+      liveChannels: []
     });
   }
 
   displaySuggestedLiveResults() {
     if (this.state.liveChannels.length > 0) {
       return (
-        <ul className="suggested-live-results">
+        <ul onClick={this.handleReset} className="suggested-live-results">
           <div className="channel_live">
             <button className="live-button">
               <h4 className="live_list">LIVE</h4>
@@ -88,15 +89,25 @@ class Form extends React.Component {
           {this.state.liveChannels.map(function(item, index) {
             console.log(item.channel.display_name);
             return (
-              <div className="suggested-item-container">
-                <img
-                  className="suggested-result-logo"
-                  src={item.channel.logo}
-                />
-                <li className="suggested-result">
-                  {item.channel.display_name}
-                </li>
-              </div>
+              <Link
+                to={{
+                  pathname: "/channelpage",
+                  state: {
+                    suggestedResult: item.channel
+                  }
+                }}
+                key={item._id}
+              >
+                <div className="suggested-item-container">
+                  <img
+                    className="suggested-result-logo"
+                    src={item.channel.logo}
+                  />
+                  <li className="suggested-result">
+                    {item.channel.display_name}
+                  </li>
+                </div>
+              </Link>
             );
           })}
         </ul>
@@ -120,7 +131,7 @@ class Form extends React.Component {
                 to={{
                   pathname: "/channelpage",
                   state: {
-                    suggestedChannels: item
+                    suggestedResult: item
                   }
                 }}
                 key={item._id}
