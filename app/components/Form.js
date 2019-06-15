@@ -17,8 +17,8 @@ class Form extends React.Component {
       input: "",
       suggestedChannels: [],
       liveChannels: [],
-      itemsToShow: 3,
-      expanded: false,
+      liveToShow: 3,
+      channelsToShow: 3,
       open: false
     };
 
@@ -29,36 +29,30 @@ class Form extends React.Component {
     this.displaySuggestedResults = this.displaySuggestedResults.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.openMenu = this.openMenu.bind(this);
-    // this.showMoreLiveChannels = this.showMoreLiveChannels.bind(this);
-    // this.showMoreChannels = this.showMoreChannels.bind(this);
+    this.showMoreLiveChannels = this.showMoreLiveChannels.bind(this);
+    this.showMoreChannels = this.showMoreChannels.bind(this);
     // this.closeMenu = this.closeMenu.bind(this);
   }
 
-  // showMoreChannels() {
-  //   this.state.itemsToShow === 3
-  //     ? this.setState({
-  //         itemsToShow: this.state.suggestedChannels.length,
-  //         expanded: true
-  //         // suggestedChannels: []
-  //       })
-  //     : this.setState({
-  //         itemsToShow: 3,
-  //         expanded: false
-  //       });
-  // }
+  showMoreChannels() {
+    this.state.channelsToShow === 3
+      ? this.setState({
+          channelsToShow: this.state.suggestedChannels.length
+        })
+      : this.setState({
+          channelsToShow: 3
+        });
+  }
 
-  // showMoreLiveChannels() {
-  //   this.state.itemsToShow === 3
-  //     ? this.setState({
-  //         itemsToShow: this.state.liveChannels.length,
-  //         expanded: true,
-  //         // suggestedChannels: []
-  //       })
-  //     : this.setState({
-  //         itemsToShow: 3,
-  //         expanded: false
-  //       });
-  // }
+  showMoreLiveChannels() {
+    this.state.liveToShow === 3
+      ? this.setState({
+          liveToShow: this.state.liveChannels.length
+        })
+      : this.setState({
+          liveToShow: 3
+        });
+  }
 
   openMenu() {
     this.setState({ open: !this.state.open });
@@ -85,7 +79,6 @@ class Form extends React.Component {
       axios.get(endpoint).then(res => {
         this.setState({
           suggestedChannels: res.data.channels
-          // channels: res.data.channels.display_name
         });
       });
 
@@ -110,17 +103,18 @@ class Form extends React.Component {
       return (
         <ul className="suggested-live-results">
           <div className="channel_live">
-            <button className="live-button">
-              <h4 className="live_list">LIVE</h4>
-              {/* {this.state.expanded ? <h4 className="live_list">LIVE</h4> : null} */}
-              <div className="line" />
+            <button onClick={this.showMoreLiveChannels} className="live-button">
+              <h6 className="live_list">LIVE</h6>
+              {/* <div className="line" /> */}
+              <img className="live_circle" src={liveCircle} />
             </button>
-            <img className="live_circle" src={liveCircle} />
+            {/* <button className="back-button">Back</button> */}
           </div>
-          {this.state.liveChannels.map(function(item, index) {
-            console.log(item.channel.display_name);
-            return (
+          {this.state.liveChannels
+            .slice(0, this.state.liveToShow)
+            .map((item, index) => (
               <Link
+                onClick={this.handleReset}
                 to={{
                   pathname: "/channelpage",
                   state: {
@@ -131,16 +125,15 @@ class Form extends React.Component {
               >
                 <div className="suggested-item-container">
                   <img
-                    className="suggested-result-logo"
-                    src={item.channel.logo}
+                    className="suggested-stream-logo"
+                    src={item.preview.medium}
                   />
                   <li className="suggested-result">
                     {item.channel.display_name}
                   </li>
                 </div>
               </Link>
-            );
-          })}
+            ))}
         </ul>
       );
     }
@@ -149,18 +142,33 @@ class Form extends React.Component {
   displaySuggestedResults() {
     if (this.state.suggestedChannels.length > 0) {
       return (
-        <ul onClick={this.handleReset} className="suggestions-menu">
-          <div className="channel_title">
-            <button className="channels-button">
-              <h4 className="channels_list">CHANNELS</h4>
-              {/* {this.state.expanded ? (
-                <h4 className="channels_list">CHANNELS</h4>
-              ) : null} */}
-              <div className="line" />
-            </button>
-          </div>
-
-          {this.state.suggestedChannels.map(function(item, index) {
+        <ul className="suggestions-menu">
+          <button onClick={this.showMoreChannels} className="channels-button">
+            <div className="channel_title">
+              <h6 className="channels_list">CHANNELS</h6>
+              {/* <div className="line" /> */}
+            </div>
+          </button>
+          {this.state.suggestedChannels
+            .slice(0, this.state.channelsToShow)
+            .map((item, index) => (
+              <Link
+                onClick={this.handleReset}
+                to={{
+                  pathname: "/channelpage",
+                  state: {
+                    suggestedResult: item
+                  }
+                }}
+                key={item._id}
+              >
+                <div className="suggested-item-container">
+                  <img className="suggested-result-logo" src={item.logo} />
+                  <li className="suggested-result">{item.display_name}</li>
+                </div>
+              </Link>
+            ))}
+          {/* {this.state.suggestedChannels.map(function(item, index) {
             return (
               <Link
                 to={{
@@ -177,7 +185,7 @@ class Form extends React.Component {
                 </div>
               </Link>
             );
-          })}
+          })} */}
         </ul>
       );
     } else {
