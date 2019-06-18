@@ -99,6 +99,8 @@ class Form extends React.Component {
   }
 
   displaySuggestedLiveResults() {
+    // var viewers = this.state.liveChannels.streams.viewers;
+    // var streamViewers = viewers.toLocaleString();
     if (this.state.liveChannels.length > 0) {
       return (
         <ul className="suggested-live-results">
@@ -106,7 +108,8 @@ class Form extends React.Component {
             <button onClick={this.showMoreLiveChannels} className="live-button">
               <h6 className="live_list">LIVE</h6>
               {/* <div className="line" /> */}
-              <img className="live_circle" src={liveCircle} />
+              {/* <img className="live_circle" src={liveCircle} /> */}
+              <i className="fas fa-caret-down" />
             </button>
             {/* <button className="back-button">Back</button> */}
           </div>
@@ -117,6 +120,7 @@ class Form extends React.Component {
                 onClick={this.handleReset}
                 to={{
                   pathname: "/channelpage",
+                  search: "?streamer=" + item.channel.display_name,
                   state: {
                     suggestedResult: item.channel
                   }
@@ -129,7 +133,15 @@ class Form extends React.Component {
                     src={item.preview.medium}
                   />
                   <li className="suggested-result">
-                    {item.channel.display_name}
+                    <p>{item.channel.display_name}</p>
+                    {/* <p className="stream-status">{item.channel.status}</p> */}
+                    <p className="stream-game">{item.game}</p>
+                    <div className="stream-menu-description">
+                      <img className="live_circle" src={liveCircle} />
+                      <p className="stream-menu-viewers">
+                        {item.viewers} viewers
+                      </p>
+                    </div>
                   </li>
                 </div>
               </Link>
@@ -140,14 +152,17 @@ class Form extends React.Component {
   }
 
   displaySuggestedResults() {
+    var match = this.props.match;
     if (this.state.suggestedChannels.length > 0) {
       return (
         <ul className="suggestions-menu">
           <button onClick={this.showMoreChannels} className="channels-button">
             <div className="channel_title">
               <h6 className="channels_list">CHANNELS</h6>
+
               {/* <div className="line" /> */}
             </div>
+            <i className="fas fa-caret-down" />
           </button>
           {this.state.suggestedChannels
             .slice(0, this.state.channelsToShow)
@@ -156,6 +171,7 @@ class Form extends React.Component {
                 onClick={this.handleReset}
                 to={{
                   pathname: "/channelpage",
+                  search: "?streamer=" + item.display_name,
                   state: {
                     suggestedResult: item
                   }
