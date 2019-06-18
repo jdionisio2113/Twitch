@@ -40,7 +40,7 @@ function Streams(props) {
                   allowFullScreen={true}
                   scrolling="no"
                   height="378"
-                  width="620"
+                  width="100%"
                   autoPlay={false}
                 /> */}
               </div>

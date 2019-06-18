@@ -2,19 +2,22 @@ import React from "react";
 import Home from "./App";
 import axios from "axios";
 import apiKey from "../config/apiKey";
+import Loader from "./Loader";
 
 class Categories extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      games: []
+      games: [],
+      loader: false
     };
 
     // this.getTopGames = this.getTopGames.bind(this);
   }
 
   componentDidMount() {
+    this.setState({ loader: true });
     axios
       .get(
         `https://api.twitch.tv/kraken/games/top?client_id=${apiKey}&limit=50`
@@ -23,14 +26,19 @@ class Categories extends React.Component {
         var game = res.data.top;
 
         this.setState({
-          games: game
+          games: game,
+          loader: false
         });
       });
   }
 
   render() {
     const { games } = this.state;
-    console.log({ games });
+    var loader = this.state.loader;
+
+    if (loader === true) {
+      return <Loader />;
+    }
     return (
       <div className="category-container">
         {games.map(function(item) {

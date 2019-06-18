@@ -18,7 +18,6 @@ class ChannelPage extends React.Component {
 
     var channelName = suggestedResult.display_name;
     var banner = suggestedResult.profile_banner;
-    console.log(banner);
 
     // remove previous twitch-stream script
 

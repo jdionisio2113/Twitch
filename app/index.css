@@ -487,14 +487,14 @@ ul {
 }
 
 .channelContainer {
-  margin-top: 4em;
+  position: fixed;
+  width: 100%;
+  top: 7%;
+  overflow: hidden;
 }
 
 .suggested-live-results {
-  /* position: fixed; */
-  /* margin-top: 4em; */
   background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
-  /* width: 20%; */
   z-index: 1;
   padding: 0;
   margin: 0;
@@ -785,7 +785,7 @@ ul {
     padding-top: 1em;
     background-size: cover;
     background-position: left;
-    height: 17.4em;
+    height: 20.4em;
     display: block;
   }
 }

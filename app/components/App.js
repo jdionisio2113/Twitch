@@ -7,6 +7,7 @@ import TopGames from "./TopGames";
 import LiveChannels from "./LiveChannels";
 import Categories from "./Categories";
 import ChannelPage from "./ChannelPage";
+import Loader from "./Loader";
 import apiKey from "../config/apiKey";
 var ReactRouter = require("react-router-dom");
 var Router = ReactRouter.BrowserRouter;
@@ -20,7 +21,8 @@ class Home extends React.Component {
     this.state = {
       featured: [],
       games: [],
-      channels: []
+      channels: [],
+      loader: false
     };
 
     this.twitchData = this.twitchData.bind(this);
@@ -28,6 +30,9 @@ class Home extends React.Component {
   }
 
   twitchData(featured, game, channels) {
+    this.setState({
+      loader: true
+    });
     all([get(featured), get(game), get(channels)]).then(res => {
       var featured = res[0].data.featured;
       var game = res[1].data.top;
@@ -39,15 +44,18 @@ class Home extends React.Component {
       // console.log(game);
 
       this.setState({
-        featured: featured
+        featured: featured,
+        loader: false
       });
 
       this.setState({
-        games: game
+        games: game,
+        loader: false
       });
 
       this.setState({
-        channels: channels
+        channels: channels,
+        loader: false
       });
     });
   }
@@ -61,6 +69,11 @@ class Home extends React.Component {
   }
 
   render() {
+    var loader = this.state.loader;
+
+    if (loader === true) {
+      return <Loader />;
+    }
     return (
       <div className="main-container">
         <FeaturedStreams featured={this.state.featured} />
