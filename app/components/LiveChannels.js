@@ -1,73 +1,88 @@
 import React from "react";
 import Slider from "react-slick";
 import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
 
 function LiveChannels(props) {
-  var { channels } = props;
+	var { channels } = props;
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    responsive: [
-      {
-        breakpoint: 500,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
+	const settings = {
+		dots: true,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 3,
+		slidesToScroll: 3,
+		responsive: [
+			{
+				breakpoint: 500,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				}
+			}
+		]
+	};
 
-  return (
-    <div className="top-live-channels">
-      <div className="live-channels-container">
-        <h6 className="live-channels">Popular Live Channels</h6>
-        <Slider {...settings}>
-          {channels.map(function(item) {
-            var caption = item.channel.status;
-            var length = 33;
-            var trimmedChannelCaption =
-              caption.length > length
-                ? caption.substring(0, length - 3) + "..."
-                : caption;
+	return (
+		<div className="top-live-channels">
+			<div className="live-channels-container">
+				<h6 className="live-channels">Popular Live Channels</h6>
+				<Slider {...settings}>
+					{channels.map(function (item) {
 
-            var viewers = item.viewers;
-            var streamViewers = viewers.toLocaleString();
-            return (
-              <div className="live-channel-image" key={item._id}>
-                <div className="live-channel-box">
-                  <img
-                    className="live-channel-banner"
-                    src={item.preview.large}
-                  />
-                  {/* <p className="channel-live">Live</p> */}
-                  {/* <img className="" src={} /> */}
-                  <p className="channelViewers">{streamViewers} viewers</p>
-                  <div className="channel-link">
-                    <img className="channel-logo" src={item.channel.logo} />
-                    <div className="channel-description">
-                      <h3 className="channel-name">
-                        {item.channel.display_name}
-                      </h3>
-                      <p className="channel-caption">{trimmedChannelCaption}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </Slider>
-      </div>
-    </div>
-  );
+						var caption = item.title;
+						var length = 33;
+						var trimmedChannelCaption =
+							caption.length > length
+								? caption.substring(0, length - 3) + "..."
+								: caption;
+
+						var viewers = item.viewer_count;
+						var streamViewers = viewers.toLocaleString();
+						let newURL = item.thumbnail_url
+							.replace("{width}", "650")
+							.replace("{height}", "400");
+						item.thumbnail_url = newURL;
+						return (
+							<div className="live-channel-image" key={item.user_id}>
+								<Link
+									to={{
+										pathname: "/streampage",
+										state: {
+											stream: item
+										}
+									}}
+								>
+									<div className="live-channel-box">
+										<img
+											className="live-channel-banner"
+											src={item.thumbnail_url}
+										/>
+										{/* <p className="channel-live">Live</p> */}
+										{/* <img className="" src={} /> */}
+										<p className="channelViewers">{streamViewers} viewers</p>
+										<div className="channel-link">
+											{/* <img className="channel-logo" src={item.channel.logo} /> */}
+											<div className="channel-description">
+												<h3 className="channel-name">
+													{item.user_name}
+												</h3>
+												<p className="channel-caption">{trimmedChannelCaption}</p>
+											</div>
+										</div>
+									</div>
+								</Link>
+							</div>
+						);
+					})}
+				</Slider>
+			</div>
+		</div>
+	);
 }
 
 LiveChannels.propTypes = {
-  channels: PropTypes.array.isRequired
+	channels: PropTypes.array.isRequired
 };
 
 export default LiveChannels;
