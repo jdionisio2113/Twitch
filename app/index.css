@@ -168,7 +168,7 @@ ul {
 }
 
 .channel-description {
-  margin-left: 10px;
+  margin: 0 auto
 }
 
 .play {
@@ -486,7 +486,8 @@ ul {
 .channelContainer {
   position: fixed;
   width: 100%;
-  top: 7%;
+  height:100%;
+  top: 8%;
   overflow: hidden;
 }
 
@@ -725,9 +726,8 @@ ul {
   }
 
   .channel-link {
-    width: 92%;
-    left: 4%;
-    /* display: flex; */
+    width: 94%;
+    left: 3%
   }
 
   .channelViewers {
@@ -759,6 +759,7 @@ ul {
     font-size: 3em;
     text-align: center;
     margin: 10px 0;
+    /* margin-bottom: 3em */
   }
 
   .channel-logo2 {
@@ -785,7 +786,7 @@ ul {
     display: block;
   }
 
-  .hello {
-    font-size: 8em
+  #stream-container {
+    text-align: center
   }
 }

@@ -136,7 +136,7 @@ class Form extends React.Component {
 										suggestedResult: item
 									}
 								}}
-								key={item._id}
+								key={item.id}
 							>
 								<div className="suggested-item-container">
 									<img

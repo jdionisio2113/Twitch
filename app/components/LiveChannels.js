@@ -44,12 +44,13 @@ function LiveChannels(props) {
 							.replace("{height}", "400");
 						item.thumbnail_url = newURL;
 						return (
-							<div className="live-channel-image" key={item.user_id}>
+							<div className="live-channel-image" key={item.id}>
 								<Link
 									to={{
-										pathname: "/streampage",
+										pathname: "/channelpage",
+										search: "?streamer=" + item.user_name,
 										state: {
-											stream: item
+											suggestedResult: item
 										}
 									}}
 								>
@@ -58,8 +59,6 @@ function LiveChannels(props) {
 											className="live-channel-banner"
 											src={item.thumbnail_url}
 										/>
-										{/* <p className="channel-live">Live</p> */}
-										{/* <img className="" src={} /> */}
 										<p className="channelViewers">{streamViewers} viewers</p>
 										<div className="channel-link">
 											{/* <img className="channel-logo" src={item.channel.logo} /> */}

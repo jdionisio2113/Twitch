@@ -26,10 +26,10 @@ class ChannelPage extends React.Component {
 		script.setAttribute("src", EMBED_URL);
 		script.addEventListener("load", () => {
 			embed = new window.Twitch.Embed(this.state.targetID, {
-				width: "100%",
-				height: "480",
 				// width: "940",
 				// height: "480",
+				width: "100%",
+				height: "730",
 				theme: "dark",
 				channel: `${channelName}`
 			});
@@ -63,9 +63,9 @@ class ChannelPage extends React.Component {
 						}}
 					> */}
 					{/* <img className="channel-logo2" src={suggestedResult.logo} /> */}
-					<h1 className="channel-display_name">
+					{/* <h1 className="channel-display_name">
 						{suggestedResult.user_name}
-					</h1>
+					</h1> */}
 					{/* </div> */}
 					<div className="channel-box">
 						{/* <p>{suggestedChannels.followers}</p> */}
