@@ -516,6 +516,10 @@ ul {
   color: lightgray;
 }
 
+.game-page-container {
+  margin-top: 5em
+}
+
 @media screen and (min-width: 600px) {
   .menu {
     display: none;

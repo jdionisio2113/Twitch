@@ -16,6 +16,8 @@ class ChannelPage extends React.Component {
 		var { match, location } = this.props;
 		var { suggestedResult } = location.state;
 
+		console.log(suggestedResult)
+
 		var channelName = suggestedResult.user_name;
 		var banner = suggestedResult.profile_banner;
 
@@ -26,8 +28,6 @@ class ChannelPage extends React.Component {
 		script.setAttribute("src", EMBED_URL);
 		script.addEventListener("load", () => {
 			embed = new window.Twitch.Embed(this.state.targetID, {
-				// width: "940",
-				// height: "480",
 				width: "100%",
 				height: "730",
 				theme: "dark",

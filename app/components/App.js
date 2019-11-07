@@ -13,7 +13,7 @@ var ReactRouter = require("react-router-dom");
 var Switch = ReactRouter.Switch;
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import api from "../config/api";
-import StreamPage from './StreamPage'
+import GamePage from './GamePage'
 
 class Home extends React.Component {
 	constructor(props) {
@@ -124,7 +124,7 @@ class Home extends React.Component {
 		return (
 			<div className="main-container">
 				<FeaturedStreams featured={this.state.featured} />
-				<TopGames games={this.state.games} />
+				<TopGames games={this.state.games} channels={this.state.channels} />
 				<LiveChannels channels={this.state.channels} />
 			</div>
 		);
@@ -141,7 +141,7 @@ const App = () => {
 						<Route exact path="/" component={Home} />
 						<Route exact path="/categories" component={Categories} />
 						<Route exact path="/channelpage" component={ChannelPage} />
-						<Route exact path="/streampage" component={StreamPage} />
+						<Route exact path="/gamepage" component={GamePage} />
 					</Switch>
 				</div>
 			</Router>

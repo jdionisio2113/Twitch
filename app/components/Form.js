@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import App from "./App";
 import ChannelPage from "./ChannelPage";
 import liveCircle from "../img/red-circle.png";
-import api from '../config/api'
+import api from '../config/api';
 
 class Form extends React.Component {
 	constructor(props) {
