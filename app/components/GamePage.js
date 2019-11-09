@@ -1,5 +1,6 @@
 import React from 'react';
-import api from '../config/api'
+import api from '../config/api';
+import { Link } from "react-router-dom";
 
 class GamePage extends React.Component {
     constructor(props) {
@@ -16,35 +17,111 @@ class GamePage extends React.Component {
         var { match, location } = this.props;
         var { suggestedGame, suggestedChannel } = location.state;
 
-        console.log(suggestedGame)
+        console.log(suggestedChannel)
+        console.log(suggestedGame.name)
+        // for (let i = 0; i < suggestedChannel.length; i++) {
+        //     // console.log(suggestedChannel[i];
 
-        // api.get("https://api.twitch.tv/helix/streams?first=100").then(res => {
-        //     // var x = (suggestedGame.id)
-        //     // console.log(x)
-        //     var data = res.data.data;
-        //     // console.log(data)
-        //     for (let i = 0; i < data.length; i++) {
-        //         let streamId = data[i].game_id;
-        //         let stream = data[i];
-        //         // console.log(suggestedGame.id)
-        //         // console.log(streamId)
-        //         if (streamId === suggestedGame.id) {
-        //             console.log(stream)
 
-        //         }
+        //     var x;
+
+        //     // (function () {
+        //     // var collection = [];
+        //     if (suggestedChannel[i].game_id === suggestedGame.id) {
+        //         // console.log(suggestedChannel[i])
+        //         x = suggestedChannel[i].thumbnail_url
+        //         // collection.push(x);
+        //         // console.log(collection)
+        //         console.log(x)
         //     }
 
-        // })
-        // console.log(stream)
+        //     // })()
 
-        return <div><h1>GamePage</h1>
-            {/* <img src={this.state.stream} /> */}
+        // }
+        var arr = []
+        suggestedChannel.map(item => {
+            // console.log(item)
+
+            if (item.game_id === suggestedGame.id) {
+                arr.push(item)
+                // console.log(arr)
+            }
+        })
+
+        console.log(arr)
+        // var x;
+        return arr.map(item => {
+            // x = item.thumbnail_url
+            var caption = item.title;
+            var length = 33;
+            var trimmedChannelCaption =
+                caption.length > length
+                    ? caption.substring(0, length - 3) + "..."
+                    : caption;
+
+            var viewers = item.viewer_count;
+            var streamViewers = viewers.toLocaleString();
+            let newURL = item.thumbnail_url
+                .replace("{width}", "650")
+                .replace("{height}", "400");
+            item.thumbnail_url = newURL;
+            return (<div>
+                {/* <img src={item.thumbnail_url} /> */}
+
+
+                <div className="live-channel-image" key={item.id}>
+                    <Link
+                        to={{
+                            pathname: "/channelpage",
+                            search: "?streamer=" + item.user_name,
+                            state: {
+                                suggestedResult: item
+                            }
+                        }}
+                    >
+                        <div className="live-channel-box">
+                            <img
+                                className="live-channel-banner"
+                                src={item.thumbnail_url}
+                            />
+                            <p className="channelViewers">{streamViewers} viewers</p>
+                            <div className="channel-link">
+                                {/* <img className="channel-logo" src={item.channel.logo} /> */}
+                                <div className="channel-description">
+                                    <h3 className="channel-name">
+                                        {item.user_name}
+                                    </h3>
+                                    <p className="channel-caption">{trimmedChannelCaption}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                </div>
+
+            </div>)
+        })
+
+
+        for (let i = 0; i < arr.length; i++) {
+
+            var x = arr[i].thumbnail_url
+        }
+
+        return <div>
+            <h1>{suggestedGame.name}</h1>
+            <img src={x} />
+            {/* <h1>Game Page</h1> */}
         </div>
     }
 
     render() {
+        var { match, location } = this.props;
+        var { suggestedGame, suggestedChannel } = location.state;
         return (
-            <div className="game-page-container">{this.categoryStreams()}</div>
+            <div className="game-page-container">
+                <h1>{suggestedGame.name}</h1>
+                {this.categoryStreams()}
+            </div>
         )
     }
 }
