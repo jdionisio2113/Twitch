@@ -286,14 +286,19 @@ ul {
 
 .channelViewers {
   margin: 0;
+  color: white;
+  font-size: 13px;
+}
+
+.viewer-container {
   position: absolute;
   top: 79%;
-  left: 5%;
-  color: white;
+  left: 7%;
+  display: flex;
+  align-items: center;
   padding: 5px;
   background: rgba(0, 0, 0, 0.6);
-  border-radius: 7%;
-  font-size: 13px;
+  border-radius: 5px;
 }
 
 .featured-stream-caption {
@@ -520,6 +525,31 @@ ul {
   margin-top: 5em
 }
 
+/* .game-page-container h1 {
+  margin: 2em 0 1.2em 0;
+  font-size: 4em;
+  text-align: center;
+  color: lightgrey
+} */
+
+.red-img {
+  width: 10px;
+  height: 10px;
+  margin-right: 5px
+}
+
+/* .viewer-container {
+  display: flex;
+  top: 76%;
+  left: 7%;
+} */
+
+.border {
+  width: 30%;
+  margin: 1em auto 4em auto;
+  border-bottom: 1px solid lightgrey
+}
+
 @media screen and (min-width: 600px) {
   .menu {
     display: none;
@@ -712,7 +742,8 @@ ul {
   }
 
   .live-channel-image {
-    width: 100%;
+    width: 430px;
+    margin: 0 auto;
   }
 
   .live-channels {
@@ -793,4 +824,21 @@ ul {
   #stream-container {
     text-align: center
   }
+
+  .game-page-wrapper {
+    display: flex;
+    flex-wrap: wrap
+  }
+
+  .live-channel-container {
+    margin: 0 auto
+  }
+
+  .game-page-container h1 {
+    margin: 2em 0 .3em 0;
+    font-size: 4em;
+    text-align: center;
+    color: lightgrey
+  }
+
 }

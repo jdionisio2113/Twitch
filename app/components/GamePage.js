@@ -19,25 +19,7 @@ class GamePage extends React.Component {
 
         console.log(suggestedChannel)
         console.log(suggestedGame.name)
-        // for (let i = 0; i < suggestedChannel.length; i++) {
-        //     // console.log(suggestedChannel[i];
 
-
-        //     var x;
-
-        //     // (function () {
-        //     // var collection = [];
-        //     if (suggestedChannel[i].game_id === suggestedGame.id) {
-        //         // console.log(suggestedChannel[i])
-        //         x = suggestedChannel[i].thumbnail_url
-        //         // collection.push(x);
-        //         // console.log(collection)
-        //         console.log(x)
-        //     }
-
-        //     // })()
-
-        // }
         var arr = []
         suggestedChannel.map(item => {
             // console.log(item)
@@ -65,7 +47,7 @@ class GamePage extends React.Component {
                 .replace("{width}", "650")
                 .replace("{height}", "400");
             item.thumbnail_url = newURL;
-            return (<div>
+            return (<div className="live-channel-container">
                 {/* <img src={item.thumbnail_url} /> */}
 
 
@@ -84,7 +66,13 @@ class GamePage extends React.Component {
                                 className="live-channel-banner"
                                 src={item.thumbnail_url}
                             />
-                            <p className="channelViewers">{streamViewers} viewers</p>
+                            <div className="viewer-container">
+                                <img
+                                    className="red-img"
+                                    src={require("../img/red-circle.png")}
+                                />
+                                <p className="channelViewers">{streamViewers} viewers</p>
+                            </div>
                             <div className="channel-link">
                                 {/* <img className="channel-logo" src={item.channel.logo} /> */}
                                 <div className="channel-description">
@@ -120,7 +108,11 @@ class GamePage extends React.Component {
         return (
             <div className="game-page-container">
                 <h1>{suggestedGame.name}</h1>
-                {this.categoryStreams()}
+                <div className="border"></div>
+                <div className="game-page-wrapper">
+                    {this.categoryStreams()}
+                </div>
+
             </div>
         )
     }

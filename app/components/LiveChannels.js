@@ -59,7 +59,13 @@ function LiveChannels(props) {
 											className="live-channel-banner"
 											src={item.thumbnail_url}
 										/>
-										<p className="channelViewers">{streamViewers} viewers</p>
+										<div className="viewer-container">
+											<img
+												className="red-img"
+												src={require("../img/red-circle.png")}
+											/>
+											<p className="channelViewers">{streamViewers} viewers</p>
+										</div>
 										<div className="channel-link">
 											{/* <img className="channel-logo" src={item.channel.logo} /> */}
 											<div className="channel-description">
