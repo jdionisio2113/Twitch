@@ -545,7 +545,7 @@ ul {
 } */
 
 .border {
-  width: 30%;
+  width: 15%;
   margin: 1em auto 4em auto;
   border-bottom: 1px solid lightgrey
 }
@@ -827,11 +827,9 @@ ul {
 
   .game-page-wrapper {
     display: flex;
-    flex-wrap: wrap
-  }
-
-  .live-channel-container {
-    margin: 0 auto
+    flex-wrap: wrap;
+    position: absolute;
+    justify-content: center;
   }
 
   .game-page-container h1 {

@@ -79,6 +79,7 @@ function LiveChannels(props) {
 								</Link>
 							</div>
 						);
+
 					})}
 				</Slider>
 			</div>

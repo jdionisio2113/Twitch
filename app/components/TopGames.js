@@ -4,7 +4,7 @@ import React from "react";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import GamePage from './GamePage'
+import GamePage from './GamePage';
 
 function TopGames(props) {
 	var { games, channels } = props;
@@ -49,8 +49,6 @@ function TopGames(props) {
 						return (
 							<div key={index} className="game_container">
 								<Link
-									// href={`https://www.twitch.tv/directory/game/${gameName}`}
-									// target="_blank"
 									to={{
 										pathname: "/gamepage",
 										search: "?game=" + item.name,

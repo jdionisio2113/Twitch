@@ -6,10 +6,6 @@ class GamePage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            stream: ""
-        }
-
         this.categoryStreams = this.categoryStreams.bind(this);
     }
 
@@ -18,11 +14,11 @@ class GamePage extends React.Component {
         var { suggestedGame, suggestedChannel } = location.state;
 
         console.log(suggestedChannel)
-        console.log(suggestedGame.name)
+        console.log(suggestedGame)
 
         var arr = []
         suggestedChannel.map(item => {
-            // console.log(item)
+            console.log(item)
 
             if (item.game_id === suggestedGame.id) {
                 arr.push(item)
@@ -33,7 +29,7 @@ class GamePage extends React.Component {
         console.log(arr)
         // var x;
         return arr.map(item => {
-            // x = item.thumbnail_url
+            x = item.thumbnail_url
             var caption = item.title;
             var length = 33;
             var trimmedChannelCaption =
@@ -96,9 +92,7 @@ class GamePage extends React.Component {
         }
 
         return <div>
-            <h1>{suggestedGame.name}</h1>
             <img src={x} />
-            {/* <h1>Game Page</h1> */}
         </div>
     }
 
