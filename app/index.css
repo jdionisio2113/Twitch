@@ -525,12 +525,12 @@ ul {
   margin-top: 5em
 }
 
-/* .game-page-container h1 {
-  margin: 2em 0 1.2em 0;
+.game-page-container h1 {
+  margin: 2em 0 .3em 0;
   font-size: 4em;
   text-align: center;
   color: lightgrey
-} */
+}
 
 .red-img {
   width: 10px;
@@ -548,6 +548,10 @@ ul {
   width: 15%;
   margin: 1em auto 4em auto;
   border-bottom: 1px solid lightgrey
+}
+
+.live-channel-container {
+  margin:0 1em 3em 1em;
 }
 
 @media screen and (min-width: 600px) {
@@ -832,11 +836,11 @@ ul {
     justify-content: center;
   }
 
-  .game-page-container h1 {
+  /* .game-page-container h1 {
     margin: 2em 0 .3em 0;
     font-size: 4em;
     text-align: center;
     color: lightgrey
-  }
+  } */
 
 }
