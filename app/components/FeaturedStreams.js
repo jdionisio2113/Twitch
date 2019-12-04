@@ -22,18 +22,7 @@ function Streams(props) {
 				{/* <Carousel> */}
 				<Slider {...settings}>
 					{featured.map(function (item, index) {
-						// var caption = item.stream.channel.status;
-						// var length = 40;
-						// var trimmedCaption =
-						// 	caption.length > length
-						// 		? caption.substring(0, length - 3) + "..."
-						// 		: caption;
-
-						// var viewers = item.stream.viewers;
-						// var channelname = item.stream.channel.display_name;
 						var channelname = item.user_name
-
-						// var streamViewers = viewers.toLocaleString();
 
 						var streamer = `https://player.twitch.tv/?channel=${channelname}`;
 						return (
@@ -65,7 +54,6 @@ class FeaturedStreams extends React.Component {
 		super(props);
 
 		this.state = {
-			// featuredStreams: [],
 			currentFeaturedStream: {}
 		};
 
@@ -84,7 +72,6 @@ class FeaturedStreams extends React.Component {
 	render() {
 		return (
 			<div>
-				{/* <Stream featured={this.props.featured} /> */}
 				<Streams
 					featured={this.props.featured}
 					onSelect={this.updateCurrentFeaturedStream}

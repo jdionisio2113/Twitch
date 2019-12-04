@@ -1,14 +1,12 @@
 import React from "react";
 import { all, get } from "axios";
 import Form from "./Form";
-// import Example from "./Example";
 import FeaturedStreams from "./FeaturedStreams";
 import TopGames from "./TopGames";
 import LiveChannels from "./LiveChannels";
 import Categories from "./Categories";
 import ChannelPage from "./ChannelPage";
 import Loader from "./Loader";
-import apiKey from "../config/apiKey";
 var ReactRouter = require("react-router-dom");
 var Switch = ReactRouter.Switch;
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
@@ -34,63 +32,18 @@ class Home extends React.Component {
 		this.setState({
 			loader: true
 		});
-		// all([api.get(featured), api.get(game), get(channels)]).then(res => {
-		// 	var featured = res[0].data.featured;
-		// 	var game = res[1].data.top;
-		// 	var channels = res[2].data.streams;
-
-		// 	this.setState({
-		// 		featured: featured,
-		// 		loader: false
-		// 	});
-
-		// 	this.setState({
-		// 		games: game,
-		// 		loader: false
-		// 	});
-
-		// 	this.setState({
-		// 		channels: channels,
-		// 		loader: false
-		// 	});
-		// });
-
-		// api.get("https://api.twitch.tv/helix/games/top")
-		// .then(res=>{
-		// 	console.log(res.data.data)
-		// 	var game = res.data.data
-		// 		this.setState({
-		// 		games: game,
-		// 		loader: false
-		// 	});
-		// })
-
-		// api.get("https://api.twitch.tv/helix/streams")
-		// .then(res=>{
-		// 	console.log(res.data.data)
-		// 	var featured = res.data.data
-		// 		this.setState({
-		// 		featured: featured,
-		// 		loader: false
-		// 	});
-		// })
 
 		all([api.get(featured), api.get(game), api.get(channels)]).then(
 			res => {
 				var featured = res[0].data.data;
 				var game = res[1].data.data;
 				var channels = res[2].data.data;
-				// console.log(featured)
-				// console.log(game)
-				// console.log(channels)
 
-				// var game = res.data.data
 				this.setState({
 					games: game,
 					loader: false
 				});
 
-				// var featured = res.data.data
 				this.setState({
 					featured: featured,
 					loader: false
@@ -104,13 +57,6 @@ class Home extends React.Component {
 		)
 	}
 
-	// componentDidMount() {
-	// 	this.twitchData(
-	// 		`https://api.twitch.tv/kraken/streams/featured?client_id=${apiKey}&limit=5`,
-	// 		`https://api.twitch.tv/kraken/games/top?client_id=${apiKey}`,
-	// 		`https://api.twitch.tv/kraken/streams?client_id=${apiKey}&limit=7`
-	// 	);
-	// }
 	componentDidMount() {
 		this.twitchData("https://api.twitch.tv/helix/streams?first=1", "https://api.twitch.tv/helix/games/top", "https://api.twitch.tv/helix/streams?first=100")
 	}

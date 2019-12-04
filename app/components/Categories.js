@@ -15,24 +15,11 @@ class Categories extends React.Component {
 			loader: false,
 			channels: []
 		};
-
-		// this.getTopGames = this.getTopGames.bind(this);
 	}
 
 	componentDidMount() {
 		this.setState({ loader: true });
-		// axios
-		// 	.get(
-		// 		`https://api.twitch.tv/kraken/games/top?client_id=${apiKey}&limit=50`
-		// 	)
-		// 	.then(res => {
-		// 		var game = res.data.top;
 
-		// 		this.setState({
-		// 			games: game,
-		// 			loader: false
-		// 		});
-		// 	});
 		api.get("https://api.twitch.tv/helix/games/top")
 			.then(res => {
 				var game = res.data.data;
@@ -47,7 +34,7 @@ class Categories extends React.Component {
 		api.get("https://api.twitch.tv/helix/streams?first=100")
 			.then(res => {
 				var channels = res.data.data
-				// console.log(channels)
+
 				this.setState({
 					channels: channels,
 					loader: false
@@ -75,14 +62,7 @@ class Categories extends React.Component {
 						.replace("{height}", "700");
 					item.box_art_url = newURL;
 
-					// var gameViewers = viewers.toLocaleString();
 					return (
-						// <a
-						// 	key={item.id}
-						// 	className="game_container2"
-						// 	href={`https://www.twitch.tv/directory/game/${gameName}`}
-						// 	target="_blank"
-						// >
 						<Link
 							key={item.id}
 							className="game_container2"

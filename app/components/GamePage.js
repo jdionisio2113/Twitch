@@ -16,20 +16,17 @@ class GamePage extends React.Component {
         console.log(suggestedChannel)
         console.log(suggestedGame)
 
-        var arr = []
+        var streamCollection = []
         suggestedChannel.map(item => {
             console.log(item)
 
             if (item.game_id === suggestedGame.id) {
-                arr.push(item)
-                // console.log(arr)
+                streamCollection.push(item)
             }
         })
 
-        console.log(arr)
-        // var x;
-        return arr.map(item => {
-            x = item.thumbnail_url
+        return streamCollection.map(item => {
+            stream = item.thumbnail_url
             var caption = item.title;
             var length = 33;
             var trimmedChannelCaption =
@@ -44,9 +41,6 @@ class GamePage extends React.Component {
                 .replace("{height}", "400");
             item.thumbnail_url = newURL;
             return (<div className="live-channel-container">
-                {/* <img src={item.thumbnail_url} /> */}
-
-
                 <div className="live-channel-image" key={item.id}>
                     <Link
                         to={{
@@ -70,7 +64,6 @@ class GamePage extends React.Component {
                                 <p className="channelViewers">{streamViewers} viewers</p>
                             </div>
                             <div className="channel-link">
-                                {/* <img className="channel-logo" src={item.channel.logo} /> */}
                                 <div className="channel-description">
                                     <h3 className="channel-name">
                                         {item.user_name}
@@ -86,13 +79,13 @@ class GamePage extends React.Component {
         })
 
 
-        for (let i = 0; i < arr.length; i++) {
+        for (let i = 0; i < streamCollection.length; i++) {
 
-            var x = arr[i].thumbnail_url
+            var stream = streamCollection[i].thumbnail_url
         }
 
         return <div>
-            <img src={x} />
+            <img src={stream} />
         </div>
     }
 

@@ -67,7 +67,6 @@ function LiveChannels(props) {
 											<p className="channelViewers">{streamViewers} viewers</p>
 										</div>
 										<div className="channel-link">
-											{/* <img className="channel-logo" src={item.channel.logo} /> */}
 											<div className="channel-description">
 												<h3 className="channel-name">
 													{item.user_name}

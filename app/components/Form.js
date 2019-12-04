@@ -120,6 +120,7 @@ class Form extends React.Component {
 			return this.state.userName.map(item => {
 				return item.map(item => {
 					console.log(item)
+					var streamViewers = item.title.toLocaleString()
 					var username = item.user_name.toLowerCase()
 					let newURL = item.thumbnail_url
 						.replace("{width}", "150")
@@ -145,7 +146,7 @@ class Form extends React.Component {
 									/>
 									<li className="suggested-result">
 										<p>{item.user_name}</p>
-										<p className="stream-status">{item.title}</p>
+										<p className="stream-status">{streamViewers}</p>
 										{/* <p className="stream-game">{item.game}</p> */}
 										<div className="stream-menu-description">
 											<img className="live_circle" src={liveCircle} />
