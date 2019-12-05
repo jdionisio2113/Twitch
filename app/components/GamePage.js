@@ -40,8 +40,9 @@ class GamePage extends React.Component {
                 .replace("{width}", "650")
                 .replace("{height}", "400");
             item.thumbnail_url = newURL;
-            return (<div className="live-channel-container">
-                <div className="live-channel-image" key={item.id}>
+
+            return (<div className="live-channel-container" key={item.id}>
+                <div className="live-channel-image">
                     <Link
                         to={{
                             pathname: "/channelpage",

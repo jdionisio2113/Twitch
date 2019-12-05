@@ -1,6 +1,6 @@
 import React from "react";
-import { fetchStreamers } from "../config/endpoints";
-import { liveStreamers } from "../config/endpoints";
+// import { fetchStreamers } from "../config/endpoints";
+// import { liveStreamers } from "../config/endpoints";
 import axios from "axios";
 import img from "../img/twitch-logo.png";
 import img2 from "../img/twitch-logo2.png";
