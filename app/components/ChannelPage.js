@@ -50,25 +50,11 @@ class ChannelPage extends React.Component {
 
 	render() {
 		var suggestedResult = this.props.location.state.suggestedResult;
-		// var banner = this.props.location.state.suggestedResult;
 		return (
 			<div>
 				<div className="channelContainer">
-					{/* <div
-						className="channel-info"
-						style={{
-							backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),url(${
-								banner.profile_banner
-								})`
-						}}
-					> */}
-					{/* <img className="channel-logo2" src={suggestedResult.logo} /> */}
-					{/* <h1 className="channel-display_name">
-						{suggestedResult.user_name}
-					</h1> */}
-					{/* </div> */}
+
 					<div className="channel-box">
-						{/* <p>{suggestedChannels.followers}</p> */}
 						<div id="stream-container">
 							<div className="stream" id={this.state.targetID} />
 						</div>

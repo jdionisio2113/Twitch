@@ -66,7 +66,6 @@ function LiveChannels(props) {
 													{item.user_name}
 												</h3>
 												<p className="channel-caption">{truncateString(item.title, 33)}</p>
-
 											</div>
 										</div>
 									</div>
