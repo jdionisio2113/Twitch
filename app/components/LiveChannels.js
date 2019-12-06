@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
+import truncateString from '../utils/truncateString'
 
 function LiveChannels(props) {
 	var { channels } = props;
@@ -29,13 +30,6 @@ function LiveChannels(props) {
 				<h6 className="live-channels">Popular Live Channels</h6>
 				<Slider {...settings}>
 					{channels.map(function (item) {
-
-						var caption = item.title;
-						var length = 33;
-						var trimmedChannelCaption =
-							caption.length > length
-								? caption.substring(0, length - 3) + "..."
-								: caption;
 
 						var viewers = item.viewer_count;
 						var streamViewers = viewers.toLocaleString();
@@ -71,7 +65,8 @@ function LiveChannels(props) {
 												<h3 className="channel-name">
 													{item.user_name}
 												</h3>
-												<p className="channel-caption">{trimmedChannelCaption}</p>
+												<p className="channel-caption">{truncateString(item.title, 33)}</p>
+
 											</div>
 										</div>
 									</div>
@@ -94,5 +89,21 @@ export default LiveChannels;
 
 
 
+/*
 
+Make a function that shortens the length of a string and adds "..." at the end
+@param String text
+@param Number maxLength
+@return String
+
+1) If the string exceeds maxLength, add "..."
+
+2) Otherwise return the original string
+
+myFunc("My video is awesome because it is very awesome", 15);
+	return "My video is awesom..."
+
+myFunc("My video is awesome because it is very awesome", 100);
+	return "My video is awesome because it is very awesome"
+*/
 

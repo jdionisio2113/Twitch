@@ -1,6 +1,7 @@
 import React from 'react';
 import api from '../config/api';
 import { Link } from "react-router-dom";
+import truncateString from '../utils/truncateString';
 
 class GamePage extends React.Component {
     constructor(props) {
@@ -13,10 +14,8 @@ class GamePage extends React.Component {
         var { match, location } = this.props;
         var { suggestedGame, suggestedChannel } = location.state;
 
-        console.log(suggestedChannel)
-        console.log(suggestedGame)
-
         var streamCollection = []
+
         suggestedChannel.map(item => {
             console.log(item)
 
@@ -26,13 +25,8 @@ class GamePage extends React.Component {
         })
 
         return streamCollection.map(item => {
+
             stream = item.thumbnail_url
-            var caption = item.title;
-            var length = 33;
-            var trimmedChannelCaption =
-                caption.length > length
-                    ? caption.substring(0, length - 3) + "..."
-                    : caption;
 
             var viewers = item.viewer_count;
             var streamViewers = viewers.toLocaleString();
@@ -69,7 +63,7 @@ class GamePage extends React.Component {
                                     <h3 className="channel-name">
                                         {item.user_name}
                                     </h3>
-                                    <p className="channel-caption">{trimmedChannelCaption}</p>
+                                    <p className="channel-caption">{truncateString(item.title, 33)}</p>
                                 </div>
                             </div>
                         </div>
@@ -85,9 +79,11 @@ class GamePage extends React.Component {
             var stream = streamCollection[i].thumbnail_url
         }
 
-        return <div>
-            <img src={stream} />
-        </div>
+        return (
+            <>
+                <img src={stream} />
+            </>
+        )
     }
 
     render() {

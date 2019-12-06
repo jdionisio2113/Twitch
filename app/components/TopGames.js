@@ -1,10 +1,7 @@
 import React from "react";
-// var Link = require("react-router-dom").Link;
-// import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import GamePage from './GamePage';
 
 function TopGames(props) {
 	var { games, channels } = props;
