@@ -1,6 +1,4 @@
 import React from "react";
-// import { fetchStreamers } from "../config/endpoints";
-// import { liveStreamers } from "../config/endpoints";
 import axios from "axios";
 import img from "../img/twitch-logo.png";
 import img2 from "../img/twitch-logo2.png";
@@ -9,6 +7,7 @@ import App from "./App";
 import ChannelPage from "./ChannelPage";
 import liveCircle from "../img/red-circle.png";
 import api from '../config/api';
+import truncateString from '../utils/truncateString'
 
 class Form extends React.Component {
 	constructor(props) {
@@ -18,8 +17,6 @@ class Form extends React.Component {
 			input: "",
 			suggestedChannels: [],
 			liveChannels: [],
-			liveToShow: 3,
-			channelsToShow: 3,
 			open: false,
 			userName: []
 		};
@@ -28,33 +25,9 @@ class Form extends React.Component {
 		this.displaySuggestedLiveResults = this.displaySuggestedLiveResults.bind(
 			this
 		);
-		// this.displaySuggestedResults = this.displaySuggestedResults.bind(this);
 		this.handleReset = this.handleReset.bind(this);
 		this.openMenu = this.openMenu.bind(this);
-		// this.showMoreLiveChannels = this.showMoreLiveChannels.bind(this);
-		// this.showMoreChannels = this.showMoreChannels.bind(this);
-		// this.closeMenu = this.closeMenu.bind(this);
 	}
-
-	// showMoreChannels() {
-	// 	this.state.channelsToShow === 3
-	// 		? this.setState({
-	// 			channelsToShow: this.state.suggestedChannels.length
-	// 		})
-	// 		: this.setState({
-	// 			channelsToShow: 3
-	// 		});
-	// }
-
-	// showMoreLiveChannels() {
-	// 	this.state.liveToShow === 3
-	// 		? this.setState({
-	// 			liveToShow: this.state.liveChannels.length
-	// 		})
-	// 		: this.setState({
-	// 			liveToShow: 3
-	// 		});
-	// }
 
 	openMenu() {
 		this.setState({ open: !this.state.open });
@@ -70,20 +43,11 @@ class Form extends React.Component {
 		clearTimeout(this.myTimeout);
 
 		this.myTimeout = setTimeout(() => {
-			// const endpoint = fetchStreamers(this.state.input);
-			// const endpoint2 = liveStreamers(this.state.input);
-			// axios.get(endpoint).then(res => {
-			// 	this.setState({
-			// 		suggestedChannels: res.data.channels
-			// 	});
-			// });
 
 			api.get("https://api.twitch.tv/helix/streams?first=100").then(res => {
 				this.setState({
 					liveChannels: res.data.data
 				});
-
-				// console.log(this.state.liveChannels)
 
 				var filtered_streamers = this.state.liveChannels.filter(streamer => {
 					var streamer_name = streamer.user_name.toLowerCase();
@@ -95,11 +59,11 @@ class Form extends React.Component {
 					}
 				});
 
-				var arr = [];
-				arr.push(filtered_streamers)
+				var streamer_collection = [];
+				streamer_collection.push(filtered_streamers)
 
 				this.setState({
-					userName: arr
+					userName: streamer_collection
 				})
 			});
 
@@ -119,8 +83,8 @@ class Form extends React.Component {
 		if (this.state.input) {
 			return this.state.userName.map(item => {
 				return item.map(item => {
-					console.log(item)
-					var streamViewers = item.title.toLocaleString()
+					var viewers = item.viewer_count;
+					var streamViewers = viewers.toLocaleString();
 					var username = item.user_name.toLowerCase()
 					let newURL = item.thumbnail_url
 						.replace("{width}", "150")
@@ -146,11 +110,11 @@ class Form extends React.Component {
 									/>
 									<li className="suggested-result">
 										<p>{item.user_name}</p>
-										<p className="stream-status">{streamViewers}</p>
+										<p className="stream-status">{truncateString(item.title, 40)}</p>
 										{/* <p className="stream-game">{item.game}</p> */}
 										<div className="stream-menu-description">
 											<img className="live_circle" src={liveCircle} />
-											<p className="stream-status">{item.viewer_count}</p>
+											<p className="stream-status">{streamViewers}</p>
 										</div>
 									</li>
 								</div>

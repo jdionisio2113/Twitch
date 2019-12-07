@@ -37,17 +37,12 @@ ul {
 }
 
 .game-container {
-  text-align: center;
-  box-shadow: 0px 0px 35px 13px rgba(0, 0, 0, 0.8);
-  margin: 0 auto;
+  /* box-shadow: 0px 0px 35px 13px rgba(0, 0, 0, 0.8); */
 }
 
 .game_container {
   text-align: center;
 }
-/* .stream-template {
-  margin: 0 2em;
-} */
 
 .main-container {
   padding-top: 4em;
@@ -55,7 +50,7 @@ ul {
 }
 
 .featured-streams {
-  margin: 3em 0;
+  margin: 3em auto;
 }
 
 .carousel-indicators {
@@ -652,7 +647,7 @@ ul {
   .featured-streams {
     text-align: center;
     width: 50%;
-    margin-left: 23%;
+    margin: 3em auto;
   }
 
   .featured-stream-image {

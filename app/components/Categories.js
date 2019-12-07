@@ -67,11 +67,11 @@ class Categories extends React.Component {
 
 
 	render() {
-		var loader = this.state.loader;
+		// var loader = this.state.loader;
 		// console.log(this.state.channels)
-		if (loader === true) {
-			return <Loader />;
-		}
+		// if (loader === true) {
+		// 	return <Loader />;
+		// }
 		return (
 			<>
 				{this.browse()}

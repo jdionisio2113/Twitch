@@ -14,6 +14,18 @@ function Streams(props) {
 		slidesToScroll: 1
 	};
 
+	var stopVideo = function (element) {
+		var iframe = element.querySelector('iframe');
+		var video = element.querySelector('video');
+		if (iframe) {
+			var iframeSrc = iframe.src;
+			iframe.src = iframeSrc;
+		}
+		if (video) {
+			video.pause();
+		}
+	};
+
 	// console.log(featured)
 
 	return (
@@ -27,15 +39,15 @@ function Streams(props) {
 						var streamer = `https://player.twitch.tv/?channel=${channelname}`;
 						return (
 							<div key={index} className="featured-stream-container">
-								{/* <iframe
+								<iframe
 									src={streamer}
 									frameBorder="0"
 									allowFullScreen={true}
 									scrolling="no"
-									height="378"
+									height="400"
 									width="100%"
 									autoPlay={false}
-								/> */}
+								/>
 							</div>
 						);
 					})}
