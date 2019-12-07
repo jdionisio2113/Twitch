@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
-import truncateString from '../utils/truncateString'
+import StreamCard from './StreamCard';
 
 function LiveChannels(props) {
 	var { channels } = props;
@@ -48,27 +48,7 @@ function LiveChannels(props) {
 										}
 									}}
 								>
-									<div className="live-channel-box">
-										<img
-											className="live-channel-banner"
-											src={item.thumbnail_url}
-										/>
-										<div className="viewer-container">
-											<img
-												className="red-img"
-												src={require("../img/red-circle.png")}
-											/>
-											<p className="channelViewers">{streamViewers} viewers</p>
-										</div>
-										<div className="channel-link">
-											<div className="channel-description">
-												<h3 className="channel-name">
-													{item.user_name}
-												</h3>
-												<p className="channel-caption">{truncateString(item.title, 33)}</p>
-											</div>
-										</div>
-									</div>
+									<StreamCard item={item} />
 								</Link>
 							</div>
 						);
@@ -85,24 +65,3 @@ LiveChannels.propTypes = {
 };
 
 export default LiveChannels;
-
-
-
-/*
-
-Make a function that shortens the length of a string and adds "..." at the end
-@param String text
-@param Number maxLength
-@return String
-
-1) If the string exceeds maxLength, add "..."
-
-2) Otherwise return the original string
-
-myFunc("My video is awesome because it is very awesome", 15);
-	return "My video is awesom..."
-
-myFunc("My video is awesome because it is very awesome", 100);
-	return "My video is awesome because it is very awesome"
-*/
-

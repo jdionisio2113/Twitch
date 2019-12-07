@@ -11,46 +11,18 @@ class Categories extends React.Component {
 		super(props);
 
 		this.state = {
-			games: [],
+			// games: [],
 			loader: false,
-			channels: []
+			// channels: []
 		};
+
+		this.browse = this.browse.bind(this);
 	}
 
-	componentDidMount() {
-		this.setState({ loader: true });
-
-		api.get("https://api.twitch.tv/helix/games/top")
-			.then(res => {
-				var game = res.data.data;
-				console.log(game)
-				this.setState({
-					games: game,
-					loader: false
-				});
-
-			})
-
-		api.get("https://api.twitch.tv/helix/streams?first=100")
-			.then(res => {
-				var channels = res.data.data
-
-				this.setState({
-					channels: channels,
-					loader: false
-				});
-
-			})
-	}
-
-	render() {
-		const { games } = this.state;
-		const { channels } = this.state
-		var loader = this.state.loader;
-		// console.log(this.state.channels)
-		if (loader === true) {
-			return <Loader />;
-		}
+	browse() {
+		var { match, location } = this.props;
+		var { games, channels } = location.state;
+		// this.setState({ loader: false });
 		return (
 			<div className="category-container">
 				{games.map(function (item) {
@@ -87,6 +59,24 @@ class Categories extends React.Component {
 
 			</div>
 		);
+	}
+
+	componentDidMount() {
+		this.setState({ loader: true });
+	}
+
+
+	render() {
+		var loader = this.state.loader;
+		// console.log(this.state.channels)
+		if (loader === true) {
+			return <Loader />;
+		}
+		return (
+			<>
+				{this.browse()}
+			</>
+		)
 	}
 }
 

@@ -28,10 +28,16 @@ function TopGames(props) {
 			<div className="top-games-container">
 				<div className="game-category">
 					<h6 className="top-games">Top Games</h6>
-					<Link className="see-All_link" to="/categories">
+					<Link className="see-All_link"
+						to={{
+							pathname: "/categories",
+							state: {
+								games: games,
+								channels: channels
+							}
+						}}>
 						See All
-			</Link>
-					{/* <p className="see-All_link">See All</p> */}
+					</Link>
 				</div>
 
 				<Slider {...settings}>
@@ -57,7 +63,6 @@ function TopGames(props) {
 								>
 									<img className="logo" src={item.box_art_url} />
 								</Link>
-								{/* <h1>{item.game.name}</h1> */}
 							</div>
 						);
 					})}

@@ -1,7 +1,7 @@
 import React from 'react';
 import api from '../config/api';
 import { Link } from "react-router-dom";
-import truncateString from '../utils/truncateString';
+import StreamCard from './StreamCard';
 
 class GamePage extends React.Component {
     constructor(props) {
@@ -46,27 +46,7 @@ class GamePage extends React.Component {
                             }
                         }}
                     >
-                        <div className="live-channel-box">
-                            <img
-                                className="live-channel-banner"
-                                src={item.thumbnail_url}
-                            />
-                            <div className="viewer-container">
-                                <img
-                                    className="red-img"
-                                    src={require("../img/red-circle.png")}
-                                />
-                                <p className="channelViewers">{streamViewers} viewers</p>
-                            </div>
-                            <div className="channel-link">
-                                <div className="channel-description">
-                                    <h3 className="channel-name">
-                                        {item.user_name}
-                                    </h3>
-                                    <p className="channel-caption">{truncateString(item.title, 33)}</p>
-                                </div>
-                            </div>
-                        </div>
+                        <StreamCard item={item} />
                     </Link>
                 </div>
 
