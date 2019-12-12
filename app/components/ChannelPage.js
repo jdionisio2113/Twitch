@@ -31,7 +31,7 @@ class ChannelPage extends React.Component {
 				width: "100%",
 				height: "730",
 				theme: "dark",
-				channel: `${channelName}`
+				channel: `${channelName}`,
 			});
 		});
 

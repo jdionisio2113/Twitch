@@ -21,14 +21,23 @@ class Home extends React.Component {
 			featured: [],
 			games: [],
 			channels: [],
-			loader: false
+			loader: false,
+			currentStream: {}
 		};
 
-		this.twitchData = this.twitchData.bind(this);
+		this.fetchTwitchData = this.fetchTwitchData.bind(this);
+		this.updateCurrentStream = this.updateCurrentStream.bind(this);
 
 	}
 
-	twitchData(featured, game, channels) {
+	/**
+	 * Fetches arrays of featured streamers, games, and channels.
+	 * Stores the arrays inside of state.
+	 * @param String featured 
+	 * @param String game 
+	 * @param String channels 
+	 */
+	fetchTwitchData(featured, game, channels) {
 		this.setState({
 			loader: true
 		});
@@ -36,29 +45,46 @@ class Home extends React.Component {
 		all([api.get(featured), api.get(game), api.get(channels)]).then(
 			res => {
 				var featured = res[0].data.data;
-				var game = res[1].data.data;
+				var games = res[1].data.data;
 				var channels = res[2].data.data;
 
 				this.setState({
-					games: game,
-					loader: false
-				});
-
-				this.setState({
-					featured: featured,
-					loader: false
-				});
-
-				this.setState({
-					channels: channels,
-					loader: false
+					games,
+					featured,
+					channels,
+					loader: false,
+					currentStream: featured[0]
 				});
 			}
 		)
 	}
 
 	componentDidMount() {
-		this.twitchData("https://api.twitch.tv/helix/streams?first=1", "https://api.twitch.tv/helix/games/top", "https://api.twitch.tv/helix/streams?first=100")
+		this.fetchTwitchData("https://api.twitch.tv/helix/streams?first=5", "https://api.twitch.tv/helix/games/top", "https://api.twitch.tv/helix/streams?first=100")
+	}
+
+	/**
+	 * Move up and down the featured streams array to find next
+	 * or previous string
+	 * @param String direction (i.e 'next' or 'prev)
+	 * @return
+	 */
+	updateCurrentStream(direction) {
+		var { currentStream, featured } = this.state;
+
+		var indexOfCurrentStream = featured.indexOf(currentStream);
+
+		if (direction === 'next' && indexOfCurrentStream < (featured.length - 1)) {
+			indexOfCurrentStream++;
+		}
+
+		if (direction === 'prev' && indexOfCurrentStream > 0) {
+			indexOfCurrentStream--;
+		}
+
+		this.setState({
+			currentStream: featured[indexOfCurrentStream]
+		});
 	}
 
 	render() {
@@ -67,9 +93,10 @@ class Home extends React.Component {
 		if (loader === true) {
 			return <Loader />;
 		}
+
 		return (
 			<div className="main-container">
-				<FeaturedStreams featured={this.state.featured} />
+				<FeaturedStreams featured={this.state.featured} currentStream={this.state.currentStream} updateCurrentStream={this.updateCurrentStream} />
 				<TopGames games={this.state.games} channels={this.state.channels} />
 				<LiveChannels channels={this.state.channels} />
 			</div>

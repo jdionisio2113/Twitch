@@ -1,97 +1,52 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Bootstrap from "react-bootstrap";
 import Carousel, { Item } from "react-bootstrap/Carousel";
 import Slider from "react-slick";
 import PropTypes from "prop-types";
 
-function Streams(props) {
-	var { featured } = props;
-	const settings = {
-		dots: true,
-		infinite: true,
-		speed: 1000,
-		slidesToShow: 1,
-		slidesToScroll: 1
-	};
-
-	var stopVideo = function (element) {
-		var iframe = element.querySelector('iframe');
-		var video = element.querySelector('video');
-		if (iframe) {
-			var iframeSrc = iframe.src;
-			iframe.src = iframeSrc;
-		}
-		if (video) {
-			video.pause();
-		}
-	};
-
-	// console.log(featured)
-
-	return (
-		<div className="featured-streams">
-			<div className="game-container">
-				{/* <Carousel> */}
-				<Slider {...settings}>
-					{featured.map(function (item, index) {
-						var channelname = item.user_name
-
-						var streamer = `https://player.twitch.tv/?channel=${channelname}`;
-						return (
-							<div key={index} className="featured-stream-container">
-								<iframe
-									src={streamer}
-									frameBorder="0"
-									allowFullScreen={true}
-									scrolling="no"
-									height="400"
-									width="100%"
-									autoPlay={false}
-								/>
-							</div>
-						);
-					})}
-				</Slider>
-			</div>
-		</div>
-	);
-}
-
-Streams.propTypes = {
-	featured: PropTypes.array.isRequired
-};
-
 class FeaturedStreams extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			currentFeaturedStream: {}
-		};
+		this.changedStream = this.changedStream.bind(this);
 
-		this.updateCurrentFeaturedStream = this.updateCurrentFeaturedStream.bind(
-			this
-		);
 	}
 
-	updateCurrentFeaturedStream(stream) {
-		console.log(stream);
-		this.setState({
-			currentFeaturedStream: stream
-		});
+	changedStream(direction) {
+		var { updateCurrentStream } = this.props;
+		updateCurrentStream(direction);
 	}
 
 	render() {
-		return (
-			<div>
-				<Streams
-					featured={this.props.featured}
-					onSelect={this.updateCurrentFeaturedStream}
-					currentFeaturedStream={this.state.currentFeaturedStream}
-				/>
-			</div>
-		);
+
+		var { currentStream } = this.props;
+
+		if (currentStream.id && currentStream.user_name) {
+			let streamUrl = `https://player.twitch.tv/?channel=${currentStream.user_name}`;
+			return (
+				<div className="featured-streams">
+					<div className="game-container">
+						<iframe
+							src={streamUrl}
+							frameBorder="0"
+							allowFullScreen={true}
+							scrolling="no"
+							height="400"
+							width="100%"
+						/>
+						<button onClick={this.changedStream.bind(this, 'prev')}>Previous</button>
+						<button onClick={this.changedStream.bind(this, 'next')}>Next</button>
+					</div>
+				</div>
+			)
+		} else {
+			return null;
+		}
 	}
 }
+
+FeaturedStreams.propTypes = {
+	featured: PropTypes.array.isRequired
+};
 
 export default FeaturedStreams;
