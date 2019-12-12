@@ -1,7 +1,4 @@
-import React, { useEffect } from "react";
-import Bootstrap from "react-bootstrap";
-import Carousel, { Item } from "react-bootstrap/Carousel";
-import Slider from "react-slick";
+import React from "react";
 import PropTypes from "prop-types";
 
 class FeaturedStreams extends React.Component {
