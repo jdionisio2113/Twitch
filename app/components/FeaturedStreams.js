@@ -22,17 +22,17 @@ class FeaturedStreams extends React.Component {
 			let streamUrl = `https://player.twitch.tv/?channel=${currentStream.user_name}`;
 			return (
 				<div className="featured-streams">
-					<div className="game-container">
+					<div className="featured-container">
+						<button onClick={this.changedStream.bind(this, 'prev')}><i className="fas fa-chevron-left fa-2x"></i></button>
 						<iframe
 							src={streamUrl}
 							frameBorder="0"
 							allowFullScreen={true}
 							scrolling="no"
 							height="400"
-							width="100%"
+							width="80%"
 						/>
-						<button onClick={this.changedStream.bind(this, 'prev')}>Previous</button>
-						<button onClick={this.changedStream.bind(this, 'next')}>Next</button>
+						<button onClick={this.changedStream.bind(this, 'next')}><i className="fas fa-chevron-right fa-2x"></i></button>
 					</div>
 				</div>
 			)
