@@ -11,9 +11,7 @@ class Categories extends React.Component {
 		super(props);
 
 		this.state = {
-			// games: [],
-			loader: false,
-			// channels: []
+			loader: false
 		};
 
 		this.browse = this.browse.bind(this);
@@ -26,7 +24,6 @@ class Categories extends React.Component {
 		return (
 			<div className="category-container">
 				{games.map(function (item) {
-					// console.log(item)
 					var viewers = item.viewers;
 					var gameName = item.name;
 					let newURL = item.box_art_url
@@ -50,10 +47,8 @@ class Categories extends React.Component {
 							<img className="category_logo" src={item.box_art_url} />
 							<div className="game-description">
 								<h6 className="game-title">{item.name}</h6>
-								{/* <p className="game-viewers">{gameViewers} viewers</p> */}
 							</div>
 						</Link>
-						// </a>
 					);
 				})}
 

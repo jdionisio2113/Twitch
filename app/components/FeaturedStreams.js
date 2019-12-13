@@ -42,8 +42,4 @@ class FeaturedStreams extends React.Component {
 	}
 }
 
-FeaturedStreams.propTypes = {
-	featured: PropTypes.array.isRequired
-};
-
 export default FeaturedStreams;

@@ -15,13 +15,8 @@ class ChannelPage extends React.Component {
 	updateTwitchStream() {
 		var { match, location } = this.props;
 		var { suggestedResult } = location.state;
-
-		console.log(suggestedResult)
-
 		var channelName = suggestedResult.user_name;
 		var banner = suggestedResult.profile_banner;
-
-		// remove previous twitch-stream script
 
 		let embed;
 		const script = document.createElement("script");

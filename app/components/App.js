@@ -18,7 +18,7 @@ class Home extends React.Component {
 		super(props);
 
 		this.state = {
-			featured: [],
+			featuredStreams: [],
 			games: [],
 			channels: [],
 			loader: false,
@@ -33,16 +33,16 @@ class Home extends React.Component {
 	/**
 	 * Fetches arrays of featured streamers, games, and channels.
 	 * Stores the arrays inside of state.
-	 * @param String featured 
-	 * @param String game 
-	 * @param String channels 
+	 * @param Array featured 
+	 * @param Array game 
+	 * @param Array channels 
 	 */
-	fetchTwitchData(featured, game, channels) {
+	fetchTwitchData(featured, games, channels) {
 		this.setState({
 			loader: true
 		});
 
-		all([api.get(featured), api.get(game), api.get(channels)]).then(
+		all([api.get(featured), api.get(games), api.get(channels)]).then(
 			res => {
 				var featured = res[0].data.data;
 				var games = res[1].data.data;
@@ -96,7 +96,7 @@ class Home extends React.Component {
 
 		return (
 			<div className="main-container">
-				<FeaturedStreams featured={this.state.featured} currentStream={this.state.currentStream} updateCurrentStream={this.updateCurrentStream} />
+				<FeaturedStreams currentStream={this.state.currentStream} updateCurrentStream={this.updateCurrentStream} />
 				<TopGames games={this.state.games} channels={this.state.channels} />
 				<LiveChannels channels={this.state.channels} />
 			</div>
