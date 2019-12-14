@@ -69,21 +69,6 @@ ul {
   margin: 3em auto;
 }
 
-.carousel-indicators {
-  /* margin-top: 100px 0; */
-  opacity: 0;
-  margin: 0;
-}
-
-.carousel-control-next-icon {
-  /* background: black; */
-  /* margin-left: 1.3em; */
-}
-
-/* .carousel-control-prev-icon {
-  margin-right: 1.3em;
-} */
-
 .featured-stream-description {
   display: flex;
   margin: 0 27px;
@@ -91,15 +76,6 @@ ul {
   background: #52527a;
   color: white;
 }
-
-/* .stream-link:visited {
-  color: white;
-  text-decoration: none;
-} */
-
-/* .featured-stream-container {
-  background: #52527a;
-} */
 
 .featured-stream-channel-caption {
   color: lightgrey;
@@ -188,23 +164,16 @@ ul {
   left: 50%;
 }
 
-/* .form {
-  margin: 5em;
-} */
-
 .nav {
-  /* position: relative; */
   display: flex;
   justify-content: space-between;
   padding: 1em;
-  /* width: 0; */
   text-align: right;
   position: fixed;
   z-index: 1;
   top: 0;
   width: 100%;
   background: #6441a4;
-  /* right: 10%; */
 }
 
 .twitch-logo {
@@ -214,13 +183,9 @@ ul {
 
 .twitch-logo2 {
   display: none;
-  /* width: 5.5em;
-  height: 2.5em; */
 }
 
 .reset-button {
-  /* position: absolute; */
-  /* right: 0.5%; */
   background: none;
   border: none;
 }
@@ -230,8 +195,6 @@ ul {
 }
 
 .fas {
-  /* position: absolute;
-  right: 10%; */
   color: white;
 }
 
@@ -255,7 +218,6 @@ ul {
 
 .top-games,
 .live-channels {
-  /* margin-left: 10px; */
   color: #e6e6e6;
 }
 
@@ -273,7 +235,6 @@ ul {
 }
 
 .logo {
-  /* -webkit-box-shadow: 0px 5px 19px -2px #000000; */
   box-shadow: 0px 5px 19px 0px #000000;
   width: 100%;
 }
@@ -368,17 +329,8 @@ ul {
 
 .suggested-stream-logo {
   border-radius: 10px;
-  /* height: 80px; */
   text-transform: lowercase
 }
-
-/* .suggested-result-logo {
-  width: 60px;
-  height: 60px;
-  /* margin: 1em 0 1em 1em; */
-  /* border-radius: 50%; */
-/* } */ 
-
 .suggested-item-container {
   display: flex;
   align-items: center;
@@ -822,6 +774,10 @@ ul {
 
   .game_container {
     text-align: center
+  }
+
+  .featured-container iframe {
+    height: 500px;
   }
 
 }

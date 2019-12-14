@@ -18,11 +18,12 @@ class Home extends React.Component {
 		super(props);
 
 		this.state = {
-			featuredStreams: [],
+			featured: [],
 			games: [],
 			channels: [],
 			loader: false,
-			currentStream: {}
+			currentStream: {},
+			index: ''
 		};
 
 		this.fetchTwitchData = this.fetchTwitchData.bind(this);
@@ -96,7 +97,7 @@ class Home extends React.Component {
 
 		return (
 			<div className="main-container">
-				<FeaturedStreams currentStream={this.state.currentStream} updateCurrentStream={this.updateCurrentStream} />
+				<FeaturedStreams currentStream={this.state.currentStream} featured={this.state.featured} updateCurrentStream={this.updateCurrentStream} />
 				<TopGames games={this.state.games} channels={this.state.channels} />
 				<LiveChannels channels={this.state.channels} />
 			</div>
