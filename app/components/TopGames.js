@@ -7,7 +7,7 @@ function TopGames(props) {
 	var { games, channels } = props;
 
 	const settings = {
-		dots: true,
+		dots: false,
 		infinite: true,
 		speed: 300,
 		slidesToShow: 6,

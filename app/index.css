@@ -32,10 +32,6 @@ ul {
   transition: all .5s linear;
 }
 
-.slick-slider .slick-dots {
-  display: none
-}
-
 .featured-container {
   display: flex;
   justify-content: center;
@@ -219,6 +215,7 @@ ul {
 .top-games,
 .live-channels {
   color: #e6e6e6;
+  font-size: 1.5em
 }
 
 .top-games-container {
@@ -241,10 +238,6 @@ ul {
 
 .slick-arrow {
   opacity: 0.4;
-}
-
-.slick-dots {
-  opacity: none;
 }
 
 .live-channel-image {
@@ -276,6 +269,11 @@ ul {
 .game-category {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.game-category, .live-channels {
+  margin-bottom: .5em;
 }
 
 .see-All_link {
@@ -627,17 +625,13 @@ ul {
     display: inline-block;
   }
 
-  .top-games {
-    font-size: 2em;
+  .top-games, .live-channels {
+    font-size: 2.5em;
   }
 
   .logo {
     width: 80%;
     height: 80%;
-  }
-
-  .live-channels {
-    font-size: 2em;
   }
 
   .featured-stream-description {
@@ -666,7 +660,7 @@ ul {
   }
 
   .game-category {
-    margin: 1em 3em;
+    margin: 1em 2em;
   }
 
   .menu-button {
@@ -679,8 +673,7 @@ ul {
   }
 
   .live-channels {
-    font-size: 2em;
-    margin: 1em 0;
+    margin: 1em 1em;
   }
 
   .live-channel-box {
@@ -777,7 +770,7 @@ ul {
   }
 
   .featured-container iframe {
-    height: 500px;
+    height: 350px;
   }
 
 }
