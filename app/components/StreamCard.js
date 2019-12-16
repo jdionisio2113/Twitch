@@ -13,7 +13,7 @@ function StreamCard(props) {
 
     return <div className="live-channel-box">
         <img
-            className="live-channel-banner"
+            className="live-channel-banner channel-preview"
             src={item.thumbnail_url}
         />
         <div className="viewer-container">

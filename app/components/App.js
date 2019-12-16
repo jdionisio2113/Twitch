@@ -11,7 +11,8 @@ var ReactRouter = require("react-router-dom");
 var Switch = ReactRouter.Switch;
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import api from "../config/api";
-import GamePage from './GamePage'
+import GamePage from './GamePage';
+import PopularChannelsPage from './PopularChannelsPage';
 
 class Home extends React.Component {
 	constructor(props) {
@@ -116,6 +117,7 @@ const App = () => {
 						<Route exact path="/categories" component={Categories} />
 						<Route exact path="/channelpage" component={ChannelPage} />
 						<Route exact path="/gamepage" component={GamePage} />
+						<Route exact path="/popular-channels" component={PopularChannelsPage} />
 					</Switch>
 				</div>
 			</Router>

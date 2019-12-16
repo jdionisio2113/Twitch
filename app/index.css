@@ -4,6 +4,7 @@
 
 body {
   background: #161616;
+  /* background:linear-gradient(to right bottom , #161616 60%,  #29144a 30%); */
   letter-spacing: 1px;
   overflow-x: hidden;
   width: 100%;
@@ -131,10 +132,10 @@ ul {
 
 .channel-link {
   position: absolute;
-  top: 0%;
+  top: 5%;
   background: rgba(0, 0, 0, 0.4);
   padding: 8px;
-  width: 100%;
+  width: 92.4%;
   display: flex;
 }
 
@@ -490,6 +491,18 @@ ul {
   margin:0 1em 3em 1em;
 }
 
+.channels_container {
+  margin-top: 100px
+}
+
+.channel-preview {
+  padding: 0
+}
+
+.live-channel-box {
+  padding: 1em;
+}
+
 @media screen and (min-width: 600px) {
   .menu {
     display: none;
@@ -672,24 +685,6 @@ ul {
     margin: 0 auto;
   }
 
-  .live-channels {
-    margin: 1em 1em;
-  }
-
-  .live-channel-box {
-    text-align: center;
-  }
-
-  .live-channel-banner {
-    width: 100%;
-    padding: 0 1em 1em 1em;
-  }
-
-  .channel-link {
-    width: 94%;
-    left: 3%
-  }
-
   .channelViewers {
     top: 76%;
     left: 7%;
@@ -771,6 +766,15 @@ ul {
 
   .featured-container iframe {
     height: 350px;
+  }
+
+  .channel-link {
+    width: 93.7%;
+  }
+
+  .channels_container {
+    display: flex;
+    flex-wrap: wrap;
   }
 
 }

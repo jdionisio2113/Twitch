@@ -27,16 +27,20 @@ function LiveChannels(props) {
 	return (
 		<div className="top-live-channels">
 			<div className="live-channels-container">
-				<h6 className="live-channels">Popular Live Channels</h6>
+				<div className="game-category">
+					<h6 className="live-channels">Popular Live Channels</h6>
+					<Link className="see-All_link"
+						to={{
+							pathname: "/popular-channels",
+							state: {
+								channels: channels
+							}
+						}}>
+						See All
+					</Link>
+				</div>
 				<Slider {...settings}>
 					{channels.map(function (item) {
-
-						var viewers = item.viewer_count;
-						var streamViewers = viewers.toLocaleString();
-						let newURL = item.thumbnail_url
-							.replace("{width}", "650")
-							.replace("{height}", "400");
-						item.thumbnail_url = newURL;
 						return (
 							<div className="live-channel-image" key={item.id}>
 								<Link

@@ -18,7 +18,7 @@ class Categories extends React.Component {
 	}
 
 	browse() {
-		var { match, location } = this.props;
+		var { location } = this.props;
 		var { games, channels } = location.state;
 		// this.setState({ loader: false });
 		return (

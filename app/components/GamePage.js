@@ -11,7 +11,7 @@ class GamePage extends React.Component {
     }
 
     categoryStreams() {
-        var { match, location } = this.props;
+        var { location } = this.props;
         var { suggestedGame, suggestedChannel } = location.state;
 
         var streamCollection = []
