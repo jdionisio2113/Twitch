@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "./App";
-import axios from "axios";
+import ScrollToTop from './ScrollToTop';
 import apiKey from "../config/apiKey";
 import Loader from "./Loader";
 import api from '../config/api';
@@ -51,7 +51,7 @@ class Categories extends React.Component {
 						</Link>
 					);
 				})}
-
+				<ScrollToTop />
 			</div>
 		);
 	}

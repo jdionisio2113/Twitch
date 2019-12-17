@@ -503,6 +503,22 @@ ul {
   padding: 1em;
 }
 
+.scroll-up {
+  scroll-behavior: smooth;
+  position: fixed;
+  top: 90%;
+  right: 0;
+  background-color: grey;
+  border: none;
+  padding: 10px 5px;
+  text-align: center;
+  font-size: 10px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  border-radius: 10%;
+}
+
 @media screen and (min-width: 600px) {
   .menu {
     display: none;
@@ -775,6 +791,16 @@ ul {
   .channels_container {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  .scroll-up {
+    position: fixed;
+    top: 85%;
+    right: 3%;
+  }
+
+  .scroll-up:hover {
+    opacity: 1;
   }
 
 }

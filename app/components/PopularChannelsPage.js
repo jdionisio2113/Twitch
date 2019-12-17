@@ -1,12 +1,15 @@
 import React from 'react';
 import StreamCard from './StreamCard';
 import { Link } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop';
 
 function PopularChannelsPage(props) {
     var { location } = props;
     var { channels } = location.state;
 
-    console.log(channels);
+
+    window.scrollTo(0, 0)
+
 
     return (<div className="channels_container">
         {channels.map(function (item) {
@@ -25,8 +28,8 @@ function PopularChannelsPage(props) {
                     </Link>
                 </div>
             );
-
         })}
+        <ScrollToTop />
     </div>
     )
 }
