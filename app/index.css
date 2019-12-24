@@ -164,7 +164,7 @@ ul {
 .nav {
   display: flex;
   justify-content: space-between;
-  padding: 1em;
+  /* padding: 1em; */
   text-align: right;
   position: fixed;
   z-index: 1;
@@ -361,15 +361,14 @@ ul {
 }
 
 .menu {
-  background: black;
-  /* padding: 1em 0; */
-  margin-top: 7em;
-  text-align: left;
+  background: blue;
+  margin: 0;
+  text-align: center;  
   z-index: 2;
-  /* position: fixed; */
-  width: 100%;
-  /* margin-top: 4.3em; */
-  transition: 0.5s;
+  width: 100vw;
+  transition: 2s;
+  position: fixed;
+  height: 100%;
 }
 
 .menu a {
@@ -390,6 +389,7 @@ ul {
 .menu-button {
   background: none;
   border: none;
+  z-index: 1000;
 }
 
 .nav-buttons {
@@ -716,6 +716,7 @@ ul {
 
   .home_link {
     margin-left: 5%;
+    padding: 1em;
   }
 
   .play {
@@ -801,6 +802,44 @@ ul {
 
   .scroll-up:hover {
     opacity: 1;
+  }
+
+  .home-border, .categories-border, .popular-channels-border {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 3px;
+  }
+  @-webkit-keyframes border {
+       from {width: 0px;}
+       to {width:100%}
+  }
+  
+  .home-border, .categories-border, .popular-channels-border:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 2px;
+    width: 0px;
+    background: #fff;  
+    -webkit-animation-name: border; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+    animation-name: border;
+    animation-duration: 1s;
+    animation-delay: .5s;
+    animation-fill-mode: forwards;
+  }
+
+  .nav-list {
+    display:flex;
+    position: absolute;
+    right: 23%;
+    top: 35%
+  }
+  
+  .nav-list li {
+    margin: 0 1em;
+    color: #fff;
   }
 
 }

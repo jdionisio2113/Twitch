@@ -8,6 +8,7 @@ import ChannelPage from "./ChannelPage";
 import liveCircle from "../img/red-circle.png";
 import api from '../config/api';
 import truncateString from '../utils/truncateString'
+import { all, get } from "axios";
 
 class Form extends React.Component {
 	constructor(props) {
@@ -16,7 +17,9 @@ class Form extends React.Component {
 		this.state = {
 			input: "",
 			suggestedChannels: [],
+			channels: [],
 			liveChannels: [],
+			games: [],
 			open: false,
 			userName: []
 		};
@@ -27,16 +30,153 @@ class Form extends React.Component {
 		);
 		this.handleReset = this.handleReset.bind(this);
 		this.openMenu = this.openMenu.bind(this);
+		this.fetchGamesAndChannels = this.fetchGamesAndChannels.bind(this);
+		this.navMarkUp = this.navMarkUp.bind(this);
+		this.mobileNavMarkUp = this.mobileNavMarkUp.bind(this);
+	}
+
+	componentDidMount() {
+		this.fetchGamesAndChannels("https://api.twitch.tv/helix/games/top", "https://api.twitch.tv/helix/streams?first=100")
+	}
+
+	mobileNavMarkUp() {
+		return <div className="menu">
+			<div className="nav-options">
+				<ul>
+					<Link
+						to={{
+							pathname: "/"
+						}}>
+						<li className="home-link">Home</li>
+						<div className="home-border"></div>
+					</Link>
+					<Link
+						to={{
+							pathname: "/categories",
+							state: {
+								games: this.state.games,
+								channels: this.state.channels
+							}
+						}}>
+						<li className="categories-link">Categories</li>
+						<div className="categories-border"></div>
+					</Link>
+					<Link
+						to={{
+							pathname: "/popular-channels",
+							state: {
+								channels: this.state.channels
+							}
+						}}>
+						<li className="popular-channels-link">Channels</li>
+						<div className="popular-channels-border"></div>
+					</Link>
+				</ul>
+			</div>
+
+			<div className="input-container">
+				<input
+					type="text"
+					name="streamer"
+					placeholder="Search"
+					autoComplete="off"
+					className="input"
+					value={this.state.input}
+					onChange={this.handleChange}
+				// reset={this.state.reset}
+				/>
+				<i className="far fa-times-circle fa-2x" />
+			</div>
+
+		</div>
+
+	}
+
+	navMarkUp() {
+		return <>
+			<div className="menu-container">
+				<ul className="nav-list">
+					<Link
+						to={{
+							pathname: "/"
+						}}>
+						<li className="home-link">Home</li>
+						<div className="home-border"></div>
+					</Link>
+					<Link
+						to={{
+							pathname: "/categories",
+							state: {
+								games: this.state.games,
+								channels: this.state.channels
+							}
+						}}>
+						<li className="categories-link">Categories</li>
+						<div className="categories-border"></div>
+					</Link>
+					<Link
+						to={{
+							pathname: "/popular-channels",
+							state: {
+								channels: this.state.channels
+							}
+						}}>
+						<li className="popular-channels-link">Channels</li>
+						<div className="popular-channels-border"></div>
+					</Link>
+				</ul>
+				{/* <button className="menu-button" onClick={() => this.openMenu()}>
+					<i className="fas fa-bars fa-2x" />
+				</button> */}
+			</div>
+			<div className="search-box input-container">
+				<input
+					type="text"
+					name="streamer"
+					placeholder="Search"
+					autoComplete="off"
+					className="input"
+					value={this.state.input}
+					onChange={this.handleChange}
+				/>
+				<button onClick={this.handleReset} className="reset-button">
+					<i className="far fa-times-circle fa-2x" />
+				</button>
+			</div>
+			<div className="channel_menu">
+				{this.displaySuggestedLiveResults()}
+			</div>
+		</>
+	}
+
+	fetchGamesAndChannels(games, channels) {
+		all([api.get(games), api.get(channels)]).then(
+			res => {
+				var games = res[0].data.data;
+				var channels = res[1].data.data;
+
+				this.setState({
+					games,
+					channels,
+					loader: false
+				});
+			}
+		)
 	}
 
 	openMenu() {
-		this.setState({ open: !this.state.open });
+		this.setState({
+			open: !this.state.open, input: "",
+			suggestedChannels: [],
+			channels: [],
+			userName: []
+		});
 	}
 
 	handleChange(e) {
 		var value = e.target.value;
 
-		this.setState({ input: value, suggestedChannels: [], liveChannels: [] });
+		this.setState({ input: value, suggestedChannels: [], channels: [] });
 
 		// prevent ajax request from firing if value is empty
 
@@ -74,7 +214,7 @@ class Form extends React.Component {
 		this.setState({
 			input: "",
 			suggestedChannels: [],
-			liveChannels: [],
+			channels: [],
 			userName: []
 		});
 	}
@@ -127,6 +267,23 @@ class Form extends React.Component {
 	}
 
 	render() {
+		var currentLocation = location.pathname;
+
+		if (document.querySelector(".home-link")) {
+
+			{ currentLocation === "/" ? document.querySelector(".home-border").style.display = "block" : document.querySelector(".home-border").style.display = "none" }
+		}
+
+		if (document.querySelector(".categories-link")) {
+
+			{ currentLocation === "/categories" ? document.querySelector(".categories-border").style.display = "block" : document.querySelector(".categories-border").style.display = "none" }
+		}
+
+		if (document.querySelector(".popular-channels-link")) {
+
+			{ currentLocation === "/popular-channels" ? document.querySelector(".popular-channels-border").style.display = "block" : document.querySelector(".popular-channels-border").style.display = "none" }
+		}
+
 		return (
 			<div>
 				<div className="nav">
@@ -134,7 +291,38 @@ class Form extends React.Component {
 						<img className="twitch-logo" src={img} />
 						<img className="twitch-logo2" src={img2} />
 					</a>
-					<div className="menu-container">
+					{this.navMarkUp()}
+					{/* <div className="menu-container">
+						<ul className="nav-list">
+							<Link
+								to={{
+									pathname: "/"
+								}}>
+								<li className="home-link">Home</li>
+								<div className="home-border"></div>
+							</Link>
+							<Link
+								to={{
+									pathname: "/categories",
+									state: {
+										games: this.state.games,
+										channels: this.state.channels
+									}
+								}}>
+								<li className="categories-link">Categories</li>
+								<div className="categories-border"></div>
+							</Link>
+							<Link
+								to={{
+									pathname: "/popular-channels",
+									state: {
+										channels: this.state.channels
+									}
+								}}>
+								<li className="popular-channels-link">Channels</li>
+								<div className="popular-channels-border"></div>
+							</Link>
+						</ul>
 						<button className="menu-button" onClick={() => this.openMenu()}>
 							<i className="fas fa-bars fa-2x" />
 						</button>
@@ -156,36 +344,19 @@ class Form extends React.Component {
 				</div>
 				<div className="channel_menu">
 					{this.displaySuggestedLiveResults()}
+				</div> */}
+					<button className="menu-button" onClick={() => this.openMenu()}>
+						<i className="fas fa-bars fa-2x" />
+					</button>
+
+					{this.state.open ? (
+
+
+						this.mobileNavMarkUp()
+
+
+					) : null}
 				</div>
-
-				{this.state.open ? (
-					<div className="menu">
-						{/* <ul>
-							<li className="menu-link">
-								<a href="/">Home</a>
-							</li>
-							<li className="menu-link">
-								<a href="/categories">Categories</a>
-							</li>
-
-							<li> */}
-						<div className="input-container">
-							<input
-								type="text"
-								name="streamer"
-								placeholder="Search"
-								autoComplete="off"
-								className="input"
-								value={this.state.input}
-								onChange={this.handleChange}
-							// reset={this.state.reset}
-							/>
-							<i className="far fa-times-circle fa-2x" />
-						</div>
-						{/* </li>
-						</ul> */}
-					</div>
-				) : null}
 			</div>
 		);
 	}
