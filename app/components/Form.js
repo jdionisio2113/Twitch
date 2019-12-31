@@ -176,7 +176,7 @@ class Form extends React.Component {
 	handleChange(e) {
 		var value = e.target.value;
 
-		this.setState({ input: value, suggestedChannels: [], channels: [] });
+		this.setState({ input: value, suggestedChannels: [] });
 
 		// prevent ajax request from firing if value is empty
 
