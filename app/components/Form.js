@@ -40,10 +40,34 @@ class Form extends React.Component {
 	}
 
 	mobileNavMarkUp() {
+		let toggleStatus = true;
+
+		let getDropdown = document.querySelector(".menu");
+		let getDropdownLinks = document.querySelectorAll(".link")
+
+		for (const link of getDropdownLinks) {
+			link.addEventListener('click', function () {
+				if (toggleStatus === true) {
+					getDropdown.style.height = "0";
+
+					let arr = getDropdownLinks.length;
+					console.log(arr)
+					for (let i = 0; i < arr; i++) {
+						getDropdownLinks[i].style.opacity = "0"
+					}
+
+					getDropdown.style.visibility = "hidden";
+
+					toggleStatus = false;
+				}
+			})
+		}
+
 		return <div className="menu">
 			<div className="nav-options">
 				<ul>
 					<Link
+						className="link"
 						to={{
 							pathname: "/"
 						}}>
@@ -51,6 +75,7 @@ class Form extends React.Component {
 						<div className="home-border"></div>
 					</Link>
 					<Link
+						className="link"
 						to={{
 							pathname: "/categories",
 							state: {
@@ -62,6 +87,7 @@ class Form extends React.Component {
 						<div className="categories-border"></div>
 					</Link>
 					<Link
+						className="link"
 						to={{
 							pathname: "/popular-channels",
 							state: {
@@ -168,7 +194,6 @@ class Form extends React.Component {
 		this.setState({
 			open: !this.state.open, input: "",
 			suggestedChannels: [],
-			channels: [],
 			userName: []
 		});
 	}

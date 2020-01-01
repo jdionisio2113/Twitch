@@ -367,17 +367,15 @@ ul {
   text-align: center;  
   z-index: 2;
   width: 100vw;
-  transition: 2s;
+  /* transition: 1s; */
   position: fixed;
   height: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
 }
 
-.menu a {
-  text-decoration: none;
+.link {
   font-size: 20px;
   color: white;
-  /* transition: 0.7s; */
 }
 
 .menu li {
