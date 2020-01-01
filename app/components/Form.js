@@ -51,7 +51,7 @@ class Form extends React.Component {
 					getDropdown.style.height = "0";
 
 					let arr = getDropdownLinks.length;
-					console.log(arr)
+
 					for (let i = 0; i < arr; i++) {
 						getDropdownLinks[i].style.opacity = "0"
 					}
@@ -317,59 +317,6 @@ class Form extends React.Component {
 						<img className="twitch-logo2" src={img2} />
 					</a>
 					{this.navMarkUp()}
-					{/* <div className="menu-container">
-						<ul className="nav-list">
-							<Link
-								to={{
-									pathname: "/"
-								}}>
-								<li className="home-link">Home</li>
-								<div className="home-border"></div>
-							</Link>
-							<Link
-								to={{
-									pathname: "/categories",
-									state: {
-										games: this.state.games,
-										channels: this.state.channels
-									}
-								}}>
-								<li className="categories-link">Categories</li>
-								<div className="categories-border"></div>
-							</Link>
-							<Link
-								to={{
-									pathname: "/popular-channels",
-									state: {
-										channels: this.state.channels
-									}
-								}}>
-								<li className="popular-channels-link">Channels</li>
-								<div className="popular-channels-border"></div>
-							</Link>
-						</ul>
-						<button className="menu-button" onClick={() => this.openMenu()}>
-							<i className="fas fa-bars fa-2x" />
-						</button>
-					</div>
-					<div className="search-box input-container">
-						<input
-							type="text"
-							name="streamer"
-							placeholder="Search"
-							autoComplete="off"
-							className="input"
-							value={this.state.input}
-							onChange={this.handleChange}
-						/>
-						<button onClick={this.handleReset} className="reset-button">
-							<i className="far fa-times-circle fa-2x" />
-						</button>
-					</div>
-				</div>
-				<div className="channel_menu">
-					{this.displaySuggestedLiveResults()}
-				</div> */}
 					<button className="menu-button" onClick={() => this.openMenu()}>
 						<i className="fas fa-bars fa-2x" />
 					</button>
