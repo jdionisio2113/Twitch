@@ -109,7 +109,7 @@ class Form extends React.Component {
 					className="input"
 					value={this.state.input}
 					onChange={this.handleChange}
-				// reset={this.state.reset}
+				// reset={this.state.reset}  
 				/>
 				<i className="far fa-times-circle fa-2x" />
 			</div>
@@ -151,9 +151,6 @@ class Form extends React.Component {
 						<div className="popular-channels-border"></div>
 					</Link>
 				</ul>
-				{/* <button className="menu-button" onClick={() => this.openMenu()}>
-					<i className="fas fa-bars fa-2x" />
-				</button> */}
 			</div>
 			<div className="search-box input-container">
 				<input

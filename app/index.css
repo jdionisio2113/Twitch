@@ -380,6 +380,8 @@ ul {
 
 .menu li {
   padding: 10px 0;
+  font-size: 2em;
+  margin: 1em 0;
 }
 
 .menu-link {
@@ -612,6 +614,7 @@ ul {
   .input {
     width: 100%;
     padding: 0 0 0 5px;
+    margin-top: .7em;
   }
 
   .reset-button {
@@ -838,7 +841,7 @@ ul {
   .nav-list {
     display:flex;
     position: absolute;
-    right: 23%;
+    right: 20%;
     top: 35%
   }
   
