@@ -6,21 +6,20 @@ import { Link } from "react-router-dom";
 import App from "./App";
 import ChannelPage from "./ChannelPage";
 import liveCircle from "../img/red-circle.png";
-import api from '../config/api';
-import truncateString from '../utils/truncateString'
+import api from "../config/api";
+import truncateString from "../utils/truncateString";
 import { all, get } from "axios";
 
-class Form extends React.Component {
+class Navigation extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			input: "",
-			suggestedChannels: [],
 			channels: [],
 			liveChannels: [],
 			games: [],
-			open: false,
+			isNavOpen: false,
 			userName: []
 		};
 
@@ -29,7 +28,7 @@ class Form extends React.Component {
 			this
 		);
 		this.handleReset = this.handleReset.bind(this);
-		this.openMenu = this.openMenu.bind(this);
+		this.toggleNav = this.toggleNav.bind(this);
 		this.fetchGamesAndChannels = this.fetchGamesAndChannels.bind(this);
 		this.navMarkUp = this.navMarkUp.bind(this);
 		this.mobileNavMarkUp = this.mobileNavMarkUp.bind(this);
@@ -40,34 +39,11 @@ class Form extends React.Component {
 	}
 
 	mobileNavMarkUp() {
-		let toggleStatus = true;
-
-		let getDropdown = document.querySelector(".menu");
-		let getDropdownLinks = document.querySelectorAll(".link")
-
-		for (const link of getDropdownLinks) {
-			link.addEventListener('click', function () {
-				if (toggleStatus === true) {
-					getDropdown.style.height = "0";
-
-					let arr = getDropdownLinks.length;
-
-					for (let i = 0; i < arr; i++) {
-						getDropdownLinks[i].style.opacity = "0"
-					}
-
-					getDropdown.style.visibility = "hidden";
-
-					toggleStatus = false;
-				}
-			})
-		}
 
 		return <div className="menu">
 			<div className="nav-options">
-				<ul>
+				<ul onClick={() => this.toggleNav()}>
 					<Link
-						className="link"
 						to={{
 							pathname: "/"
 						}}>
@@ -75,7 +51,6 @@ class Form extends React.Component {
 						<div className="home-border"></div>
 					</Link>
 					<Link
-						className="link"
 						to={{
 							pathname: "/categories",
 							state: {
@@ -87,7 +62,6 @@ class Form extends React.Component {
 						<div className="categories-border"></div>
 					</Link>
 					<Link
-						className="link"
 						to={{
 							pathname: "/popular-channels",
 							state: {
@@ -109,9 +83,8 @@ class Form extends React.Component {
 					className="input"
 					value={this.state.input}
 					onChange={this.handleChange}
-				// reset={this.state.reset}  
 				/>
-				<i className="far fa-times-circle fa-2x" />
+				<i className="far fa-times-circle fa-2x" onClick={() => this.handleReset()} />
 			</div>
 
 		</div>
@@ -187,20 +160,19 @@ class Form extends React.Component {
 		)
 	}
 
-	openMenu() {
+	toggleNav() {
 		this.setState({
-			open: !this.state.open, input: "",
-			suggestedChannels: [],
+			isNavOpen: !this.state.isNavOpen, input: "",
 			userName: []
 		});
+
+		console.log(this.state.isNavOpen)
 	}
 
 	handleChange(e) {
 		var value = e.target.value;
 
-		this.setState({ input: value, suggestedChannels: [] });
-
-		// prevent ajax request from firing if value is empty
+		this.setState({ input: value });
 
 		clearTimeout(this.myTimeout);
 
@@ -235,8 +207,6 @@ class Form extends React.Component {
 	handleReset() {
 		this.setState({
 			input: "",
-			suggestedChannels: [],
-			channels: [],
 			userName: []
 		});
 	}
@@ -264,6 +234,7 @@ class Form extends React.Component {
 									}
 								}}
 								key={item.id}
+								onClick={() => this.toggleNav()}
 							>
 								<div className="suggested-item-container">
 									<img
@@ -273,7 +244,6 @@ class Form extends React.Component {
 									<li className="suggested-result">
 										<p>{item.user_name}</p>
 										<p className="stream-status">{truncateString(item.title, 40)}</p>
-										{/* <p className="stream-game">{item.game}</p> */}
 										<div className="stream-menu-description">
 											<img className="live_circle" src={liveCircle} />
 											<p className="stream-status">{streamViewers}</p>
@@ -314,15 +284,13 @@ class Form extends React.Component {
 						<img className="twitch-logo2" src={img2} />
 					</a>
 					{this.navMarkUp()}
-					<button className="menu-button" onClick={() => this.openMenu()}>
+					<button className="menu-button" onClick={() => this.toggleNav()}>
 						<i className="fas fa-bars fa-2x" />
 					</button>
 
-					{this.state.open ? (
-
+					{this.state.isNavOpen ? (
 
 						this.mobileNavMarkUp()
-
 
 					) : null}
 				</div>
@@ -331,4 +299,4 @@ class Form extends React.Component {
 	}
 }
 
-export default Form;
+export default Navigation;

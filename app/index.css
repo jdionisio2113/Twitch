@@ -164,7 +164,6 @@ ul {
 .nav {
   display: flex;
   justify-content: space-between;
-  /* padding: 1em; */
   text-align: right;
   position: fixed;
   z-index: 1;
@@ -373,11 +372,6 @@ ul {
   background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
 }
 
-.link {
-  font-size: 20px;
-  color: white;
-}
-
 .menu li {
   padding: 10px 0;
   font-size: 2em;
@@ -428,7 +422,7 @@ ul {
   z-index: 3;
   width: 100%;
   /* margin-top: 4em; */
-  top: 26.3%;
+  top: 45%;
   max-height: 550px;
   overflow: auto;
 }
@@ -471,8 +465,8 @@ ul {
 }
 
 .game-page-container h1 {
-  margin: 2em 0 .3em 0;
-  font-size: 4em;
+  margin: 2em .5em .3em .5em;
+  font-size: 3em;
   text-align: center;
   color: lightgrey
 }

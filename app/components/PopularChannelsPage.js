@@ -1,7 +1,7 @@
-import React from 'react';
-import StreamCard from './StreamCard';
-import { Link } from 'react-router-dom';
-import ScrollToTop from './ScrollToTop';
+import React from "react";
+import StreamCard from "./StreamCard";
+import { Link } from "react-router-dom";
+import ScrollToTop from "./ScrollToTop";
 
 function PopularChannelsPage(props) {
     var { location } = props;
@@ -29,7 +29,6 @@ function PopularChannelsPage(props) {
                 </div>
             );
         })}
-        <ScrollToTop />
     </div>
     )
 }

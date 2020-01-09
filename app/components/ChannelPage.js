@@ -1,5 +1,4 @@
 import React from "react";
-import Form from "./Form";
 
 const EMBED_URL = "https://embed.twitch.tv/embed/v1.js";
 
