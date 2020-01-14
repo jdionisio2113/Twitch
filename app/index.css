@@ -273,10 +273,6 @@ ul {
   align-items: center;
 }
 
-.game-category, .live-channels {
-  margin-bottom: .5em;
-}
-
 .see-All_link {
   color: lightgrey;
 }
@@ -806,8 +802,12 @@ ul {
     opacity: 1;
   }
 
-  .home-border, .categories-border, .popular-channels-border {
-    display: inline-block;
+  .nav-link {
+    padding: 0;
+  }
+
+  .nav-link-border {
+    display: none;
     position: relative;
     padding-bottom: 3px;
   }
@@ -816,7 +816,7 @@ ul {
        to {width:100%}
   }
   
-  .home-border, .categories-border, .popular-channels-border:after {
+  .nav-link-border:after {
     content: '';
     display: block;
     margin: auto;

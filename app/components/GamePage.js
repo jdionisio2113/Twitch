@@ -17,8 +17,6 @@ class GamePage extends React.Component {
         var streamCollection = []
 
         suggestedChannel.map(item => {
-            console.log(item)
-
             if (item.game_id === suggestedGame.id) {
                 streamCollection.push(item)
             }

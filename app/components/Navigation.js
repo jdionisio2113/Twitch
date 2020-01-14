@@ -1,14 +1,12 @@
 import React from "react";
-import axios from "axios";
 import img from "../img/twitch-logo.png";
 import img2 from "../img/twitch-logo2.png";
-import { Link } from "react-router-dom";
-import App from "./App";
-import ChannelPage from "./ChannelPage";
+import { Link, withRouter } from "react-router-dom";
 import liveCircle from "../img/red-circle.png";
 import api from "../config/api";
 import truncateString from "../utils/truncateString";
 import { all, get } from "axios";
+import Loader from "./Loader";
 
 class Navigation extends React.Component {
 	constructor(props) {
@@ -16,11 +14,10 @@ class Navigation extends React.Component {
 
 		this.state = {
 			input: "",
-			channels: [],
 			liveChannels: [],
-			games: [],
 			isNavOpen: false,
-			userName: []
+			userName: [],
+			loader: false
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -29,13 +26,37 @@ class Navigation extends React.Component {
 		);
 		this.handleReset = this.handleReset.bind(this);
 		this.toggleNav = this.toggleNav.bind(this);
-		this.fetchGamesAndChannels = this.fetchGamesAndChannels.bind(this);
 		this.navMarkUp = this.navMarkUp.bind(this);
 		this.mobileNavMarkUp = this.mobileNavMarkUp.bind(this);
 	}
 
 	componentDidMount() {
-		this.fetchGamesAndChannels("https://api.twitch.tv/helix/games/top", "https://api.twitch.tv/helix/streams?first=100")
+		this.underlineNavLink();
+		this.props.history.listen(() => this.underlineNavLink());
+
+	}
+
+	underlineNavLink() {
+
+		const navLinkBorders = [...document.getElementsByClassName('nav-link-border')];
+
+		// reset display of border
+		navLinkBorders.forEach(function (el) {
+			el.style.display = 'none';
+		});
+
+		// check the route we're currently visiting
+		var currentPath = location.pathname;
+
+		// select an element by it href attribute
+		var currentLink = document.querySelectorAll(`a[href='${currentPath}'].nav-link`)[0];
+		var nextSiblingElement = currentLink.nextSibling;
+
+		if (nextSiblingElement && nextSiblingElement.classList.contains('nav-link-border')) {
+			nextSiblingElement.style.display = 'block';
+		}
+
+
 	}
 
 	mobileNavMarkUp() {
@@ -43,34 +64,46 @@ class Navigation extends React.Component {
 		return <div className="menu">
 			<div className="nav-options">
 				<ul onClick={() => this.toggleNav()}>
-					<Link
-						to={{
-							pathname: "/"
-						}}>
-						<li className="home-link">Home</li>
-						<div className="home-border"></div>
-					</Link>
-					<Link
-						to={{
-							pathname: "/categories",
-							state: {
-								games: this.state.games,
-								channels: this.state.channels
-							}
-						}}>
-						<li className="categories-link">Categories</li>
-						<div className="categories-border"></div>
-					</Link>
-					<Link
-						to={{
-							pathname: "/popular-channels",
-							state: {
-								channels: this.state.channels
-							}
-						}}>
-						<li className="popular-channels-link">Channels</li>
-						<div className="popular-channels-border"></div>
-					</Link>
+					<li className="home-link">
+						<Link
+							className="nav-link"
+							to={{
+								pathname: "/"
+							}}>
+							Home
+							<div className="nav-link-border"></div>
+						</Link>
+					</li>
+					<li className="categories-link">
+						<Link
+							className="nav-link"
+							to={{
+								pathname: "/categories",
+								state: {
+									games: this.props.games,
+									channels: this.props.channels
+								}
+							}}>
+							Categories
+							<div className="nav-link-border"></div>
+						</Link>
+					</li>
+
+					<li className="popular-channels-link">
+						<Link
+							className="nav-link"
+							to={{
+								pathname: "/popular-channels",
+								state: {
+									channels: this.props.channels
+								}
+							}}>
+							Channels
+							<div className="nav-link-border"></div>
+						</Link>
+					</li>
+
+
 				</ul>
 			</div>
 
@@ -95,34 +128,43 @@ class Navigation extends React.Component {
 		return <>
 			<div className="menu-container">
 				<ul className="nav-list">
-					<Link
-						to={{
-							pathname: "/"
-						}}>
-						<li className="home-link">Home</li>
-						<div className="home-border"></div>
-					</Link>
-					<Link
-						to={{
-							pathname: "/categories",
-							state: {
-								games: this.state.games,
-								channels: this.state.channels
-							}
-						}}>
-						<li className="categories-link">Categories</li>
-						<div className="categories-border"></div>
-					</Link>
-					<Link
-						to={{
-							pathname: "/popular-channels",
-							state: {
-								channels: this.state.channels
-							}
-						}}>
-						<li className="popular-channels-link">Channels</li>
-						<div className="popular-channels-border"></div>
-					</Link>
+					<li className="home-link">
+						<Link
+							className="nav-link"
+							to={{
+								pathname: "/"
+							}}>
+							Home
+						</Link>
+						<div className="nav-link-border"></div>
+					</li>
+					<li className="categories-link">
+						<Link
+							className="nav-link"
+							to={{
+								pathname: "/categories",
+								state: {
+									games: this.props.games,
+									channels: this.props.channels
+								}
+							}}>
+							Categories
+						</Link>
+						<div className="nav-link-border"></div>
+					</li>
+					<li className="popular-channels-link">
+						<Link
+							className="nav-link"
+							to={{
+								pathname: "/popular-channels",
+								state: {
+									channels: this.props.channels
+								}
+							}}>
+							Channels
+						</Link>
+						<div className="nav-link-border"></div>
+					</li>
 				</ul>
 			</div>
 			<div className="search-box input-container">
@@ -145,28 +187,11 @@ class Navigation extends React.Component {
 		</>
 	}
 
-	fetchGamesAndChannels(games, channels) {
-		all([api.get(games), api.get(channels)]).then(
-			res => {
-				var games = res[0].data.data;
-				var channels = res[1].data.data;
-
-				this.setState({
-					games,
-					channels,
-					loader: false
-				});
-			}
-		)
-	}
-
 	toggleNav() {
 		this.setState({
 			isNavOpen: !this.state.isNavOpen, input: "",
 			userName: []
 		});
-
-		console.log(this.state.isNavOpen)
 	}
 
 	handleChange(e) {
@@ -259,44 +284,29 @@ class Navigation extends React.Component {
 	}
 
 	render() {
-		var currentLocation = location.pathname;
-
-		if (document.querySelector(".home-link")) {
-
-			{ currentLocation === "/" ? document.querySelector(".home-border").style.display = "block" : document.querySelector(".home-border").style.display = "none" }
-		}
-
-		if (document.querySelector(".categories-link")) {
-
-			{ currentLocation === "/categories" ? document.querySelector(".categories-border").style.display = "block" : document.querySelector(".categories-border").style.display = "none" }
-		}
-
-		if (document.querySelector(".popular-channels-link")) {
-
-			{ currentLocation === "/popular-channels" ? document.querySelector(".popular-channels-border").style.display = "block" : document.querySelector(".popular-channels-border").style.display = "none" }
-		}
-
 		return (
-			<div>
-				<div className="nav">
-					<a className="home_link" href="/">
-						<img className="twitch-logo" src={img} />
-						<img className="twitch-logo2" src={img2} />
-					</a>
-					{this.navMarkUp()}
-					<button className="menu-button" onClick={() => this.toggleNav()}>
-						<i className="fas fa-bars fa-2x" />
-					</button>
+			<div className="nav" >
+				<a className="home_link" href="/">
+					<img className="twitch-logo" src={img} />
+					<img className="twitch-logo2" src={img2} />
+				</a>
+				{/* {this.state.loader === true ? <Loader /> : this.navMarkUp()} */}
+				{this.navMarkUp()}
+				<button className="menu-button" onClick={() => this.toggleNav()}>
+					<i className="fas fa-bars fa-2x" />
+				</button>
 
-					{this.state.isNavOpen ? (
+				{
+					this.state.isNavOpen ? (
 
 						this.mobileNavMarkUp()
 
-					) : null}
-				</div>
-			</div>
+					) : null
+				}
+			</div >
+
 		);
 	}
 }
 
-export default Navigation;
+export default withRouter(Navigation);

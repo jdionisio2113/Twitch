@@ -51,6 +51,7 @@ class Home extends React.Component {
         )
     }
 
+
     componentDidMount() {
         this.fetchTwitchData("https://api.twitch.tv/helix/streams?first=5", "https://api.twitch.tv/helix/games/top", "https://api.twitch.tv/helix/streams?first=100")
     }

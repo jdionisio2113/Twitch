@@ -1,7 +1,6 @@
 import React from "react";
 import Home from "./App";
 import ScrollToTop from './ScrollToTop';
-import apiKey from "../config/apiKey";
 import Loader from "./Loader";
 import api from '../config/api';
 import { Link } from "react-router-dom";
@@ -11,16 +10,22 @@ class Categories extends React.Component {
 		super(props);
 
 		this.state = {
-			loader: false
+			loader: true
 		};
 
 		this.browse = this.browse.bind(this);
 	}
 
+	// componentDidMount() {
+	// 	this.setState({ loader: false });
+	// }
+
 	browse() {
 		var { location } = this.props;
 		var { games, channels } = location.state;
+		// console.log(games, channels)
 		// this.setState({ loader: false });
+
 		return (
 			<div className="category-container">
 				{games.map(function (item) {
@@ -56,22 +61,22 @@ class Categories extends React.Component {
 		);
 	}
 
-	componentDidMount() {
-		this.setState({ loader: true });
-	}
-
 
 	render() {
-		// var loader = this.state.loader;
-		// console.log(this.state.channels)
+		// var { loader } = this.state;
+
 		// if (loader === true) {
 		// 	return <Loader />;
 		// }
+		// else {
+
 		return (
 			<>
 				{this.browse()}
 			</>
 		)
+		// }
+
 	}
 }
 
