@@ -31,9 +31,15 @@ class Navigation extends React.Component {
 	}
 
 	componentDidMount() {
+		// this.mounted = true;
 		this.underlineNavLink();
+		// if (this.mounted) {
 		this.props.history.listen(() => this.underlineNavLink());
+		// }
+	}
 
+	componentWillUnmount() {
+		// this.mounted = false;
 	}
 
 	underlineNavLink() {
@@ -213,7 +219,7 @@ class Navigation extends React.Component {
 					var user_input = value.toLowerCase();
 
 					if (streamer_name.indexOf(user_input) !== -1) {
-						// console.log(streamer.user_name)
+
 						return streamer.user_name
 					}
 				});
@@ -290,7 +296,6 @@ class Navigation extends React.Component {
 					<img className="twitch-logo" src={img} />
 					<img className="twitch-logo2" src={img2} />
 				</a>
-				{/* {this.state.loader === true ? <Loader /> : this.navMarkUp()} */}
 				{this.navMarkUp()}
 				<button className="menu-button" onClick={() => this.toggleNav()}>
 					<i className="fas fa-bars fa-2x" />

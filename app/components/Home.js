@@ -14,7 +14,7 @@ class Home extends React.Component {
             featured: [],
             games: [],
             channels: [],
-            loader: false,
+            loader: true,
             currentStream: {}
         };
 
@@ -30,9 +30,6 @@ class Home extends React.Component {
 	 * @param Array channels 
 	 */
     fetchTwitchData(featured, games, channels) {
-        this.setState({
-            loader: true
-        });
 
         all([api.get(featured), api.get(games), api.get(channels)]).then(
             res => {
