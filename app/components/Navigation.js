@@ -5,8 +5,6 @@ import { Link, withRouter } from "react-router-dom";
 import liveCircle from "../img/red-circle.png";
 import api from "../config/api";
 import truncateString from "../utils/truncateString";
-import { all, get } from "axios";
-import Loader from "./Loader";
 
 class Navigation extends React.Component {
 	constructor(props) {
@@ -31,15 +29,9 @@ class Navigation extends React.Component {
 	}
 
 	componentDidMount() {
-		// this.mounted = true;
-		this.underlineNavLink();
-		// if (this.mounted) {
-		this.props.history.listen(() => this.underlineNavLink());
-		// }
-	}
 
-	componentWillUnmount() {
-		// this.mounted = false;
+		this.underlineNavLink();
+		this.props.history.listen(() => this.underlineNavLink());
 	}
 
 	underlineNavLink() {
