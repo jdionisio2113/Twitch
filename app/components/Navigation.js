@@ -5,6 +5,7 @@ import { Link, withRouter } from "react-router-dom";
 import liveCircle from "../img/red-circle.png";
 import api from "../config/api";
 import truncateString from "../utils/truncateString";
+import errorMessage from "../utils/errorMessage";
 
 class Navigation extends React.Component {
 	constructor(props) {
@@ -222,7 +223,10 @@ class Navigation extends React.Component {
 				this.setState({
 					userName: streamer_collection
 				})
-			});
+			})
+				.catch(() => {
+					console.log("error")
+				});
 
 		}, 600);
 	}
