@@ -40,19 +40,19 @@ function LiveChannels(props) {
 					</Link>
 				</div>
 				<Slider {...settings}>
-					{channels.map(function (item) {
+					{channels.map(function (suggestedStreamer) {
 						return (
-							<div className="live-channel-image" key={item.id}>
+							<div className="live-channel-image" key={suggestedStreamer.id}>
 								<Link
 									to={{
 										pathname: "/channelpage",
-										search: "?streamer=" + item.user_name,
+										search: "?streamer=" + suggestedStreamer.user_name,
 										state: {
-											suggestedResult: item
+											suggestedResult: suggestedStreamer
 										}
 									}}
 								>
-									<StreamCard item={item} />
+									<StreamCard suggestedStreamer={suggestedStreamer} />
 								</Link>
 							</div>
 						);

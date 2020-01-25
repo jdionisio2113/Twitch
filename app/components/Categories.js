@@ -8,23 +8,16 @@ import { Link } from "react-router-dom";
 class Categories extends React.Component {
 	constructor(props) {
 		super(props);
-
-		this.state = {
-			loader: true
-		};
-
-		this.browse = this.browse.bind(this);
 	}
 
-	// componentDidMount() {
-	// 	this.setState({ loader: false });
-	// }
+	render() {
 
-	browse() {
-		var { location } = this.props;
-		var { games, channels } = location.state;
-		// console.log(games, channels)
-		// this.setState({ loader: false });
+		var { games, channels } = this.props;
+		// var { location } = this.props;
+		// var { channels, games } = location.state;
+
+		// console.log(games);
+		// console.log(channels)
 
 		return (
 			<div className="category-container">
@@ -35,19 +28,11 @@ class Categories extends React.Component {
 						.replace("{width}", "450")
 						.replace("{height}", "700");
 					item.box_art_url = newURL;
-
 					return (
 						<Link
 							key={item.id}
 							className="game_container2"
-							to={{
-								pathname: "/gamepage",
-								search: "?game=" + item.name,
-								state: {
-									suggestedGame: item,
-									suggestedChannel: channels
-								}
-							}}
+							to={`/categories/${item.name}`}
 						>
 							<img className="category_logo" src={item.box_art_url} />
 							<div className="game-description">
@@ -59,23 +44,6 @@ class Categories extends React.Component {
 				<ScrollToTop />
 			</div>
 		);
-	}
-
-
-	render() {
-		// var { loader } = this.state;
-
-		// if (loader === true) {
-		// 	return <Loader />;
-		// }
-		// else {
-
-		return (
-			<>
-				{this.browse()}
-			</>
-		)
-		// }
 
 	}
 }

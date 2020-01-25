@@ -37,23 +37,26 @@ class Navigation extends React.Component {
 
 	underlineNavLink() {
 
-		const navLinkBorders = [...document.getElementsByClassName('nav-link-border')];
+		// const navLinkBorders = [...document.getElementsByClassName('nav-link-border')];
 
-		// reset display of border
-		navLinkBorders.forEach(function (el) {
-			el.style.display = 'none';
-		});
+		// // reset display of border
+		// navLinkBorders.forEach(function (el) {
+		// 	el.style.display = 'none';
+		// });
 
-		// check the route we're currently visiting
-		var currentPath = location.pathname;
+		// // check the route we're currently visiting
+		// var currentPath = location.pathname;
 
-		// select an element by it href attribute
-		var currentLink = document.querySelectorAll(`a[href='${currentPath}'].nav-link`)[0];
-		var nextSiblingElement = currentLink.nextSibling;
+		// // select an element by it href attribute
+		// var currentLink = document.querySelectorAll(`a[href='${currentPath}'].nav-link`)[0];
 
-		if (nextSiblingElement && nextSiblingElement.classList.contains('nav-link-border')) {
-			nextSiblingElement.style.display = 'block';
-		}
+
+		// var nextSiblingElement = currentLink.nextSibling;
+
+
+		// if (nextSiblingElement && nextSiblingElement.classList.contains('nav-link-border')) {
+		// 	nextSiblingElement.style.display = 'block';
+		// }
 
 
 	}
@@ -74,18 +77,22 @@ class Navigation extends React.Component {
 						</Link>
 					</li>
 					<li className="categories-link">
-						<Link
-							className="nav-link"
-							to={{
-								pathname: "/categories",
-								state: {
-									games: this.props.games,
-									channels: this.props.channels
-								}
-							}}>
+						<Link className="nav-link" to={"/categories"}>
 							Categories
 							<div className="nav-link-border"></div>
 						</Link>
+						{/* <Link className="nav-link"
+							to={{
+								pathname: "/categories",
+								state: {
+									channels: this.props.channels,
+									games: this.props.games
+								}
+							}}
+						> */}
+						{/* Categories
+							<div className="nav-link-border"></div>
+						</Link> */}
 					</li>
 
 					<li className="popular-channels-link">
@@ -119,7 +126,7 @@ class Navigation extends React.Component {
 				<i className="far fa-times-circle fa-2x" onClick={() => this.handleReset()} />
 			</div>
 
-		</div>
+		</div >
 
 	}
 
