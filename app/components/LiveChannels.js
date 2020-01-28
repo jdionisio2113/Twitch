@@ -45,8 +45,8 @@ function LiveChannels(props) {
 							<div className="live-channel-image" key={suggestedStreamer.id}>
 								<Link
 									to={{
-										pathname: "/channelpage",
-										search: "?streamer=" + suggestedStreamer.user_name,
+										pathname: "/:streamer",
+										// search: "?streamer=" + suggestedStreamer.user_name,
 										state: {
 											suggestedResult: suggestedStreamer
 										}

@@ -65,7 +65,7 @@ class App extends React.Component {
 							<Switch>
 								<Route exact path="/" component={Home} />
 								<Route
-									exact path="/categories"
+									exact path="/directory"
 									render={() => {
 										return <Categories
 											games={this.state.games}
@@ -73,7 +73,7 @@ class App extends React.Component {
 										/>
 									}} />
 								<Route
-									exact path="/categories/:game"
+									exact path="/directory/:game"
 									render={() => {
 										return <GamePage
 											games={this.state.games}
@@ -81,7 +81,7 @@ class App extends React.Component {
 										/>
 									}} />
 								<Route
-									exact path="/channelPage/:streamer"
+									exact path="/:streamer"
 									render={() => {
 										return <ChannelPage
 											channels={this.state.channels}

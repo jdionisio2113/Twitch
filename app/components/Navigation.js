@@ -77,22 +77,10 @@ class Navigation extends React.Component {
 						</Link>
 					</li>
 					<li className="categories-link">
-						<Link className="nav-link" to={"/categories"}>
+						<Link className="nav-link" to={"/directory"}>
 							Categories
 							<div className="nav-link-border"></div>
 						</Link>
-						{/* <Link className="nav-link"
-							to={{
-								pathname: "/categories",
-								state: {
-									channels: this.props.channels,
-									games: this.props.games
-								}
-							}}
-						> */}
-						{/* Categories
-							<div className="nav-link-border"></div>
-						</Link> */}
 					</li>
 
 					<li className="popular-channels-link">
@@ -148,7 +136,7 @@ class Navigation extends React.Component {
 						<Link
 							className="nav-link"
 							to={{
-								pathname: "/categories",
+								pathname: "/directory",
 								state: {
 									games: this.props.games,
 									channels: this.props.channels
@@ -261,7 +249,7 @@ class Navigation extends React.Component {
 						<ul key={item.id} className="suggested-live-results">
 							<li>
 								<Link
-									to={`/channelPage/${item.user_name}`}
+									to={`/${item.user_name}`}
 									className="suggested-item-container"
 								>
 									<img
