@@ -12,10 +12,21 @@ class ChannelPage extends React.Component {
 	}
 
 	updateTwitchStream() {
-		var { location } = this.props;
-		var { suggestedResult } = location.state;
-		var channelName = suggestedResult.user_name;
-		var banner = suggestedResult.profile_banner;
+		var { channels } = this.props;
+
+		var currentPath = location.pathname;
+		var directories = currentPath.split("/");
+		var lastDirectory = directories[(directories.length - 1)];
+		var decodedChannelName = decodeURIComponent(lastDirectory)
+		var channelName;
+
+		channels.map(channel => {
+
+			if (channel.user_name === decodedChannelName) {
+				channelName = channel.user_name
+			}
+
+		})
 
 		let embed;
 		const script = document.createElement("script");
@@ -43,7 +54,6 @@ class ChannelPage extends React.Component {
 	}
 
 	render() {
-		var suggestedResult = this.props.location.state.suggestedResult;
 		return (
 			<div>
 				<div className="channelContainer">

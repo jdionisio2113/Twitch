@@ -59,28 +59,34 @@ class App extends React.Component {
 					<Router>
 						<div>
 							<Navigation
-								games={this.state.games} channels={this.state.channels}
+								games={this.state.games}
+								channels={this.state.channels}
 							/>
 							<Switch>
 								<Route exact path="/" component={Home} />
 								<Route
-									exact
-									path="/categories"
+									exact path="/categories"
 									render={() => {
 										return <Categories
 											games={this.state.games}
 											channels={this.state.channels}
 										/>
 									}} />
-								{/* <Route exact path="/categories" component={Categories} /> */}
-								{/* <Route exact path="/channelpage" component={ChannelPage} /> */}
-								<Route exact path="/gamepage/:game" render={() => {
-									return <GamePage
-										games={this.state.games}
-										channels={this.state.channels}
-									/>
-								}} />
-								{/* <Route exact path="/gamepage" component={GamePage} /> */}
+								<Route
+									exact path="/categories/:game"
+									render={() => {
+										return <GamePage
+											games={this.state.games}
+											channels={this.state.channels}
+										/>
+									}} />
+								<Route
+									exact path="/channelPage/:streamer"
+									render={() => {
+										return <ChannelPage
+											channels={this.state.channels}
+										/>
+									}} />
 								<Route exact path="/popular-channels" component={PopularChannelsPage} />
 							</Switch>
 						</div>

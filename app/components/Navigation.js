@@ -65,7 +65,7 @@ class Navigation extends React.Component {
 
 		return <div className="menu">
 			<div className="nav-options">
-				<ul onClick={() => this.toggleNav()}>
+				<ul>
 					<li className="home-link">
 						<Link
 							className="nav-link"
@@ -249,6 +249,7 @@ class Navigation extends React.Component {
 		if (this.state.input) {
 			return this.state.userName.map(item => {
 				return item.map(item => {
+					console.log(item)
 					var viewers = item.viewer_count;
 					var streamViewers = viewers.toLocaleString();
 					var username = item.user_name.toLowerCase()
@@ -257,34 +258,26 @@ class Navigation extends React.Component {
 						.replace("{height}", "85");
 					item.thumbnail_url = newURL;
 					return (
-						<ul className="suggested-live-results">
-							<Link
-								onClick={this.handleReset}
-								to={{
-									pathname: "/channelpage",
-									search: "?streamer=" + item.user_name,
-									state: {
-										suggestedResult: item
-									}
-								}}
-								key={item.id}
-								onClick={() => this.toggleNav()}
-							>
-								<div className="suggested-item-container">
+						<ul key={item.id} className="suggested-live-results">
+							<li>
+								<Link
+									to={`/channelPage/${item.user_name}`}
+									className="suggested-item-container"
+								>
 									<img
 										className="suggested-stream-logo"
 										src={item.thumbnail_url}
 									/>
-									<li className="suggested-result">
+									<div className="suggested-result">
 										<p>{item.user_name}</p>
 										<p className="stream-status">{truncateString(item.title, 40)}</p>
 										<div className="stream-menu-description">
 											<img className="live_circle" src={liveCircle} />
 											<p className="stream-status">{streamViewers}</p>
 										</div>
-									</li>
-								</div>
-							</Link>
+									</div>
+								</Link>
+							</li>
 						</ul>
 					)
 				})

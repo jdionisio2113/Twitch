@@ -278,14 +278,13 @@ ul {
 }
 
 .suggested-result {
-  color: white;
-  list-style: none;
+  text-align: left;
   padding-left: 1em;
   font-size: 1.1em;
 }
 
 .suggested-result p {
-  margin: 0;
+  margin: 4px;
 }
 
 .stream-game {
