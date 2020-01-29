@@ -30,12 +30,7 @@ function LiveChannels(props) {
 				<div className="game-category">
 					<h6 className="live-channels">Popular Live Channels</h6>
 					<Link className="see-All_link"
-						to={{
-							pathname: "/popular-channels",
-							state: {
-								channels: channels
-							}
-						}}>
+						to={"/directory_popular-channels"}>
 						See All
 					</Link>
 				</div>
@@ -45,11 +40,7 @@ function LiveChannels(props) {
 							<div className="live-channel-image" key={suggestedStreamer.id}>
 								<Link
 									to={{
-										pathname: "/:streamer",
-										// search: "?streamer=" + suggestedStreamer.user_name,
-										state: {
-											suggestedResult: suggestedStreamer
-										}
+										pathname: `/directory/${suggestedStreamer.user_name}`
 									}}
 								>
 									<StreamCard suggestedStreamer={suggestedStreamer} />

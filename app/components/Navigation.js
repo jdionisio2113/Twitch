@@ -82,22 +82,14 @@ class Navigation extends React.Component {
 							<div className="nav-link-border"></div>
 						</Link>
 					</li>
-
 					<li className="popular-channels-link">
 						<Link
 							className="nav-link"
-							to={{
-								pathname: "/popular-channels",
-								state: {
-									channels: this.props.channels
-								}
-							}}>
+							to={"/directory_popular-channels"}>
 							Channels
 							<div className="nav-link-border"></div>
 						</Link>
 					</li>
-
-
 				</ul>
 			</div>
 
@@ -135,13 +127,7 @@ class Navigation extends React.Component {
 					<li className="categories-link">
 						<Link
 							className="nav-link"
-							to={{
-								pathname: "/directory",
-								state: {
-									games: this.props.games,
-									channels: this.props.channels
-								}
-							}}>
+							to={"/directory"}>
 							Categories
 						</Link>
 						<div className="nav-link-border"></div>
@@ -149,12 +135,7 @@ class Navigation extends React.Component {
 					<li className="popular-channels-link">
 						<Link
 							className="nav-link"
-							to={{
-								pathname: "/popular-channels",
-								state: {
-									channels: this.props.channels
-								}
-							}}>
+							to={"/directory_popular-channels"}>
 							Channels
 						</Link>
 						<div className="nav-link-border"></div>

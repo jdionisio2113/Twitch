@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop";
 
 function PopularChannelsPage(props) {
-    var { location } = props;
-    var { channels } = location.state;
-
+    var { channels } = props;
 
     window.scrollTo(0, 0)
 
@@ -16,13 +14,7 @@ function PopularChannelsPage(props) {
             return (
                 <div className="live-channel-image" key={suggestedStreamer.id}>
                     <Link
-                        to={{
-                            pathname: "/:streamer",
-                            // search: "?streamer=" + suggestedStreamer.user_name,
-                            state: {
-                                suggestedResult: suggestedStreamer
-                            }
-                        }}
+                        to={`/directory/${suggestedStreamer.user_name}`}
                     >
                         <StreamCard suggestedStreamer={suggestedStreamer} />
                     </Link>

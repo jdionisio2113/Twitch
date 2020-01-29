@@ -29,39 +29,27 @@ function TopGames(props) {
 				<div className="game-category">
 					<h6 className="top-games">Top Games</h6>
 					<Link className="see-All_link"
-						to={{
-							pathname: "/categories",
-							state: {
-								games: games,
-								channels: channels
-							}
-						}}>
+						to={"/directory"}
+					>
 						See All
 					</Link>
 				</div>
 
 				<Slider {...settings}>
-					{games.map(function (item, index) {
+					{games.map(function (game, index) {
 
-						var gameName = item.name;
-						let newURL = item.box_art_url
+						var gameName = game.name;
+						let newURL = game.box_art_url
 							.replace("{width}", "450")
 							.replace("{height}", "700");
-						item.box_art_url = newURL;
+						game.box_art_url = newURL;
 
 						return (
 							<div key={index} className="game_container">
 								<Link
-									to={{
-										pathname: "/gamepage",
-										search: "?game=" + item.name,
-										state: {
-											suggestedGame: item,
-											suggestedChannel: channels
-										}
-									}}
+									to={`/directory/game/${gameName}`}
 								>
-									<img className="logo" src={item.box_art_url} />
+									<img className="logo" src={game.box_art_url} />
 								</Link>
 							</div>
 						);

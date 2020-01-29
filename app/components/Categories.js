@@ -20,7 +20,7 @@ function Categories(props) {
 					<Link
 						key={game.id}
 						className="game_container2"
-						to={`/directory/${game.name}`}
+						to={`/directory/game/${game.name}`}
 					>
 						<img className="category_logo" src={game.box_art_url} />
 						<div className="game-description">

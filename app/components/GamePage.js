@@ -36,7 +36,7 @@ function GamePage(props) {
                     return (<div className="live-channel-container" key={suggestedStreamer.id}>
                         <div className="live-channel-image">
                             <Link
-                                to={`/${suggestedStreamer.user_name}`}
+                                to={`/directory/${suggestedStreamer.user_name}`}
                             >
                                 <StreamCard suggestedStreamer={suggestedStreamer} />
                             </Link>
