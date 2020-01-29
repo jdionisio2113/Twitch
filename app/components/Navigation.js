@@ -65,7 +65,7 @@ class Navigation extends React.Component {
 
 		return <div className="menu">
 			<div className="nav-options">
-				<ul>
+				<ul onClick={() => this.toggleNav()}>
 					<li className="home-link">
 						<Link
 							className="nav-link"
@@ -227,10 +227,10 @@ class Navigation extends React.Component {
 						.replace("{height}", "85");
 					item.thumbnail_url = newURL;
 					return (
-						<ul key={item.id} className="suggested-live-results">
+						<ul onClick={() => this.toggleNav()} key={item.id} className="suggested-live-results">
 							<li>
 								<Link
-									to={`/${item.user_name}`}
+									to={`/directory/${item.user_name}`}
 									className="suggested-item-container"
 								>
 									<img
