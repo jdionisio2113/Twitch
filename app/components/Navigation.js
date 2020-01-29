@@ -37,26 +37,26 @@ class Navigation extends React.Component {
 
 	underlineNavLink() {
 
-		// const navLinkBorders = [...document.getElementsByClassName('nav-link-border')];
+		const navLinkBorders = [...document.getElementsByClassName('nav-link-border')];
 
-		// // reset display of border
-		// navLinkBorders.forEach(function (el) {
-		// 	el.style.display = 'none';
-		// });
+		// reset display of border
+		navLinkBorders.forEach(function (el) {
+			el.style.display = 'none';
+		});
 
-		// // check the route we're currently visiting
-		// var currentPath = location.pathname;
+		// check the route we're currently visiting
+		var currentPath = location.pathname;
 
-		// // select an element by it href attribute
-		// var currentLink = document.querySelectorAll(`a[href='${currentPath}'].nav-link`)[0];
-
-
-		// var nextSiblingElement = currentLink.nextSibling;
+		// select an element by it href attribute
+		var currentLink = document.querySelectorAll(`a[href='${currentPath}'].nav-link`)[0];
 
 
-		// if (nextSiblingElement && nextSiblingElement.classList.contains('nav-link-border')) {
-		// 	nextSiblingElement.style.display = 'block';
-		// }
+		var nextSiblingElement = currentLink.nextSibling;
+
+
+		if (nextSiblingElement && nextSiblingElement.classList.contains('nav-link-border')) {
+			nextSiblingElement.style.display = 'block';
+		}
 
 
 	}
@@ -78,7 +78,7 @@ class Navigation extends React.Component {
 					</li>
 					<li className="categories-link">
 						<Link className="nav-link" to={"/directory"}>
-							Categories
+							Browse
 							<div className="nav-link-border"></div>
 						</Link>
 					</li>
@@ -128,7 +128,7 @@ class Navigation extends React.Component {
 						<Link
 							className="nav-link"
 							to={"/directory"}>
-							Categories
+							Browse
 						</Link>
 						<div className="nav-link-border"></div>
 					</li>
