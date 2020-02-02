@@ -15,7 +15,6 @@ class Navigation extends React.Component {
 			liveChannels: [],
 			isNavOpen: false,
 			userName: [],
-			loader: false,
 			error: false
 		};
 

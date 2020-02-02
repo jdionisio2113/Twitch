@@ -9,21 +9,23 @@ function PopularChannelsPage(props) {
     window.scrollTo(0, 0)
 
 
-    return (<div className="channels_container">
-        {channels.map(function (suggestedStreamer) {
-            return (
-                <div className="live-channel-image" key={suggestedStreamer.id}>
-                    <Link
-                        to={`/directory/${suggestedStreamer.user_name}`}
-                    >
-                        <div className="popular_channel">
-                            <StreamCard suggestedStreamer={suggestedStreamer} />
-                        </div>
-                    </Link>
-                </div>
-            );
-        })}
-    </div>
+    return (
+        <div className="channels_container">
+            {channels.map(function (suggestedStreamer) {
+                return (
+                    <div className="live-channel-image" key={suggestedStreamer.id}>
+                        <Link
+                            to={`/directory/${suggestedStreamer.user_name}`}
+                        >
+                            <div className="popular_channel">
+                                <StreamCard suggestedStreamer={suggestedStreamer} />
+                            </div>
+                        </Link>
+                    </div>
+                );
+            })}
+            <ScrollToTop />
+        </div>
     )
 }
 
