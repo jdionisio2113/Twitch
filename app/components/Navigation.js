@@ -16,7 +16,8 @@ class Navigation extends React.Component {
 			liveChannels: [],
 			isNavOpen: false,
 			userName: [],
-			loader: false
+			loader: false,
+			error: false
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -46,6 +47,7 @@ class Navigation extends React.Component {
 
 		// check the route we're currently visiting
 		var currentPath = location.pathname;
+		console.log(currentPath)
 
 		// select an element by it href attribute
 		var currentLink = document.querySelectorAll(`a[href='${currentPath}'].nav-link`)[0];
@@ -53,6 +55,7 @@ class Navigation extends React.Component {
 
 		var nextSiblingElement = currentLink.nextSibling;
 
+		console.log(nextSiblingElement)
 
 		if (nextSiblingElement && nextSiblingElement.classList.contains('nav-link-border')) {
 			nextSiblingElement.style.display = 'block';
@@ -157,15 +160,17 @@ class Navigation extends React.Component {
 				</button>
 			</div>
 			<div className="channel_menu">
-				{this.displaySuggestedLiveResults()}
+				{this.state.error ? <h1 className="error-message">No streamer found! Try again.</h1> : this.displaySuggestedLiveResults()}
 			</div>
 		</>
 	}
 
 	toggleNav() {
 		this.setState({
-			isNavOpen: !this.state.isNavOpen, input: "",
-			userName: []
+			isNavOpen: !this.state.isNavOpen,
+			input: "",
+			userName: [],
+			error: false
 		});
 	}
 
@@ -199,10 +204,17 @@ class Navigation extends React.Component {
 				this.setState({
 					userName: streamer_collection
 				})
+
+				if (filtered_streamers.length === 0) {
+					this.setState({
+						error: true
+					})
+				} else {
+					this.setState({
+						error: false
+					})
+				}
 			})
-				.catch(() => {
-					console.log("error")
-				});
 
 		}, 600);
 	}
@@ -210,7 +222,8 @@ class Navigation extends React.Component {
 	handleReset() {
 		this.setState({
 			input: "",
-			userName: []
+			userName: [],
+			error: false
 		});
 	}
 
@@ -218,7 +231,6 @@ class Navigation extends React.Component {
 		if (this.state.input) {
 			return this.state.userName.map(item => {
 				return item.map(item => {
-					console.log(item)
 					var viewers = item.viewer_count;
 					var streamViewers = viewers.toLocaleString();
 					var username = item.user_name.toLowerCase()

@@ -43,7 +43,9 @@ function LiveChannels(props) {
 										pathname: `/directory/${suggestedStreamer.user_name}`
 									}}
 								>
-									<StreamCard suggestedStreamer={suggestedStreamer} />
+									<div className="popular_channel">
+										<StreamCard suggestedStreamer={suggestedStreamer} />
+									</div>
 								</Link>
 							</div>
 						);

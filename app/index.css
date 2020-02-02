@@ -481,16 +481,21 @@ ul {
 }
 
 .channels_container {
-  margin-top: 100px
+  margin: 100px auto;
 }
 
 .channel-preview {
   padding: 0
 }
 
-/* .live-channel-box {
-  padding: 1em; */
-/* } */
+.live-channel-box {
+  position: relative;
+  text-align: center;
+ }
+
+ .popular_channel {
+  padding: 1em;
+}
 
 .scroll-up {
   scroll-behavior: smooth;
@@ -518,7 +523,56 @@ ul {
   right: 3%;
 }
 
+.error-message {
+  font-size: 2em;
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  top: 47%;
+  max-height: 550px;
+  overflow: auto;
+  color: purple;
+  top: 50%;
+  text-align: center;
+}
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+  .channels_container {
+    width: 50%;
+  }
+
+  .menu li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .channel_menu{
+    top: 67%;
+    max-height: 800px;
+  }
+
+  .error-message {
+    text-align: center;
+    top: 65%;
+  }
+}
+
 @media screen and (min-width: 1100px) {
+
+  .error-message {
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
+    text-align: left;
+    position: fixed;
+    width: 30%;
+    top: 47%;
+    top: 7.8%;
+    left: 64%;
+    box-shadow:0px 0px 10px 3px #000000
+  }
+
   .live-channel-box {
   padding: 1em;
 }

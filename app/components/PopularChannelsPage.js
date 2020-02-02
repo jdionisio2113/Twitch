@@ -16,7 +16,9 @@ function PopularChannelsPage(props) {
                     <Link
                         to={`/directory/${suggestedStreamer.user_name}`}
                     >
-                        <StreamCard suggestedStreamer={suggestedStreamer} />
+                        <div className="popular_channel">
+                            <StreamCard suggestedStreamer={suggestedStreamer} />
+                        </div>
                     </Link>
                 </div>
             );
