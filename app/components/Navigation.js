@@ -49,7 +49,7 @@ class Navigation extends React.Component {
 
 		// select an element by it href attribute
 		var currentLink = document.querySelectorAll(`a[href='${currentPath}'].nav-link`)[0];
-
+		// console.log(currentLink)
 
 		var nextSiblingElement = currentLink.nextSibling;
 

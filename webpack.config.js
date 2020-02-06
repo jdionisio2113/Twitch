@@ -33,5 +33,3 @@ module.exports = {
     })
   ]
 };
-
-// { test: /\.(svg|jpg)$/, loader: 'url-loader?limit=8192' }

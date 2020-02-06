@@ -34,7 +34,7 @@ class ChannelPage extends React.Component {
 		script.addEventListener("load", () => {
 			embed = new window.Twitch.Embed(this.state.targetID, {
 				width: "100%",
-				height: "730",
+				height: "100%",
 				theme: "dark",
 				channel: `${channelName}`,
 			});
