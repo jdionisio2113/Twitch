@@ -28,39 +28,39 @@ class Navigation extends React.Component {
 		this.mobileNavMarkUp = this.mobileNavMarkUp.bind(this);
 	}
 
-	componentDidMount() {
+	// componentDidMount() {
 
-		this.underlineNavLink();
-		this.props.history.listen(() => this.underlineNavLink());
-	}
+	// 	this.underlineNavLink();
+	// 	this.props.history.listen(() => this.underlineNavLink());
+	// }
 
-	underlineNavLink() {
+	// underlineNavLink() {
 
-		const navLinkBorders = [...document.getElementsByClassName('nav-link-border')];
+	// 	const navLinkBorders = [...document.getElementsByClassName('nav-link-border')];
 
-		// reset display of border
-		navLinkBorders.forEach(function (el) {
-			el.style.display = 'none';
-		});
+	// 	// reset display of border
+	// 	navLinkBorders.forEach(function (el) {
+	// 		el.style.display = 'none';
+	// 	});
 
-		// check the route we're currently visiting
-		var currentPath = location.pathname;
-		console.log(currentPath)
+	// 	// check the route we're currently visiting
+	// 	var currentPath = location.pathname;
+	// 	console.log(currentPath)
 
-		// select an element by it href attribute
-		var currentLink = document.querySelectorAll(`a[href='${currentPath}'].nav-link`)[0];
-		// console.log(currentLink)
+	// 	// select an element by it href attribute
+	// 	var currentLink = document.querySelectorAll(`a[href='${currentPath}'].nav-link`)[0];
+	// 	// console.log(currentLink)
 
-		var nextSiblingElement = currentLink.nextSibling;
+	// 	var nextSiblingElement = currentLink.nextSibling;
 
-		console.log(nextSiblingElement)
+	// 	console.log(nextSiblingElement)
 
-		if (nextSiblingElement && nextSiblingElement.classList.contains('nav-link-border')) {
-			nextSiblingElement.style.display = 'block';
-		}
+	// 	if (nextSiblingElement && nextSiblingElement.classList.contains('nav-link-border')) {
+	// 		nextSiblingElement.style.display = 'block';
+	// 	}
 
 
-	}
+	// }
 
 	mobileNavMarkUp() {
 

@@ -155,12 +155,6 @@ ul {
   margin: 0 auto
 }
 
-.play {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-}
-
 .nav {
   display: flex;
   justify-content: space-between;
@@ -537,7 +531,7 @@ ul {
 }
 
 .stream {
-  height: 100vh
+  height: 93vh
 }
 
 @media only screen 
@@ -546,10 +540,11 @@ and (max-device-width : 1024px)
 and (orientation : landscape) {
 
   .stream{
-    height: 90vh
+    height: 93vh
   }
   .channels_container {
     width: 50%;
+    top: 10%;
   }
 
   .menu li {
@@ -786,12 +781,6 @@ and (orientation : landscape) {
     padding: 1em;
   }
 
-  .play {
-    height: 5em;
-    width: 5em;
-    top: 48%;
-    left: 48%;
-  }
 
   .channel-display_name {
     color: white;
@@ -811,9 +800,6 @@ and (orientation : landscape) {
   }
 
   .channel-box {
-    /* position: absolute;
-    top: 33%;
-    left: 17%; */
     margin: 0 auto;
   }
 
