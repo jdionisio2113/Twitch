@@ -14,6 +14,7 @@ class Navigation extends React.Component {
 			input: "",
 			liveChannels: [],
 			isNavOpen: false,
+			isInputOpen: false,
 			userName: [],
 			error: false
 		};
@@ -26,6 +27,8 @@ class Navigation extends React.Component {
 		this.toggleNav = this.toggleNav.bind(this);
 		this.navMarkUp = this.navMarkUp.bind(this);
 		this.mobileNavMarkUp = this.mobileNavMarkUp.bind(this);
+		this.toggleSearchInput = this.toggleSearchInput.bind(this);
+		this.searchMarkUp = this.searchMarkUp.bind(this);
 	}
 
 	// componentDidMount() {
@@ -66,7 +69,7 @@ class Navigation extends React.Component {
 
 		return <div className="menu">
 			<div className="nav-options">
-				<ul onClick={() => this.toggleNav()}>
+				<ul className="mobile-nav-list" onClick={() => this.toggleNav()}>
 					<li className="home-link">
 						<Link
 							className="nav-link"
@@ -94,7 +97,7 @@ class Navigation extends React.Component {
 				</ul>
 			</div>
 
-			<div className="input-container">
+			{/* <div className="input-container">
 				<input
 					type="text"
 					name="streamer"
@@ -105,10 +108,31 @@ class Navigation extends React.Component {
 					onChange={this.handleChange}
 				/>
 				<i className="far fa-times-circle fa-2x" onClick={() => this.handleReset()} />
-			</div>
+			</div> */}
 
 		</div >
 
+	}
+
+	searchMarkUp() {
+		return (
+			<div className="mobile-input-wrapper menu">
+				{/* <i class="fa fa-angle-left fa-2x" onClick={() => this.toggleSearchInput()}></i> */}
+				<div className="mobile-input-container">
+					<i class="fa fa-angle-left fa-2x" onClick={() => this.toggleSearchInput()}></i>
+					<input
+						type="text"
+						name="streamer"
+						placeholder="Search"
+						autoComplete="off"
+						className="mobile-input"
+						value={this.state.input}
+						onChange={this.handleChange}
+					/>
+					<i className="far fa-times-circle fa-2x" onClick={() => this.handleReset()} />
+				</div>
+			</div>
+		)
 	}
 
 	navMarkUp() {
@@ -166,10 +190,21 @@ class Navigation extends React.Component {
 	toggleNav() {
 		this.setState({
 			isNavOpen: !this.state.isNavOpen,
+			isInputOpen: false,
 			input: "",
 			userName: [],
 			error: false
 		});
+	}
+
+	toggleSearchInput() {
+		this.setState({
+			isInputOpen: !this.state.isInputOpen,
+			isNavOpen: false,
+			input: "",
+			userName: [],
+			error: false
+		})
 	}
 
 	handleChange(e) {
@@ -272,10 +307,25 @@ class Navigation extends React.Component {
 					<img className="twitch-logo2" src={img2} />
 				</a>
 				{this.navMarkUp()}
+				{/* <div className="nav-icons"> */}
+				<button className="search-button" onClick={() => this.toggleSearchInput()}>
+					<i className="fa fa-search fa-2x"></i>
+				</button>
+				{/* <button className="menu-button" onClick={() => this.toggleNav()}>
+						<i className="fas fa-bars fa-2x" />
+					</button>
+
+				</div> */}
 				<button className="menu-button" onClick={() => this.toggleNav()}>
 					<i className="fas fa-bars fa-2x" />
 				</button>
+				{
+					this.state.isInputOpen ? (
 
+						this.searchMarkUp()
+
+					) : null
+				}
 				{
 					this.state.isNavOpen ? (
 
@@ -284,7 +334,6 @@ class Navigation extends React.Component {
 					) : null
 				}
 			</div >
-
 		);
 	}
 }
