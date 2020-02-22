@@ -96,40 +96,35 @@ class Navigation extends React.Component {
 					</li>
 				</ul>
 			</div>
-
-			{/* <div className="input-container">
-				<input
-					type="text"
-					name="streamer"
-					placeholder="Search"
-					autoComplete="off"
-					className="input"
-					value={this.state.input}
-					onChange={this.handleChange}
-				/>
-				<i className="far fa-times-circle fa-2x" onClick={() => this.handleReset()} />
-			</div> */}
-
 		</div >
 
 	}
 
 	searchMarkUp() {
 		return (
+
 			<div className="mobile-input-wrapper menu">
-				{/* <i class="fa fa-angle-left fa-2x" onClick={() => this.toggleSearchInput()}></i> */}
 				<div className="mobile-input-container">
-					<i class="fa fa-angle-left fa-2x" onClick={() => this.toggleSearchInput()}></i>
-					<input
-						type="text"
-						name="streamer"
-						placeholder="Search"
-						autoComplete="off"
-						className="mobile-input"
-						value={this.state.input}
-						onChange={this.handleChange}
-					/>
-					<i className="far fa-times-circle fa-2x" onClick={() => this.handleReset()} />
+					<i className="fa fa-angle-left fa-2x" onClick={() => this.toggleSearchInput()}></i>
+					<div className="mobile-search-container">
+						<input
+							type="text"
+							name="streamer"
+							placeholder="Search"
+							autoComplete="off"
+							className="mobile-input"
+							value={this.state.input}
+							onChange={this.handleChange}
+						/>
+						<i
+							className={`
+								${this.state.input === '' ? 'hide' : 'show'}
+								far fa-times-circle fa-2x cancel-search-btn
+								`}
+							onClick={() => this.handleReset()}
+						/>
+					</div>
+
 				</div>
 			</div>
 		)
@@ -165,21 +160,27 @@ class Navigation extends React.Component {
 						</Link>
 						<div className="nav-link-border"></div>
 					</li>
+					<li>
+						<div className="search-box input-container">
+							<input
+								type="text"
+								name="streamer"
+								placeholder="Search"
+								autoComplete="off"
+								className="input"
+								value={this.state.input}
+								onChange={this.handleChange}
+							/>
+							<i
+								className={`
+								${this.state.input === '' ? 'hide' : 'show'}
+								far fa-times-circle fa-2x cancel-search-btn
+								`}
+								onClick={() => this.handleReset()}
+							/>
+						</div>
+					</li>
 				</ul>
-			</div>
-			<div className="search-box input-container">
-				<input
-					type="text"
-					name="streamer"
-					placeholder="Search"
-					autoComplete="off"
-					className="input"
-					value={this.state.input}
-					onChange={this.handleChange}
-				/>
-				<button onClick={this.handleReset} className="reset-button">
-					<i className="far fa-times-circle fa-2x" />
-				</button>
 			</div>
 			<div className="channel_menu">
 				{this.state.error ? <h1 className="error-message">No streamer found! Try again.</h1> : this.displaySuggestedLiveResults()}
@@ -272,7 +273,7 @@ class Navigation extends React.Component {
 						.replace("{height}", "85");
 					item.thumbnail_url = newURL;
 					return (
-						<ul onClick={() => this.toggleNav()} key={item.id} className="suggested-live-results">
+						<ul onClick={() => this.toggleSearchInput()} key={item.id} className="suggested-live-results">
 							<li>
 								<Link
 									to={`/directory/${item.user_name}`}
@@ -307,15 +308,9 @@ class Navigation extends React.Component {
 					<img className="twitch-logo2" src={img2} />
 				</a>
 				{this.navMarkUp()}
-				{/* <div className="nav-icons"> */}
 				<button className="search-button" onClick={() => this.toggleSearchInput()}>
 					<i className="fa fa-search fa-2x"></i>
 				</button>
-				{/* <button className="menu-button" onClick={() => this.toggleNav()}>
-						<i className="fas fa-bars fa-2x" />
-					</button>
-
-				</div> */}
 				<button className="menu-button" onClick={() => this.toggleNav()}>
 					<i className="fas fa-bars fa-2x" />
 				</button>
@@ -338,4 +333,4 @@ class Navigation extends React.Component {
 	}
 }
 
-export default withRouter(Navigation);
+export default Navigation/*withRouter(Navigation)*/;

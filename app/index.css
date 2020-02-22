@@ -1,12 +1,12 @@
 * {
   box-sizing: border-box;
+  min-height: 0;
+  min-width: 0;
 }
 
 body {
   background: #161616;
-  /* background:linear-gradient(to right bottom , #161616 60%,  #29144a 30%); */
   letter-spacing: 1px;
-  overflow-x: hidden;
   width: 100%;
 }
 
@@ -60,8 +60,6 @@ ul {
 .main-container {
   padding-top: 4em;
   margin: 0 1em;
-  /* overflow-x: hidden;
-  width: 100%; */
 }
 
 .featured-streams {
@@ -186,18 +184,6 @@ ul {
   display: none;
 }
 
-.reset-button {
-  background: none;
-  border: none;
-}
-
-.fa-times-circle {
-  color: darkgrey;
-    position: absolute;
-    right: 10%;
-    top: 2.5%;
-}
-
 .fas {
   color: white;
 }
@@ -227,17 +213,14 @@ ul {
 }
 
 .top-games-container {
-  margin: 0 20px;
+  width: 85%;
+  margin: 0 auto;
 }
 
   .live-channel-banner {
     margin: 0 auto;
     width:100%;
   }
-
-.live-channels-container {
-  margin: 50px 20px;
-}
 
 .logo {
   box-shadow: 0px 5px 19px 0px #000000;
@@ -329,6 +312,7 @@ ul {
 }
 
 .suggested-stream-logo {
+  width: 200px;
   border-radius: 10px;
   text-transform: lowercase
 }
@@ -396,6 +380,7 @@ ul {
 
 .search-box {
   display: none;
+  position:relative;
 }
 
 .channel-info {
@@ -438,10 +423,6 @@ ul {
 .suggested-live-results {
   padding: 0;
   margin: 0;
-}
-
-.back-button {
-  color: white;
 }
 
 .fa-caret-down {
@@ -498,10 +479,6 @@ ul {
   text-align: center;
  }
 
- .popular_channel {
-  padding: 1em;
-}
-
 .scroll-up {
   scroll-behavior: smooth;
   position: fixed;
@@ -516,6 +493,10 @@ ul {
   opacity: 0.6;
   transition: 0.3s;
   border-radius: 10%;
+}
+
+.popular_channel {
+  padding: 1em;
 }
 
 .nav-list {
@@ -555,12 +536,10 @@ ul {
   margin: 0 .5em;
 }
 
-.mobile-input-container {
-  margin-top: 1em;
-}
 
+/****  mobile input styles ****/
 .mobile-input {
-  width: 70%;
+  width: 100%;
   background: #fff;
   color: #000;
   border: none;
@@ -568,12 +547,20 @@ ul {
   padding: 5px;
   font-size: 20px;
   letter-spacing: 1px;
+  padding-right: 29px;
+  outline: none;
 }
 
-.back-button {
-  position: absolute;
-  left: 10%;
-  top: 5%;
+.mobile-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+}
+
+.mobile-search-container {
+  position: relative;
+  width: 80%
 }
 
 .mobile-input-wrapper {
@@ -586,6 +573,24 @@ ul {
   position: fixed;
   height: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
+}
+
+.cancel-search-btn {
+  border-radius: 5px;
+  color: darkgrey;
+  position: absolute;
+  background: white;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cancel-search-btn.hide {
+  display: none;
+}
+
+.cancel-search-btn.show {
+  display: block;
 }
 
 .mobile-nav-list {
@@ -602,6 +607,11 @@ ul {
   position: absolute;
   right: 10%;
   top: 20%;
+}
+
+.top-live-channels {
+  margin: 50px auto;
+  width: 85%;
 }
 
 @media only screen 
@@ -621,11 +631,6 @@ and (orientation : landscape) {
     margin: 0;
     padding: 0;
   }
-
-  /* .channel_menu{
-    top: 67%;
-    max-height: 800px;
-  } */
 
   .error-message {
     text-align: center;
@@ -658,7 +663,7 @@ and (orientation : landscape) {
   }
 
   .live-channel-box {
-  padding: 1em;
+  /* padding: 1em; */
 }
 
   .menu {
@@ -748,11 +753,8 @@ and (orientation : landscape) {
   .input {
     width: 100%;
     padding: 0 0 0 5px;
-    margin-top: .7em;
-  }
-
-  .reset-button {
-    display: none;
+    padding-right: 29px;
+    outline: none;
   }
 
   .featured-stream-image {
@@ -858,10 +860,6 @@ and (orientation : landscape) {
     margin: 5em 2em;
   }
 
-  .top-live-channels {
-    margin: 0 2em;
-  }
-
   .home_link {
     margin-left: 5%;
     padding: 1em;
@@ -925,8 +923,8 @@ and (orientation : landscape) {
   }
 
   .channel-link {
-    width: 93.7%;
-    top: 5%;
+    /* width: 93.7%;
+    top: 5%; */
   }
 
   .channels_container {
@@ -971,8 +969,11 @@ and (orientation : landscape) {
   .nav-list {
     display:flex;
     position: absolute;
-    right: 20%;
-    top: 35%
+    right: 0;
+    /* top: 35% */
+    align-items: center;
+    top: 50%;
+    transform: translateY(-50%);
   }
   
   .nav-list li {

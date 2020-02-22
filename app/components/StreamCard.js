@@ -28,7 +28,7 @@ function StreamCard(props) {
                 <h3 className="channel-name">
                     {suggestedStreamer.user_name}
                 </h3>
-                <p className="channel-caption">{truncateString(suggestedStreamer.title, 33)}</p>
+                <p className="channel-caption">{truncateString(suggestedStreamer.title, 25)}</p>
             </div>
         </div>
     </div>
