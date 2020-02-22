@@ -639,9 +639,9 @@ and (orientation : landscape) {
 
   .search-button {
     position: absolute;
-    right: 10%;
+    right: 5%;
     top: 20%;
-    display:none;
+    display:block;
   }
 }
 
