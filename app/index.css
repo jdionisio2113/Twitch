@@ -511,14 +511,11 @@ ul {
 
 .error-message {
   font-size: 2em;
-  position: fixed;
-  z-index: 3;
+  z-index: 1002;
   width: 100%;
-  top: 47%;
   max-height: 550px;
   overflow: auto;
   color: purple;
-  top: 50%;
   text-align: center;
 }
 
@@ -633,8 +630,8 @@ and (orientation : landscape) {
   }
 
   .error-message {
-    text-align: center;
-    top: 65%;
+    top: 40%;
+    position: fixed;
   }
 
   .search-button {
