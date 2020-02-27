@@ -26,33 +26,31 @@ function LiveChannels(props) {
 
 	return (
 		<div className="top-live-channels">
-			<div className="live-channels-container">
-				<div className="game-category">
-					<h6 className="live-channels">Popular Live Channels</h6>
-					<Link className="see-All_link"
-						to={"/directory_popular-channels"}>
-						See All
+			<div className="live-channels-category">
+				<h6 className="live-channels">Popular Live Channels</h6>
+				<Link className="see-All_link"
+					to={"/directory_popular-channels"}>
+					See All
 					</Link>
-				</div>
-				<Slider {...settings}>
-					{channels.map(function (suggestedStreamer) {
-						return (
-							<div className="live-channel-image" key={suggestedStreamer.id}>
-								<Link
-									to={{
-										pathname: `/directory/${suggestedStreamer.user_name}`
-									}}
-								>
-									<div className="popular_channel">
-										<StreamCard suggestedStreamer={suggestedStreamer} />
-									</div>
-								</Link>
-							</div>
-						);
-
-					})}
-				</Slider>
 			</div>
+			<Slider {...settings}>
+				{channels.map(function (suggestedStreamer) {
+					return (
+						<div className="live-channel-image" key={suggestedStreamer.id}>
+							<Link
+								to={{
+									pathname: `/directory/${suggestedStreamer.user_name}`
+								}}
+							>
+								<div className="popular_channel">
+									<StreamCard suggestedStreamer={suggestedStreamer} />
+								</div>
+							</Link>
+						</div>
+					);
+
+				})}
+			</Slider>
 		</div>
 	);
 }

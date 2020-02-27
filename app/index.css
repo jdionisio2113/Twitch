@@ -27,10 +27,11 @@ ul {
   padding: 0 10px;
 }
 
-.fa-caret-down {
-  -moz-transition: all .5s linear;
-  -webkit-transition: all .5s linear;
-  transition: all .5s linear;
+/* ================HOME================= */
+
+.main-container {
+  padding-top: 4em;
+  margin: 0 1em;
 }
 
 .featured-container {
@@ -49,17 +50,8 @@ ul {
   height: 30%;
 }
 
-.fa-chevron-right{
+.fa-chevron-right, .fa-chevron-left{
   margin-left: .3em;
-}
-
-.fa-chevron-left {
-  margin-right: .3em;
-}
-
-.main-container {
-  padding-top: 4em;
-  margin: 0 1em;
 }
 
 .featured-streams {
@@ -93,33 +85,91 @@ ul {
   font-size: 1.3em;
 }
 
-.featured-stream-image {
+.top-games,
+.live-channels {
+  color: #e6e6e6;
+  font-size: 1.5em
+}
+
+.top-games-container {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.game-category, .live-channels-category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.see-All_link {
+  color: lightgrey;
+}
+
+.slick-arrow {
+  opacity: 0.4;
+}
+
+.top-live-channels {
+  margin: 50px auto;
+  width: 85%;
+}
+
+.live-channel-image {
   position: relative;
-  width: 320px;
-  height: 200px;
-  left: 4%;
+  width: 100%;
 }
 
-.live {
-  position: absolute;
-  top: 7%;
-  left: 76%;
-  color: white;
-  background: #ff4d4d;
-  padding: 2px 12px;
-  border-radius: 17%;
-  font-size: 13px;
+.popular_channel {
+  padding: 1em;
 }
 
-.viewers {
+/* ================STREAMCARD================= */
+
+.live-channel-box {
+  position: relative;
+  text-align: center;
+ }
+
+ .live-channel-banner {
+  margin: 0 auto;
+  width:100%;
+}
+
+.channel-preview {
+  padding: 0
+}
+
+.viewer-container {
   position: absolute;
   top: 79%;
-  left: 10%;
-  color: white;
+  left: 7%;
+  display: flex;
+  align-items: center;
   padding: 5px;
   background: rgba(0, 0, 0, 0.6);
-  border-radius: 7%;
+  border-radius: 5px;
+}
+
+.red-img {
+  width: 10px;
+  height: 10px;
+  margin-right: 5px
+}
+
+.channelViewers {
+  margin: 0;
+  color: white;
   font-size: 13px;
+}
+
+.channel-link {
+  position: absolute;
+  top: 0;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 8px;
+  width: 100%;
+  display: flex;
 }
 
 .channel-live {
@@ -138,15 +188,6 @@ ul {
   height: 40px;
 }
 
-.channel-link {
-  position: absolute;
-  top: 0;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 8px;
-  width: 100%;
-  display: flex;
-}
-
 .channel-caption {
   color: lightgrey;
   margin: 0;
@@ -163,6 +204,7 @@ ul {
   margin: 0 auto
 }
 
+/* ================NAVIGATION================= */
 .nav {
   display: flex;
   justify-content: space-between;
@@ -206,65 +248,9 @@ ul {
   width: 100%;
 }
 
-.top-games,
-.live-channels {
-  color: #e6e6e6;
-  font-size: 1.5em
-}
-
-.top-games-container {
-  width: 85%;
-  margin: 0 auto;
-}
-
-  .live-channel-banner {
-    margin: 0 auto;
-    width:100%;
-  }
-
 .logo {
   box-shadow: 0px 5px 19px 0px #000000;
   width: 100%;
-}
-
-.slick-arrow {
-  opacity: 0.4;
-}
-
-.live-channel-image {
-  position: relative;
-  width: 100%;
-}
-
-.channelViewers {
-  margin: 0;
-  color: white;
-  font-size: 13px;
-}
-
-.viewer-container {
-  position: absolute;
-  top: 79%;
-  left: 7%;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 5px;
-}
-
-.featured-stream-caption {
-  text-align: center;
-}
-
-.game-category {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.see-All_link {
-  color: lightgrey;
 }
 
 .suggested-result {
@@ -277,38 +263,10 @@ ul {
   margin: 4px;
 }
 
-.stream-game {
-  font-size: 12px;
-  margin: 5px 0;
-  color: lightgray;
-}
-
-.stream-status {
-  font-size: 12px;
-  color: lightgrey
-}
-
 .suggestions-menu {
   padding: 0;
   width: 100%;
-  /* margin: 0 1em; */
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-}
-
-.live-button,
-.channels-button {
-  display: flex;
-  align-items: center;
-  padding: 0.5em 1em;
-  background: linear-gradient(rgba(96, 64, 209, 0.8), rgba(96, 64, 209, 0.8));
-  border: none;
-  width: 100%;
-  transition: 0.4s;
-}
-
-.live-button:hover,
-.channels-button:hover {
-  background-color: snow;
 }
 
 .suggested-stream-logo {
@@ -323,36 +281,11 @@ ul {
   border-bottom: 1px solid grey;
 }
 
-.game_container2 {
-  display: flex;
-  padding: 1em 0;
-  border-bottom: 1px solid grey;
-}
-
-.game-viewers {
-  color: lightgrey;
-}
-
-.category_logo {
-  width: 5em;
-  height: 7em;
-  margin: 0 1em;
-}
-
-.category-container {
-  margin-top: 4em;
-}
-
-.game-title {
-  color: white;
-}
-
 .menu {
   margin: 0;
   text-align: center;  
   z-index: 2;
   width: 100vw;
-  /* transition: 1s; */
   position: fixed;
   height: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
@@ -364,37 +297,15 @@ ul {
   margin: 1em 0;
 }
 
-.menu-link {
-  border-bottom: 2px solid grey;
-}
-
 .menu-button {
   background: none;
   border: none;
   z-index: 4;
 }
 
-.nav-buttons {
-  background: #6e4db5;
-}
-
 .search-box {
   display: none;
   position:relative;
-}
-
-.channel-info {
-  display: none;
-}
-
-.live_list,
-.channels_list {
-  color: #e8e8e8;
-  margin: 0;
-}
-
-.line {
-  border: 1px solid #8a2be2;
 }
 
 .live_circle {
@@ -412,21 +323,9 @@ ul {
   overflow: auto;
 }
 
-.channelContainer {
-  position: fixed;
-  width: 100%;
-  height:100%;
-  top: 7%;
-  overflow: hidden;
-}
-
 .suggested-live-results {
   padding: 0;
   margin: 0;
-}
-
-.fa-caret-down {
-  margin: 0 6px;
 }
 
 .stream-menu-description {
@@ -434,79 +333,8 @@ ul {
   align-items: center;
 }
 
-.stream-menu-viewers {
-  font-size: 12px;
-  color: lightgray;
-}
-
-.game-page-container {
-  margin-top: 5em
-}
-
-.game-page-container h1 {
-  margin: 2em .5em .3em .5em;
-  font-size: 3em;
-  text-align: center;
-  color: lightgrey
-}
-
-.red-img {
-  width: 10px;
-  height: 10px;
-  margin-right: 5px
-}
-
-.border {
-  width: 15%;
-  margin: 1em auto 4em auto;
-  border-bottom: 1px solid lightgrey
-}
-
-.live-channel-container {
-  margin:0 1em 3em 1em;
-}
-
-.channels_container {
-  margin: 100px auto;
-}
-
-.channel-preview {
-  padding: 0
-}
-
-.live-channel-box {
-  position: relative;
-  text-align: center;
- }
-
-.scroll-up {
-  scroll-behavior: smooth;
-  position: fixed;
-  top: 90%;
-  right: 0;
-  background-color: #522491;
-  border: none;
-  padding: 10px 5px;
-  text-align: center;
-  font-size: 10px;
-  margin: 4px 2px;
-  opacity: 0.6;
-  transition: 0.3s;
-  border-radius: 10%;
-}
-
-.popular_channel {
-  padding: 1em;
-}
-
 .nav-list {
   display: none;
-}
-
-.scroll-up {
-  position: fixed;
-  top: 85%;
-  right: 3%;
 }
 
 .error-message {
@@ -519,20 +347,10 @@ ul {
   text-align: center;
 }
 
-.stream {
-  height: 93vh
-}
-
 .fa-search {
   color: white;
   margin: 0 10px;
 }
-
-.fa-angle-left {
-  color: white;
-  margin: 0 .5em;
-}
-
 
 /****  mobile input styles ****/
 .mobile-input {
@@ -606,9 +424,102 @@ ul {
   top: 20%;
 }
 
-.top-live-channels {
-  margin: 50px auto;
-  width: 85%;
+/* ================CATEGORIES================= */
+
+.game_container2 {
+  display: flex;
+  padding: 1em 0;
+  border-bottom: 1px solid grey;
+}
+
+.game-viewers {
+  color: lightgrey;
+}
+
+.category_logo {
+  width: 5em;
+  height: 7em;
+  margin: 0 1em;
+}
+
+.category-container {
+  margin-top: 4em;
+}
+
+.game-title {
+  color: white;
+}
+
+/* ================CHANNELPAGE================= */
+
+.channelContainer {
+  position: fixed;
+  width: 100%;
+  height:100%;
+  top: 7%;
+  overflow: hidden;
+}
+
+.stream {
+  height: 93vh
+}
+
+/* ================GAMEPAGE================= */
+
+.game-page-container {
+  margin-top: 5em
+}
+
+.game-page-container h1 {
+  margin: 2em .5em .3em .5em;
+  font-size: 3em;
+  text-align: center;
+  color: lightgrey
+}
+
+.border {
+  width: 15%;
+  margin: 1em auto 4em auto;
+  border-bottom: 1px solid lightgrey
+}
+
+.live-channel-container {
+  margin:0 1em 3em 1em;
+}
+
+/* ================POPULARCHANNELSPAGE================= */
+
+.channels_container {
+  margin: 100px auto;
+}
+
+/* ===============SCROLLTOTOP================= */
+
+.scroll-up {
+  scroll-behavior: smooth;
+  position: fixed;
+  top: 90%;
+  right: 0;
+  background-color: #522491;
+  border: none;
+  padding: 10px 5px;
+  text-align: center;
+  font-size: 10px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  border-radius: 10%;
+}
+
+.scroll-up {
+  position: fixed;
+  top: 85%;
+  right: 3%;
+}
+
+.fa-angle-left {
+  color: white;
+  margin: 0 .5em;
 }
 
 @media only screen 
@@ -644,8 +555,72 @@ and (orientation : landscape) {
 
 @media screen and (min-width: 1100px) {
 
+  /* ================HOME================= */
+
+  .featured-container iframe {
+    height: 350px;
+  }
+
+  .fa-chevron-right, .fa-chevron-left{
+    margin-left: .6em;
+  }
+
+  .featured-streams {
+    text-align: center;
+    width: 50%;
+    margin: 3em auto;
+  }
+
+  .featured-stream-description {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .top-games, .live-channels {
+    font-size: 2.5em;
+  }
+
+  .top-games-box {
+    margin: 5em 2em;
+  }
+
+  .game-category, .live-channels-category {
+    margin: 1em 2em;
+  }
+
+  .live-channel-image {
+    width: 430px;
+    margin: 0 auto;
+  }
+
+  /* ================STREAMCARD================= */
+
+  .channelViewers {
+    top: 76%;
+    left: 7%;
+  }
+
+
   .search-button {
     display: none;
+  }
+
+  /* ================NAVIGATION================= */
+
+  .twitch-logo {
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0;
+  }
+
+  .twitch-logo2 {
+    width: 7em;
+    height: 2em;
+    display: inline-block;
+    margin-left: 1em;
+    padding-left: 1em;
+    border-left: 2px solid white;
   }
 
   .error-message {
@@ -658,10 +633,6 @@ and (orientation : landscape) {
     left: 64%;
     box-shadow:0px 0px 10px 3px #000000
   }
-
-  .live-channel-box {
-  /* padding: 1em; */
-}
 
   .menu {
     display: none;
@@ -676,6 +647,53 @@ and (orientation : landscape) {
     max-height: 550px;
     overflow: auto;
   }
+
+  .nav-link {
+    padding: 0;
+  }
+
+  .nav-link-border {
+    display: none;
+    position: relative;
+    padding-bottom: 3px;
+  }
+  @-webkit-keyframes border {
+       from {width: 0px;}
+       to {width:100%}
+  }
+  
+  .nav-link-border:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 2px;
+    width: 0px;
+    background: #fff;  
+    -webkit-animation-name: border; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+    animation-name: border;
+    animation-duration: 1s;
+    animation-delay: .5s;
+    animation-fill-mode: forwards;
+  }
+
+  .nav-list {
+    display:flex;
+    position: absolute;
+    right: 0;
+    /* top: 35% */
+    align-items: center;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .nav-list li {
+    margin: 0 1em;
+    color: #fff;
+  }
+
+  /* ================CATEGORIES================= */
 
   .game-title {
     font-size: 13px;
@@ -702,6 +720,10 @@ and (orientation : landscape) {
   .category-container {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  .game_container {
+    text-align: center
   }
 
   .game_container2 {
@@ -754,45 +776,11 @@ and (orientation : landscape) {
     outline: none;
   }
 
-  .featured-stream-image {
-    width: 100%;
-    height: 30%;
-    left: 0;
-  }
-
-  .featured-streams {
-    text-align: center;
-    width: 50%;
-    margin: 3em auto;
-  }
-
-  .featured-stream-image {
-    height: 70%;
-  }
-
-  .viewers {
-    position: absolute;
-    top: 88%;
-    left: 3%;
-    font-size: 1em;
-  }
-
-  .live {
-    position: absolute;
-    top: 4%;
-    left: 88%;
-    font-size: 1.1em;
-    padding: 2px 16px;
-  }
-
-
   .slick-prev {
-    /* margin-left: 50px; */
     margin: 0;
   }
 
   .slick-next {
-    /* margin-right: 50px; */
     margin: 0;
   }
 
@@ -800,61 +788,13 @@ and (orientation : landscape) {
     display: inline-block;
   }
 
-  .top-games, .live-channels {
-    font-size: 2.5em;
-  }
-
   .logo {
     width: 80%;
     height: 80%;
   }
 
-  .featured-stream-description {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-  }
-
-  .featured-stream-caption {
-    text-align: center;
-    flex-grow: 1;
-  }
-
-  .twitch-logo {
-    width: 1.5em;
-    height: 1.5em;
-    margin: 0;
-  }
-
-  .twitch-logo2 {
-    width: 7em;
-    height: 2em;
-    display: inline-block;
-    margin-left: 1em;
-    padding-left: 1em;
-    border-left: 2px solid white;
-  }
-
-  .game-category {
-    margin: 1em 2em;
-  }
-
   .menu-button {
     display: none;
-  }
-
-  .live-channel-image {
-    width: 430px;
-    margin: 0 auto;
-  }
-
-  .channelViewers {
-    top: 76%;
-    left: 7%;
-  }
-
-  .top-games-box {
-    margin: 5em 2em;
   }
 
   .home_link {
@@ -862,39 +802,17 @@ and (orientation : landscape) {
     padding: 1em;
   }
 
-
-  .channel-display_name {
-    color: white;
-    font-size: 3em;
-    text-align: center;
-    margin: 10px 0;
-    /* margin-bottom: 3em */
-  }
-
-  .channel-logo2 {
-    display: block;
-    margin: 0 auto;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    background-size: cover;
-  }
+  /* ================CHANNELPAGE================= */
 
   .channel-box {
     margin: 0 auto;
   }
 
-  .channel-info {
-    padding-top: 1em;
-    background-size: cover;
-    background-position: left;
-    height: 20.4em;
-    display: block;
-  }
-
   #stream-container {
     text-align: center
   }
+
+  /* ================GAMEPAGE================= */
 
   .game-page-wrapper {
     display: flex;
@@ -903,79 +821,17 @@ and (orientation : landscape) {
     justify-content: center;
   }
 
-  .fa-chevron-right{
-    margin-left: .6em;
-  }
-  
-  .fa-chevron-left {
-    margin-right: .6em;
-  }
-
-  .game_container {
-    text-align: center
-  }
-
-  .featured-container iframe {
-    height: 350px;
-  }
-
-  .channel-link {
-    /* width: 93.7%;
-    top: 5%; */
-  }
+  /* ================POPULARCHANNELSPAGE================= */
 
   .channels_container {
     display: flex;
     flex-wrap: wrap;
   }
 
+  /* ================SCROLLTOTOP================= */
+
   .scroll-up:hover {
     opacity: 1;
-  }
-
-  .nav-link {
-    padding: 0;
-  }
-
-  .nav-link-border {
-    display: none;
-    position: relative;
-    padding-bottom: 3px;
-  }
-  @-webkit-keyframes border {
-       from {width: 0px;}
-       to {width:100%}
-  }
-  
-  .nav-link-border:after {
-    content: '';
-    display: block;
-    margin: auto;
-    height: 2px;
-    width: 0px;
-    background: #fff;  
-    -webkit-animation-name: border; /* Safari 4.0 - 8.0 */
-    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
-    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
-    animation-name: border;
-    animation-duration: 1s;
-    animation-delay: .5s;
-    animation-fill-mode: forwards;
-  }
-
-  .nav-list {
-    display:flex;
-    position: absolute;
-    right: 0;
-    /* top: 35% */
-    align-items: center;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .nav-list li {
-    margin: 0 1em;
-    color: #fff;
   }
 
 }
